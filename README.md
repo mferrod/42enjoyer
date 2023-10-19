@@ -1,4 +1,4 @@
-# 42enjoyer
+# 42enjoyer - Mariano Fernández Rodero
 LIBFT			---- 		100% - COMPLETED AND PASSED BY MOULINETTE.
 
 PRINTFT			----		0% - NOT PRESENTED.
