@@ -6,13 +6,13 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 08:28:43 by marianof          #+#    #+#             */
-/*   Updated: 2023/10/20 08:55:14 by marianof         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:18:10 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar_p(char c)
+int	ft_putchar_p(int c)
 {
 	write(1, &c, 1);
 	return (1);

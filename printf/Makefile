@@ -6,13 +6,13 @@
 #    By: marianof <marianof@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/17 10:09:25 by marianof          #+#    #+#              #
-#    Updated: 2023/10/20 11:42:00 by marianof         ###   ########.fr        #
+#    Updated: 2023/10/23 13:22:19 by marianof         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 SRCS = ft_printf.c ft_putchar_p.c ft_putstr_p.c ft_putnbr_p.c \
-		ft_puthexmay_p.c ft_puthexmin_p.c
+		ft_puthexmay_p.c ft_puthexmin_p.c ft_putnbrd_p.c \
 
 CFLAGS = -Wall -Wextra -Werror
 OBJS = $(SRCS:.c=.o)

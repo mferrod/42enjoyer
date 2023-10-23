@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:24:30 by marianof          #+#    #+#             */
-/*   Updated: 2023/10/20 10:50:38 by marianof         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:18:43 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	print_switch(va_list element, const char *src, int i)
 
 	r = 0;
 	if (src[i + 1] == 'c')
-		r = ft_putchar_p(va_arg(element, char));
+		r = ft_putchar_p(va_arg(element, int));
 	if (src[i + 1] == 's')
 		r = ft_putstr_p(va_arg(element, char *));
 	if (src[i + 1] == 'p')
@@ -54,10 +54,10 @@ int	ft_printf(char const *src, ...)
 			if (src[i + 1] == '%')
 			{
 				return_value += ft_putchar_p('%');
-				i++;
 			}
 			else
 				return_value += print_switch(element, src, i);
+			i--;
 		}
 		i++;
 	}
