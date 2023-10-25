@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:24:30 by marianof          #+#    #+#             */
-/*   Updated: 2023/10/20 10:50:38 by marianof         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:06:25 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,24 @@ static int	print_switch(va_list element, const char *src, int i)
 	int	r;
 
 	r = 0;
-	if (src[i + 1] == 'c')
-		r = ft_putchar_p(va_arg(element, char));
-	if (src[i + 1] == 's')
+	if (src[i] == 'c')
+		r = ft_putchar_p(va_arg(element, int));
+	if (src[i] == 's')
 		r = ft_putstr_p(va_arg(element, char *));
-	if (src[i + 1] == 'p')
+	if (src[i] == 'p')
 		r = 0;
-	if (src[i + 1] == 'd')
-		ft_putnbrd_p(va_arg(element, int));
-	if (src[i + 1] == 'i')
-		ft_putnbr_p(va_arg(element, double));
-	if (src[i + 1] == 'u')
-		r = 0;
-	if (src[i + 1] == 'x')
-		r = 0;
-	if (src[i + 1] == 'X')
-		r = 0;
+	if (src[i] == 'd')
+		ft_putnbr_p(va_arg(element, int));
+	if (src[i] == 'i')
+		ft_putnbr_p(va_arg(element, int));
+	if (src[i] == 'u')
+		ft_putnbr_un_p(va_arg(element, unsigned int));
+	if (src[i] == 'x')
+		r = ft_puthexmin(va_arg(element, unsigned int));
+	if (src[i] == 'X')
+		r += ft_puthexmay(va_arg(element, unsigned int));
+	if (src[i] == '%')
+		r += ft_putchar_p('%');
 	return (r);
 }
 
@@ -51,14 +53,11 @@ int	ft_printf(char const *src, ...)
 	{
 		if (src[i] == '%')
 		{
-			if (src[i + 1] == '%')
-			{
-				return_value += ft_putchar_p('%');
-				i++;
-			}
-			else
-				return_value += print_switch(element, src, i);
+			i++;
+			return_value += print_switch(element, src, i);
 		}
+		else
+			return_value += ft_putchar_p(src[i]);
 		i++;
 	}
 	va_end(element);
