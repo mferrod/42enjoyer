@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 08:19:26 by marianof          #+#    #+#             */
-/*   Updated: 2023/10/27 14:24:40 by marianof         ###   ########.fr       */
+/*   Updated: 2023/10/27 19:35:24 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int				ft_printf(const char *str, ...);
 int				ft_putchar_p(int c);
 int				ft_putstr_p(char *str);
 int				ft_putnbr_p(int n);
-unsigned int	ft_putnbr_un_p(unsigned int n);
+int				ft_putnbr_un_p(unsigned int n);
 int				ft_puthexmay_p(unsigned long n);
 int				ft_puthexmin_p(unsigned long n);
 int				ft_putp_p(unsigned long punt);

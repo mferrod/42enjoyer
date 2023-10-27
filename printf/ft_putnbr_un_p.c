@@ -6,16 +6,16 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:06:34 by marianof          #+#    #+#             */
-/*   Updated: 2023/10/26 10:46:09 by marianof         ###   ########.fr       */
+/*   Updated: 2023/10/27 19:36:43 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_putnbr_un_f(unsigned int n, unsigned int *c)
+static void	ft_putnbr_un_f(unsigned int n, int *c)
 {
 	if (n >= 2147483647)
-		*c += (unsigned int)ft_putstr_p("2147483647");
+		*c += ft_putstr_p("2147483647");
 	else
 	{
 		if (n >= 10)
@@ -28,9 +28,9 @@ static void	ft_putnbr_un_f(unsigned int n, unsigned int *c)
 	}
 }
 
-unsigned int	ft_putnbr_un_p(unsigned int n)
+int	ft_putnbr_un_p(unsigned int n)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
 	ft_putnbr_un_f(n, &i);
