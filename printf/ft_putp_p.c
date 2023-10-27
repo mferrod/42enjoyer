@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putp_p.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 09:32:42 by marianof          #+#    #+#             */
-/*   Updated: 2023/10/20 11:37:41 by marianof         ###   ########.fr       */
+/*   Created: 2023/10/27 14:19:42 by marianof          #+#    #+#             */
+/*   Updated: 2023/10/27 14:40:21 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main(void)
+int	ft_putp_p(unsigned long punt)
 {
-	printf("%i", 30 % 16);
-	return (0);
+	if (!punt)
+		return (ft_putstr_p("0x0"));
+	return (ft_putstr_p("0x") + ft_puthexmin_p(punt));
 }

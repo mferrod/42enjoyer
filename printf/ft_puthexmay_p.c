@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:04:20 by marianof          #+#    #+#             */
-/*   Updated: 2023/10/27 13:39:27 by marianof         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:19:01 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ static int	ft_gethex(int num)
 
 static void	ft_puthexmay_f(unsigned long n, int *c)
 {
-	if (n >= 15)
+	if (n >= 16)
 	{
-		ft_puthexmay_p((n / 16));
-		ft_puthexmay_p((n % 16));
+		ft_puthexmay_f((n / 16), c);
+		ft_puthexmay_f((n % 16), c);
 	}
-	else if (ft_gethex(n) > 0 && ft_gethex(n) < 10)
+	else if (ft_gethex(n) >= 0 && ft_gethex(n) <= 9)
 		*c += ft_putchar_p(ft_gethex(n) + '0');
 	else
 		*c += ft_putchar_p(ft_gethex(n));
