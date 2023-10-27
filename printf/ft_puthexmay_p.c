@@ -6,16 +6,38 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:04:20 by marianof          #+#    #+#             */
-/*   Updated: 2023/10/20 11:59:34 by marianof         ###   ########.fr       */
+/*   Updated: 2023/10/27 13:39:27 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_puthexmay_p(int n)
+static int	ft_gethex(int num)
+{
+	char	*k;
+
+	k = "0123456789ABCDEF";
+	return ((int)k[num]);
+}
+
+static void	ft_puthexmay_f(unsigned long n, int *c)
+{
+	if (n >= 15)
+	{
+		ft_puthexmay_p((n / 16));
+		ft_puthexmay_p((n % 16));
+	}
+	else if (ft_gethex(n) > 0 && ft_gethex(n) < 10)
+		*c += ft_putchar_p(ft_gethex(n) + '0');
+	else
+		*c += ft_putchar_p(ft_gethex(n));
+}
+
+int	ft_puthexmay_p(unsigned long n)
 {
 	int	i;
 
-	i = 1;
-	return (n);
+	i = 0;
+	ft_puthexmay_f(n, &i);
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:24:30 by marianof          #+#    #+#             */
-/*   Updated: 2023/10/25 15:06:25 by marianof         ###   ########.fr       */
+/*   Updated: 2023/10/26 10:50:49 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ static int	print_switch(va_list element, const char *src, int i)
 	if (src[i] == 'p')
 		r = 0;
 	if (src[i] == 'd')
-		ft_putnbr_p(va_arg(element, int));
+		r += ft_putnbr_p(va_arg(element, int));
 	if (src[i] == 'i')
-		ft_putnbr_p(va_arg(element, int));
+		r += ft_putnbr_p(va_arg(element, int));
 	if (src[i] == 'u')
-		ft_putnbr_un_p(va_arg(element, unsigned int));
+		r += ft_putnbr_un_p(va_arg(element, unsigned int));
 	if (src[i] == 'x')
-		r = ft_puthexmin(va_arg(element, unsigned int));
+		r += ft_puthexmin_p(va_arg(element, unsigned int));
 	if (src[i] == 'X')
-		r += ft_puthexmay(va_arg(element, unsigned int));
+		r += ft_puthexmay_p(va_arg(element, unsigned int));
 	if (src[i] == '%')
 		r += ft_putchar_p('%');
 	return (r);
