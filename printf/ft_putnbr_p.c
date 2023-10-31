@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 09:15:45 by marianof          #+#    #+#             */
-/*   Updated: 2023/10/27 19:25:52 by marianof         ###   ########.fr       */
+/*   Updated: 2023/10/31 09:28:16 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static void	ft_putnbr_f(int n, int *c)
 		}
 		if (n >= 10)
 		{
-			ft_putnbr_p((n / 10));
-			ft_putnbr_p((n % 10));
+			ft_putnbr_f((n / 10), c);
+			ft_putnbr_f((n % 10), c);
 		}
 		else
 			*c += ft_putchar_p(n + '0');

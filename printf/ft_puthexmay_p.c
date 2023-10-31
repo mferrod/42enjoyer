@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:04:20 by marianof          #+#    #+#             */
-/*   Updated: 2023/10/27 19:25:57 by marianof         ###   ########.fr       */
+/*   Updated: 2023/10/31 12:13:27 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_gethex(int num)
 	return ((int)k[num]);
 }
 
-static void	ft_puthexmay_f(unsigned long n, int *c)
+static void	ft_puthexmay_f(unsigned int n, int *c)
 {
 	if (n >= 16)
 	{
@@ -33,7 +33,7 @@ static void	ft_puthexmay_f(unsigned long n, int *c)
 		*c += ft_putchar_p(ft_gethex(n));
 }
 
-int	ft_puthexmay_p(unsigned long n)
+int	ft_puthexmay_p(unsigned int n)
 {
 	int	i;
 

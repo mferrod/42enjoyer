@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_p.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 08:33:26 by marianof          #+#    #+#             */
-/*   Updated: 2023/10/31 09:20:34 by marianof         ###   ########.fr       */
+/*   Created: 2023/10/20 09:32:42 by marianof          #+#    #+#             */
+/*   Updated: 2023/10/31 11:45:59 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr_p(char *str)
+int	main(void)
 {
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (ft_putstr_p("(null)"));
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i);
+	printf("\n %i", ft_printf("%p", (void *)-14523));
+	return (0);
 }
