@@ -6,13 +6,13 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 09:44:47 by marianof          #+#    #+#             */
-/*   Updated: 2023/11/10 13:19:39 by marianof         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:37:49 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2, size_t readl)
 {
 	size_t	fullenght;
 	char	*s3;
@@ -24,19 +24,22 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1)
 		s1 = malloc(1);
 	fullenght = (size_t)ft_strlen(s1) + (size_t)ft_strlen(s2);
-	s3 = (char *)malloc(sizeof(char) * (fullenght + 1));
+	s3 = (char *)malloc(sizeof(char) * (fullenght));
 	if (!s3)
 		return (NULL);
 	while (s1[i])
-		s3[i++] = s1[i];
-	while (s2[j])
+	{
+		s3[i] = s1[i];
+		i++;
+	}
+	while (j < readl)
 		s3[i++] = s2[j++];
 	s3[i] = '\0';
 	free(s1);
 	return (s3);
 }
 
-int	ft_strlen(const char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 
@@ -46,7 +49,7 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	int		i;
 	char	*str;
