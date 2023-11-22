@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 09:44:47 by marianof          #+#    #+#             */
-/*   Updated: 2023/11/15 10:37:49 by marianof         ###   ########.fr       */
+/*   Updated: 2023/11/20 10:55:10 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_strjoin(char *s1, char *s2, size_t readl)
 {
-	size_t	fullenght;
-	char	*s3;
-	int		i;
-	int		j;
+	size_t		fullenght;
+	char		*s3;
+	size_t		i;
+	size_t		j;
 
 	i = 0;
 	j = 0;
@@ -63,32 +63,4 @@ char	*ft_strchr(char *s, int c)
 		i++;
 	}
 	return (&str[i]);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*ptr;
-
-	ptr = (void *)malloc(size * count);
-	while (ptr == NULL)
-		return (NULL);
-	ft_bzero(ptr, size * count);
-	return (ptr);
-}
-
-void	ft_bzero(void *dst, size_t n)
-{
-	size_t					i;
-	unsigned char			*ptr;
-
-	if (n > 0)
-	{
-		ptr = (unsigned char *)dst;
-		i = 0;
-		while (i < n)
-		{
-			ptr[i] = '\0';
-			i++;
-		}
-	}
 }
