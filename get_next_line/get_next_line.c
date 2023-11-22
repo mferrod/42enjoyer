@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 09:44:49 by marianof          #+#    #+#             */
-/*   Updated: 2023/11/22 12:13:07 by marianof         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:37:59 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,24 @@ char	*ft_clnbuf(char *cleanme)
 	int		k;
 	int		i;
 
-	i = 0;
-	k = ft_strlen(cleanme) - (ft_strlen(ft_strchr(cleanme, '\n')) + 2);
-	while (cleanme[k])
-	{
-		c[i] = cleanme[k];
+	k = 0;
+	while (cleanme[k] != '\0' && cleanme[k] != '\n')
 		k++;
+	if (ft_strlen(cleanme) - k <= 0)
+	{
+		free(cleanme);
+		cleanme = NULL;
+		return (cleanme);
 	}
+	c = malloc(sizeof(char) * ft_strlen(cleanme) - k + 1);
+	if (!c)
+		return (NULL);
+	k++;
+	i = 0;
+	while (cleanme[k] != '\0')
+		c[i++] = cleanme[k++];
 	free(cleanme);
+	cleanme = NULL;
 	return (c);
 }
 
