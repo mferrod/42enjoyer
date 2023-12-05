@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 09:44:49 by marianof          #+#    #+#             */
-/*   Updated: 2023/11/22 13:37:59 by marianof         ###   ########.fr       */
+/*   Updated: 2023/12/05 16:33:02 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (ft_free(estatic));
-	estatic = ft_read (fd, estatic);
+	estatic = ft_read(fd, estatic);
 	if (!estatic)
-		return (NULL);
+		return(NULL);
 	line = ft_get_line(estatic);
 	if (!line)
 		return (ft_free(estatic));
@@ -98,6 +98,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
+/*
 int	main(void)
 {
 	int		c;
@@ -110,5 +111,5 @@ int	main(void)
 	printf("%s", as);
 	close(c);
 	return (0);
-}
+}*/
 //05880
