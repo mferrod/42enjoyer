@@ -12,95 +12,90 @@
 
 #include "get_next_line.h"
 
-char	*ft_give_line(char *line)
+char	*ft_free(char *str)
 {
-	char	*c;
-	int		i;
-	int		k;
-
-	i = 0;
-	k = 0;
-	while (line[i] != '\n' && line[i] != '\0')
-		i++;
-	c = malloc((sizeof(char) * i) + 1);
-	if (!c)
-		return (NULL);
-	while (k < i)
-	{
-		c[k] = line[k];
-		k++;
-	}
-	c[i] = '\0';
-	free(line);
-	return (c);
+	free(str);
+	str = NULL;
+	return (NULL);
 }
 
-char	*ft_readline(int fd, char *statica)
+char	*ft_read(int fd, char *estatic)
 {
-	int		readl;
-	char	*temp;
-	char	*aux;
+	int		nbytes;
+	char	*buffer;
 
-	temp = malloc((sizeof(char) * BUFFER_SIZE) + 1);
-	if (!temp)
-		return (NULL);
-	readl = 1;
-	while (!ft_strchr(temp, '\n') || readl >= 1)
+	nbytes = 1;
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (ft_free(estatic));
+	buffer[0] = '\0';
+	while (nbytes > 0 && !ft_strchr(buffer, '\n'))
 	{
-		readl = read(fd, temp, BUFFER_SIZE);
-		if (readl < 0)
-			return (free(temp), NULL);
-		aux = statica;
-		statica = ft_strjoin(statica, temp, (size_t)readl);
+		nbytes = read (fd, buffer, BUFFER_SIZE);
+		if (nbytes > 0)
+		{
+			buffer[nbytes] = '\0';
+			estatic = ft_strjoin(estatic, buffer);
+		}
 	}
-	free(temp);
-	return (statica);
+	free(buffer);
+	if (nbytes == -1)
+		return (ft_free(estatic));
+	return (estatic);
 }
 
-char	*ft_clnbuf(char *cleanme)
+char	*ft_get_line(char *estatic)
 {
-	char	*c;
-	int		k;
-	int		i;
+	char	*line;
+	char	*ptr;
+	int		len;
 
-	k = 0;
-	while (cleanme[k] != '\0' && cleanme[k] != '\n')
-		k++;
-	if (ft_strlen(cleanme) - k <= 0)
-	{
-		free(cleanme);
-		cleanme = NULL;
-		return (cleanme);
-	}
-	c = malloc(sizeof(char) * ft_strlen(cleanme) - k + 1);
-	if (!c)
+	ptr = ft_strchr(estatic, '\n');
+	len = (ptr - estatic) + 1;
+	line = ft_substr(estatic, 0, len);
+	if (!line)
 		return (NULL);
-	k++;
-	i = 0;
-	while (cleanme[k] != '\0')
-		c[i++] = cleanme[k++];
-	free(cleanme);
-	cleanme = NULL;
-	return (c);
+	return (line);
+}
+
+char	*ft_new_estatic(char *estatic)
+{
+	char	*new_estatic;
+	char	*ptr;
+	int		len;
+
+	ptr = ft_strchr(estatic, '\n');
+	if (!ptr)
+	{
+		new_estatic = NULL;
+		return (ft_free(estatic));
+	}
+	else
+		len = (ptr - estatic) + 1;
+	if (!estatic[len])
+		return (ft_free(estatic));
+	new_estatic = ft_substr(estatic, len, ft_strlen(estatic) - len);
+	ft_free(estatic);
+	if (!new_estatic)
+		return (NULL);
+	return (new_estatic);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*ret;
-	static char	*statica;
+	static char	*estatic;
+	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
-	{
-		free(statica);
-		statica = NULL;
-		return (statica);
-	}
-	statica = ft_readline(fd, statica);
-	if (!statica)
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (ft_free(estatic));
+	estatic = ft_read (fd, estatic);
+	if (!estatic)
 		return (NULL);
-	ret = ft_give_line(statica);
-	statica = ft_clnbuf(statica);
-	return (ret);
+	line = ft_get_line(estatic);
+	if (!line)
+		return (ft_free(estatic));
+	estatic = ft_new_estatic(estatic);
+	return (line);
 }
 
 int	main(void)
