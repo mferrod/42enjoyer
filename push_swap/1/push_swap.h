@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/08 18:40:09 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/08 19:10:24 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ long		*check_if_duplicated(long *numbers);
 void		error_and_free(void *c);
 void		error(void);
 t_node		*new_node(long n);
-t_node		*stack_gen(long *numbers);
+t_node		*stack_gen(long *numbers, int numbers_count);
 long		ft_atol(const char *str);
 
 #endif

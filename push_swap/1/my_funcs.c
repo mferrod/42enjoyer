@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 20:55:07 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/08 18:31:02 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/08 18:56:47 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ long	ft_atol(const char *str)
 		i++;
 	}
 	if (INT_MAX < returned || INT_MIN > returned)
-		error_and_free(str);
+		error();
 	return (returned * rest);
 }

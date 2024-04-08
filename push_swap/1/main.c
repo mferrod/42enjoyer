@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:19:23 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/08 18:36:28 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/08 19:09:51 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	arrnum = check_if_duplicated(arrnum);
 	if (!arrnum)
 		error_and_free(arrnum);
-	stack_gen(arrnum);
+	stack_gen(arrnum, argc - 1);
 	return (0);
 }
 
