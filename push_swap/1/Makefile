@@ -1,7 +1,7 @@
 LIBFT_DIR   = libft
 LIBFT_PATH = libft/libft.a
 
-SRCS =  main.c errorfuncs.c stacks.c my_funcs.c
+SRCS =  main.c errorfuncs.c stacks.c my_funcs.c sort_stacks.c
 CC = gcc
 CFLAGS= -Wall -Werror -Wextra -g
 OBJ = $(SRCS:.c=.o)

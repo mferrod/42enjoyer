@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marianof <marianonof@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/08 19:10:24 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:19:33 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ void		error(void);
 t_node		*new_node(long n);
 t_node		*stack_gen(long *numbers, int numbers_count);
 long		ft_atol(const char *str);
+long		*parser(int total_numb, char **data);
+int			check_if_sorted(t_node *node);
 
 #endif
