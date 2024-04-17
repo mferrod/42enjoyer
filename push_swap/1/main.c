@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianonof@student.42.fr>        +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:19:23 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/12 17:55:22 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/12 19:21:55 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ int	main(int argc, char **argv)
 	b = NULL;
 	arrnum = parser(argc, argv);
 	a = stack_gen(arrnum, argc);
-	if (!check_if_sorted(a))
-	{
-			
-	}
+	printf("%d", a->n);
+	printf("%d", a->next->n);
+	sa(&a);
+	printf("%d", a->n);
+	printf("%d", a->next->n);
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stacks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianonof@student.42.fr>        +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 20:30:00 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/10 12:58:16 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/12 19:20:24 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ t_node	*stack_gen(long *numbers, int numbers_count)
 		node->prev = aux;
 		aux = node;
 		i++;
-		printf("%d", node->n);
 	}
 	node->prev = NULL;
 	return (head);

@@ -1,47 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_funcs.c                                         :+:      :+:    :+:   */
+/*   movements_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/06 20:55:07 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/12 20:12:14 by marianof         ###   ########.fr       */
+/*   Created: 2024/04/12 18:45:47 by marianof          #+#    #+#             */
+/*   Updated: 2024/04/12 20:10:14 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(const char *str)
+void	sa(t_node **node)
 {
-	int			i;
-	long		returned;
-	long		rest;
+	int	aux;
 
-	i = 0;
-	returned = 0;
-	rest = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			rest = -1;
-		i++;
-	}
-	while (str[i] >= 48 && str[i] <= 57)
-	{
-		returned = (returned * 10) + (str[i] - '0');
-		i++;
-	}
-	if (INT_MAX < returned || INT_MIN > returned)
-		error();
-	return (returned * rest);
+	if (!node || !(*node) || (*node)->next)
+		return ;
+	aux = (*node)->n;
+	(*node)->n = (*node)->next->n;
+	(*node)->next->n = aux;
 }
 
-t_node	*last_node(t_node **node)
+void	ra(t_node **node)
 {
+	if (!*node || !(*node)->next)
+		return ;
+	(*node) = (*node)->next;
+}
+
+void	rra(t_node **node)
+{
+	t_node	*n;
+
+	n = (*node);
+	if (!*node || !(*node)->next)
+		return ;
 	while ((*node)->next != NULL)
 		(*node) = (*node)->next;
-	return ((*node));
+	(*node) = n;
 }
