@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 20:55:07 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/12 20:12:14 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/17 18:55:25 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,4 @@ long	ft_atol(const char *str)
 	if (INT_MAX < returned || INT_MIN > returned)
 		error();
 	return (returned * rest);
-}
-
-t_node	*last_node(t_node **node)
-{
-	while ((*node)->next != NULL)
-		(*node) = (*node)->next;
-	return ((*node));
 }

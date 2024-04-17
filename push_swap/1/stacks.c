@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 20:30:00 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/12 19:20:24 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/17 18:51:03 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_node	*new_node(long n)
 
 	node = malloc(sizeof(t_node));
 	node->n = n;
-	node->prev = NULL;
 	node->next = NULL;
 	return (node);
 }
@@ -37,10 +36,9 @@ t_node	*stack_gen(long *numbers, int numbers_count)
 	{
 		node = new_node(numbers[i]);
 		aux->next = node;
-		node->prev = aux;
 		aux = node;
 		i++;
 	}
-	node->prev = NULL;
+	node->next = NULL;
 	return (head);
 }

@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/12 20:16:21 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:27:34 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_node
 {
 	int				n;
 	struct s_node	*next;
-	struct s_node	*prev;
 }					t_node;
 
 long		check_string(char *c);
@@ -38,7 +37,9 @@ t_node		*stack_gen(long *numbers, int numbers_count);
 long		ft_atol(const char *str);
 long		*parser(int total_numb, char **data);
 int			check_if_sorted(t_node **node);
-t_node		*last_node(t_node **node);
 void		sa(t_node **node);
+void		ra(t_node **node);
+void		rra(t_node **node);
+void	push_a(t_node **node_a, t_node **node_b);
 
 #endif

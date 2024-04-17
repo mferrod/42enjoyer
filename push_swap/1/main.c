@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:19:23 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/12 19:21:55 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:28:43 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,17 @@ int	main(int argc, char **argv)
 	b = NULL;
 	arrnum = parser(argc, argv);
 	a = stack_gen(arrnum, argc);
-	printf("%d", a->n);
-	printf("%d", a->next->n);
-	sa(&a);
-	printf("%d", a->n);
-	printf("%d", a->next->n);
+	printf("stack_A\n");
+	printf("%d\n", a->n);
+	printf("%d\n", a->next->n);
+	push_a(&a, &b);
+	push_a(&a, &b);
+	printf("stack_B\n");
+	printf("%d\n", b->n);
+	printf("%d\n", b->next->n);
+		printf("stack_A\n");
+	printf("%d\n", a->n);
+	printf("%d\n", a->next->n);
 	return (0);
 }
 
