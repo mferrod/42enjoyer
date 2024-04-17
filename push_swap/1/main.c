@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:19:23 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/17 19:28:43 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:38:21 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	printf("stack_B\n");
 	printf("%d\n", b->n);
 	printf("%d\n", b->next->n);
-		printf("stack_A\n");
+	printf("stack_A\n");
 	printf("%d\n", a->n);
 	printf("%d\n", a->next->n);
 	return (0);

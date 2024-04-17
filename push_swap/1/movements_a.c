@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:45:47 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/17 19:23:25 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:49:43 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	rra(t_node **node)
 
 void	push_a(t_node **node_a, t_node **node_b)
 {
-	t_node *aux;
+	t_node	*aux;
 
 	aux = (*node_a)->next;
 	(*node_a)->next = NULL;

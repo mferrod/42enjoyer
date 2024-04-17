@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/17 19:27:34 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:53:12 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ int			check_if_sorted(t_node **node);
 void		sa(t_node **node);
 void		ra(t_node **node);
 void		rra(t_node **node);
-void	push_a(t_node **node_a, t_node **node_b);
+void		push_a(t_node **node_a, t_node **node_b);
 
 #endif
