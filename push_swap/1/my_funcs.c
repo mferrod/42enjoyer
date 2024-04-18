@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_funcs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marianof <marianonof@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 20:55:07 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/17 18:55:25 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/18 09:29:29 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,19 @@ long	ft_atol(const char *str)
 	if (INT_MAX < returned || INT_MIN > returned)
 		error();
 	return (returned * rest);
+}
+
+int	stack_len(t_node **node)
+{
+	int	i;
+
+	i = 0;
+	if (!node)
+		error();
+	while ((*node)->next != NULL)
+	{
+		i++;
+		*node = (*node)->next;
+	}
+	return (i);
 }

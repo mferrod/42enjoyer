@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marianof <marianonof@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/17 19:53:12 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/18 09:35:19 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ typedef struct s_node
 	struct s_node	*next;
 }					t_node;
 
+typedef struct t_data
+{
+	int	n;
+	int	n_pos;
+}					sort_data;
+
+
 long		check_string(char *c);
 int			check_char(char c, int i);
 long		*check_if_duplicated(long *numbers);
@@ -37,9 +44,16 @@ t_node		*stack_gen(long *numbers, int numbers_count);
 long		ft_atol(const char *str);
 long		*parser(int total_numb, char **data);
 int			check_if_sorted(t_node **node);
+//MOVEMENTS
 void		sa(t_node **node);
 void		ra(t_node **node);
 void		rra(t_node **node);
 void		push_a(t_node **node_a, t_node **node_b);
+void		sb(t_node **node);
+void		rb(t_node **node);
+void		rrb(t_node **node);
+void		push_b(t_node **node_a, t_node **node_b);
+
+int			stack_len(t_node **node);
 
 #endif
