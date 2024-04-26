@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianonof@student.42.fr>        +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/18 09:35:19 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:27:56 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,9 @@
 typedef struct s_node
 {
 	int				n;
+	int				pos;
 	struct s_node	*next;
 }					t_node;
-
-typedef struct t_data
-{
-	int	n;
-	int	n_pos;
-}					sort_data;
-
 
 long		check_string(char *c);
 int			check_char(char c, int i);
@@ -55,5 +49,6 @@ void		rrb(t_node **node);
 void		push_b(t_node **node_a, t_node **node_b);
 
 int			stack_len(t_node **node);
+long		stack_avg(t_node **node);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianonof@student.42.fr>        +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:19:23 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/18 09:30:32 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/26 18:44:24 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,19 @@ int	main(int argc, char **argv)
 	if (!check_if_sorted(&a))
 	{
 		if (stack_len(&a) == 2)
+		{
+			printf("%d\n", a->n);
 			sa(&a);
+			printf("%d\n", a->n);
+		}
+		else if (stack_len(&a) == 3)
+		{
+			return (0);
+		}
+		else
+		{
+			return (0);
+		}
 	}
 	return (0);
 }
@@ -91,10 +103,6 @@ long	*parser(int total_numb, char **data)
 
 	i = 1;
 	j = 0;
-	if (total_numb == 1 || (total_numb == 2 && !data[1][0]))
-		error();
-	else if (total_numb == 2)
-		data = ft_split(data[1], ' ');
 	arrnum = malloc((total_numb) * sizeof(long *));
 	if (total_numb < 2)
 		error();

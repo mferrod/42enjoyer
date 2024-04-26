@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 20:30:00 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/17 18:51:03 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:59:41 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,12 @@ t_node	*stack_gen(long *numbers, int numbers_count)
 
 	i = 1;
 	head = new_node(numbers[0]);
+	head->pos = 0;
 	aux = head;
 	while (i < numbers_count)
 	{
 		node = new_node(numbers[i]);
+		node->pos = i;
 		aux->next = node;
 		aux = node;
 		i++;

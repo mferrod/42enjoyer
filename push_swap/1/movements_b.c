@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements_b.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianonof@student.42.fr>        +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 09:18:52 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/18 09:19:16 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:24:57 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sb(t_node **node)
 {
 	int	aux;
 
-	if (!node || !(*node) || (*node)->next)
+	if (!node || !(*node) || !(*node)->next)
 		return ;
 	aux = (*node)->n;
 	(*node)->n = (*node)->next->n;
@@ -51,9 +51,7 @@ void	push_b(t_node **node_a, t_node **node_b)
 	if (!(*node_b))
 		(*node_b) = (*node_a);
 	else
-	{
 		(*node_a)->next = (*node_b);
-	}
 	(*node_b) = (*node_a);
 	(*node_a) = aux;
 }

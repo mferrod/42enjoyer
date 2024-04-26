@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:45:47 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/17 19:49:43 by marianof         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:25:03 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sa(t_node **node)
 {
 	int	aux;
 
-	if (!node || !(*node) || (*node)->next)
+	if (!node || !(*node)->next || !(*node))
 		return ;
 	aux = (*node)->n;
 	(*node)->n = (*node)->next->n;
@@ -51,9 +51,7 @@ void	push_a(t_node **node_a, t_node **node_b)
 	if (!(*node_b))
 		(*node_b) = (*node_a);
 	else
-	{
 		(*node_a)->next = (*node_b);
-	}
 	(*node_b) = (*node_a);
 	(*node_a) = aux;
 }
