@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marianof <marianonof@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:19:23 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/26 18:44:24 by marianof         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:24:27 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,9 @@ int	main(int argc, char **argv)
 	if (!check_if_sorted(&a))
 	{
 		if (stack_len(&a) == 2)
-		{
-			printf("%d\n", a->n);
 			sa(&a);
-			printf("%d\n", a->n);
-		}
 		else if (stack_len(&a) == 3)
-		{
-			return (0);
-		}
+			sort_3_stack(&a);
 		else
 		{
 			return (0);
