@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianonof@student.42.fr>        +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/29 13:52:21 by marianof         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:50:44 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void		push_b(t_node **node_a, t_node **node_b);
 int			check_if_sorted(t_node **node);
 int			stack_len(t_node **node);
 long		stack_avg(t_node **node);
-void	act_with_avg(t_node **node_a, t_node **node_b, long avg);
-void	sort_3_stack(t_node **sortme);
+void		act_with_avg(t_node **node_a, t_node **node_b, long avg);
+void		sort_3_stack(t_node **sortme);
 
 #endif
