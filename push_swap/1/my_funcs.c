@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 20:55:07 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/25 19:27:51 by marianof         ###   ########.fr       */
+/*   Updated: 2024/06/25 19:41:03 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,19 @@ int	stack_len(t_node **node)
 	node2 = (*node);
 	if (!node)
 		error();
-	while (node2->next != NULL)
+	while (node2 != NULL)
 	{
 		i++;
 		node2 = node2->next;
 	}
 	return (i);
+}
+
+static void	print_stack(t_node *list)
+{
+	while (list)
+	{
+		printf("%d\n", list->n);
+		list = list->next;
+	}
 }

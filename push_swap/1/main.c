@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianonof@student.42.fr>        +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:19:23 by marianof          #+#    #+#             */
-/*   Updated: 2024/05/02 17:24:27 by marianof         ###   ########.fr       */
+/*   Updated: 2024/06/25 19:41:23 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	arrnum = parser(argc, argv);
-	a = stack_gen(arrnum, argc);
+	arrnum = parser(argc - 1, argv);
+	a = stack_gen(arrnum, argc - 1);
 	if (!check_if_sorted(&a))
 	{
 		if (stack_len(&a) == 2)
@@ -29,9 +29,7 @@ int	main(int argc, char **argv)
 		else if (stack_len(&a) == 3)
 			sort_3_stack(&a);
 		else
-		{
-			return (0);
-		}
+			printf("alGorimo shaval");
 	}
 	return (0);
 }

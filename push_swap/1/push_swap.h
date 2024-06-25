@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/06/24 15:50:44 by marianof         ###   ########.fr       */
+/*   Updated: 2024/06/25 18:05:08 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,30 @@ typedef struct s_node
 long		check_string(char *c);
 int			check_char(char c, int i);
 long		*check_if_duplicated(long *numbers);
-void		error_and_free(void *c);
-void		error(void);
 t_node		*new_node(long n);
 t_node		*stack_gen(long *numbers, int numbers_count);
-long		ft_atol(const char *str);
 long		*parser(int total_numb, char **data);
 
+//UTILS
+void		error_and_free(void *c);
+void		error(void);
+long		ft_atol(const char *str);
+
 //MOVEMENTS
+void		swap(t_node **node);
+void		rotate(t_node **node);
+void		reverse_rotate(t_node **node);
+void		push(t_node **node_a, t_node **node_b);
 void		sa(t_node **node);
-void		ra(t_node **node);
-void		rra(t_node **node);
-void		push_a(t_node **node_a, t_node **node_b);
 void		sb(t_node **node);
+void		ss(t_node **node_a, t_node **node_b);
+void		ra(t_node **node);
 void		rb(t_node **node);
+void		rr(t_node **node_a, t_node **node_b);
+void		rra(t_node **node);
 void		rrb(t_node **node);
+void		rrr(t_node **node_a, t_node **node_b);
+void		push_a(t_node **node_a, t_node **node_b);
 void		push_b(t_node **node_a, t_node **node_b);
 
 //STRUCTS CHECKERS

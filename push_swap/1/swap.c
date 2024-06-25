@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movements_a.c                                      :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 18:45:47 by marianof          #+#    #+#             */
-/*   Updated: 2024/06/24 15:43:39 by marianof         ###   ########.fr       */
+/*   Created: 2024/06/25 17:32:07 by marianof          #+#    #+#             */
+/*   Updated: 2024/06/25 17:36:07 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_node **node)
+void	swap(t_node **node)
 {
 	int	aux;
 
@@ -21,41 +21,23 @@ void	sa(t_node **node)
 	aux = (*node)->n;
 	(*node)->n = (*node)->next->n;
 	(*node)->next->n = aux;
-	printf("sa\n");
 }
 
-void	ra(t_node **node)
+void	sa(t_node **node)
 {
-	if (!*node || !(*node)->next)
-		return ;
-	(*node) = (*node)->next;
-	printf("ra\n");
+	swap(node);
+	ft_putstr_fd("sa\n", 1);
 }
 
-void	rra(t_node **node)
+void	sb(t_node **node)
 {
-	t_node	*n;
-
-	n = (*node);
-	if (!*node || !(*node)->next)
-		return ;
-	while ((*node)->next != NULL)
-		(*node) = (*node)->next;
-	(*node) = n;
-	printf("rra\n");
+	swap(node);
+	ft_putstr_fd("sb\n", 1);
 }
 
-void	push_a(t_node **node_a, t_node **node_b)
+void	ss(t_node **node_a, t_node **node_b)
 {
-	t_node	*aux;
-
-	aux = (*node_a)->next;
-	(*node_a)->next = NULL;
-	if (!(*node_b))
-		(*node_b) = (*node_a);
-	else
-		(*node_a)->next = (*node_b);
-	(*node_b) = (*node_a);
-	(*node_a) = aux;
-	printf("push_a\n");
+	swap(node_a);
+	swap(node_b);
+	ft_putstr_fd("ss\n", 1);
 }
