@@ -50,29 +50,29 @@ void	act_with_avg(t_node **node_a, t_node **node_b, long avg)
 
 void	sort_3_stack(t_node **sortme)
 {
-	if (((*sortme)->n > (*sortme)->next->n)
-		&& ((*sortme)->next->n < (*sortme)->next->next->n)
-		&& (*sortme)->n > (*sortme)->next->next->n)
-		ra(sortme);
-	else if (((*sortme)->n < (*sortme)->next->n)
-		&& ((*sortme)->next->n > (*sortme)->next->next->n)
-		&& (*sortme)->n < (*sortme)->next->next->n)
+	int		top;
+
+	if (is_sorted(*stack))
+		return ;
+	top = find_top_index(*stack);
+	if ((*stack)->index == top)
+		ra(stack);
+	else if ((*stack)->next->index == top)
+		rra(stack);
+	if ((*stack)->index > (*stack)->next->index)
+		sa(stack);
+}
+
+int	find_top_index(t_stack *stack)
+{
+	int		index;
+
+	index = stack->index;
+	while (stack)
 	{
-		sa(sortme);
-		ra(sortme);
+		if (stack->index > index)
+			index = stack->index;
+		stack = stack->next;
 	}
-	else if (((*sortme)->n > (*sortme)->next->n)
-		&& ((*sortme)->next->n < (*sortme)->next->next->n)
-		&& (*sortme)->n < (*sortme)->next->next->n)
-		sa(sortme);
-	else if (((*sortme)->n < (*sortme)->next->n)
-		&& ((*sortme)->next->n > (*sortme)->next->next->n)
-		&& (*sortme)->n > (*sortme)->next->next->n)
-		rra(sortme);
-	else if (((*sortme)->n > (*sortme)->next->n)
-		&& ((*sortme)->next->n > (*sortme)->next->next->n))
-	{
-		sa(sortme);
-		rra(sortme);
-	}
+	return (index);
 }
