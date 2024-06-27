@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:19:23 by marianof          #+#    #+#             */
-/*   Updated: 2024/06/25 19:41:23 by marianof         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:52:50 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 		else
 			printf("alGorimo shaval");
 	}
+	free_stacks(&a, &b);
 	return (0);
 }
 

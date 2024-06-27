@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:15:44 by marianof          #+#    #+#             */
-/*   Updated: 2024/06/24 15:53:14 by marianof         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:26:35 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,18 @@ void	sort_3_stack(t_node **sortme)
 {
 	int		top;
 
-	if (is_sorted(*stack))
+	if (check_if_sorted(sortme))
 		return ;
-	top = find_top_index(*stack);
-	if ((*stack)->index == top)
-		ra(stack);
-	else if ((*stack)->next->index == top)
-		rra(stack);
-	if ((*stack)->index > (*stack)->next->index)
-		sa(stack);
+	top = find_top_index(*sortme);
+	if ((*sortme)->index == top)
+		ra(sortme);
+	else if ((*sortme)->next->index == top)
+		rra(sortme);
+	if ((*sortme)->index > (*sortme)->next->index)
+		sa(sortme);
 }
 
-int	find_top_index(t_stack *stack)
+int	find_top_index(t_node *stack)
 {
 	int		index;
 

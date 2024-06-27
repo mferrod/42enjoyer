@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/06/25 18:05:08 by marianof         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:47:33 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ long		*parser(int total_numb, char **data);
 void		error_and_free(void *c);
 void		error(void);
 long		ft_atol(const char *str);
+void		print_stack(t_node *list);
+void		free_stack(t_node **stack);
+void		free_stacks(t_node **stack_a, t_node **stack_b);
 
 //MOVEMENTS
 void		swap(t_node **node);
@@ -68,5 +71,6 @@ int			stack_len(t_node **node);
 long		stack_avg(t_node **node);
 void		act_with_avg(t_node **node_a, t_node **node_b, long avg);
 void		sort_3_stack(t_node **sortme);
+int			find_top_index(t_node *stack);
 
 #endif

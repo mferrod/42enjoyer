@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 20:55:07 by marianof          #+#    #+#             */
-/*   Updated: 2024/06/25 19:41:03 by marianof         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:47:45 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,34 @@ int	stack_len(t_node **node)
 	return (i);
 }
 
-static void	print_stack(t_node *list)
+void	print_stack(t_node *list)
 {
 	while (list)
 	{
 		printf("%d\n", list->n);
 		list = list->next;
 	}
+}
+
+void	free_stack(t_node **stack)
+{
+	t_node	*stacktemp;
+
+	if (!stack || !*stack)
+		error();
+	while ((*stack)->next != NULL)
+	{
+		stacktemp = (*stack)->next;
+		free(*stack);
+		*stack = stacktemp;
+	}
+	free(*stack);
+	*stack = NULL;
+	stacktemp = NULL;
+}
+
+void	free_stacks(t_node **stack_a, t_node **stack_b)
+{
+	free_stack(stack_a);
+	free_stack(stack_a);
 }
