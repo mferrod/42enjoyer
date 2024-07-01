@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:19:23 by marianof          #+#    #+#             */
-/*   Updated: 2024/06/27 18:52:50 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/01 18:07:31 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,19 @@ int	main(int argc, char **argv)
 	b = NULL;
 	arrnum = parser(argc - 1, argv);
 	a = stack_gen(arrnum, argc - 1);
+	set_index_to_stack(a, stack_len(&a));
+	print_stack(a);
+	print_stack(b);
 	if (!check_if_sorted(&a))
 	{
 		if (stack_len(&a) == 2)
 			sa(&a);
 		else if (stack_len(&a) == 3)
 			sort_3_stack(&a);
-		else
-			printf("alGorimo shaval");
+		else if (stack_len(&a) > 3)
+			sort_big_stack(&a, &b);
 	}
+	print_stack(a);
 	free_stacks(&a, &b);
 	return (0);
 }

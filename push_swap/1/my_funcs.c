@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 20:55:07 by marianof          #+#    #+#             */
-/*   Updated: 2024/06/27 18:47:45 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/01 18:08:20 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,5 @@ void	free_stack(t_node **stack)
 void	free_stacks(t_node **stack_a, t_node **stack_b)
 {
 	free_stack(stack_a);
-	free_stack(stack_a);
+	free_stack(stack_b);
 }
