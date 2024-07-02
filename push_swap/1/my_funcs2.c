@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:36:26 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/02 16:31:12 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/02 17:06:37 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	stack_average(t_node **stack)
 
 	if (!stack || !*stack)
 		error();
+	avg = 0;
 	stack_aux = *stack;
 	total_num = stack_len(stack);
 	while (stack_aux->next != NULL)
@@ -59,12 +60,17 @@ int	stack_average(t_node **stack)
 	return (avg);
 }
 
+
 void	cal_costs(t_node **stack_a, t_node **stack_b)
 {
+	//printf("llega");
 	set_positions(stack_a);
 	set_positions(stack_b);
 	while ((*stack_b)->next != NULL)
 	{
+		//printf("\nstack_B: %d\n", (*stack_b)->n);
 		get_target(stack_a, stack_b);
+		//printf("TARGET STACK B: %d", (*stack_b)->target_node->pos);
+		(*stack_b) = (*stack_b)->next;
 	}
 }

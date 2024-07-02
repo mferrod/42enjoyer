@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 12:18:22 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/02 16:32:53 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/02 17:25:28 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ void	get_target(t_node **stack_a, t_node **stack_b)
 	target = __INT_MAX__;
 	size = stack_len(stack_a);
 	num = 0;
-	while (i < size)
+	while (i <= size)
 	{
 		num = aux->n - (*stack_b)->n;
+		printf("NUM: %d\n", num);
 		if ((num < target) && ((aux)->n > (*stack_b)->n))
 		{
 			target = num;
