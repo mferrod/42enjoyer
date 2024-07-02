@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:15:44 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/02 13:32:51 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/02 16:02:55 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,31 @@ void	act_with_avg(t_node **node_a, t_node **node_b, long avg)
 
 void	sort_3_stack(t_node **sortme)
 {
-	int		top;
-
-	if (check_if_sorted(sortme))
-		return ;
-	top = find_top_index(*sortme);
-	if ((*sortme)->index == top)
+	if (((*sortme)->n > (*sortme)->next->n)
+		&& ((*sortme)->next->n < (*sortme)->next->next->n)
+		&& (*sortme)->n > (*sortme)->next->next->n)
 		ra(sortme);
-	else if ((*sortme)->next->index == top)
-		rra(sortme);
-	if ((*sortme)->index > (*sortme)->next->index)
+	else if (((*sortme)->n > (*sortme)->next->n)
+		&& ((*sortme)->next->n > (*sortme)->next->next->n))
+	{
 		sa(sortme);
+		rra(sortme);
+	}
+	else if (((*sortme)->n > (*sortme)->next->n)
+		&& ((*sortme)->next->n < (*sortme)->next->next->n)
+		&& (*sortme)->n < (*sortme)->next->next->n)
+		sa(sortme);
+	else if (((*sortme)->n < (*sortme)->next->n)
+		&& ((*sortme)->next->n > (*sortme)->next->next->n)
+		&& (*sortme)->n < (*sortme)->next->next->n)
+	{
+		sa(sortme);
+		ra(sortme);
+	}
+	else if (((*sortme)->n < (*sortme)->next->n)
+		&& ((*sortme)->next->n > (*sortme)->next->next->n)
+		&& (*sortme)->n > (*sortme)->next->next->n)
+		rra(sortme);
 }
 
 int	find_top_index(t_node *stack)

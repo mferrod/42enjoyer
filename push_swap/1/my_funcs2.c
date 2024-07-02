@@ -6,40 +6,11 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:36:26 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/02 13:42:53 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/02 16:31:12 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	set_index_to_stack(t_node *stack_a, int length)
-{
-	t_node	*my_stack;
-	t_node	*top;
-	int		value;
-
-	while (--length > 0)
-	{
-		my_stack = stack_a;
-		value = INT_MIN;
-		top = NULL;
-		while (my_stack)
-		{
-			if (my_stack->n == value && my_stack->index == 0)
-				my_stack->index = 1;
-			if (my_stack->n > value && my_stack->index == 0)
-			{
-				value = my_stack->n;
-				top = my_stack;
-				my_stack = stack_a;
-			}
-			else
-				my_stack = my_stack->next;
-		}
-		if (top != NULL)
-			top->index = length;
-	}
-}
 
 void	sort_big_stack(t_node **stack_a, t_node **stack_b)
 {

@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:19:23 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/02 13:44:25 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/02 16:42:45 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	b = NULL;
 	arrnum = parser(argc - 1, argv);
 	a = stack_gen(arrnum, argc - 1);
-	set_index_to_stack(a, stack_len(&a));
 	if (!check_if_sorted(&a))
 	{
 		if (stack_len(&a) == 2)
@@ -32,16 +31,6 @@ int	main(int argc, char **argv)
 		else if (stack_len(&a) > 3)
 			sort_big_stack(&a, &b);
 	}
-	/*while (a)
-	{
-		printf("POSICIONES A: %d\n", a->pos);
-		a = a->next;
-	}
-	while (a)
-	{
-		printf("POSICIONES B: %d\n", b->target_node->pos);
-		b = b->next;
-	}*/
 	free_stacks(&a, &b);
 	return (0);
 }

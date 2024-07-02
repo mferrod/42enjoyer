@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/02 13:36:00 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/02 16:13:09 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ long		ft_atol(const char *str);
 void		print_stack(t_node *list);
 void		free_stack(t_node **stack);
 void		free_stacks(t_node **stack_a, t_node **stack_b);
-void		set_index_to_stack(t_node *stack_a, int length);
 void		save_and_push_3(t_node **stack_a, t_node **stack_b);
 int			stack_average(t_node **stack);
 void		cal_costs(t_node **stack_a, t_node **stack_b);
 void		set_positions(t_node **stack);
 void		get_target(t_node **stack_a, t_node **stack_b);
+void		print_stack_pos(t_node **pim);
 
 //MOVEMENTS
 void		swap(t_node **node);

@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 12:18:22 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/02 13:00:43 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/02 16:32:53 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,44 @@
 
 void	set_positions(t_node **stack)
 {
-	int	i;
+	int		i;
+	t_node	*aux;
 
-	i = 0;
 	if (!stack || !*stack)
 		error();
-	while ((*stack)->next != NULL)
+	i = 0;
+	aux = *stack;
+	while ((aux)->next != NULL)
 	{
-		(*stack)->pos = i;
-		(*stack) = (*stack)->next;
+		(aux)->pos = i;
+		(aux) = (aux)->next;
 		i++;
 	}
-	(*stack)->pos = i;
+	(aux)->pos = i;
 }
 
 void	get_target(t_node **stack_a, t_node **stack_b)
 {
-	int	i;
-	int	target;
-	int	size;
-	int	num;
+	int		i;
+	int		target;
+	int		size;
+	int		num;
+	t_node	*aux;
 
 	i = 0;
+	aux = *stack_a;
 	target = __INT_MAX__;
 	size = stack_len(stack_a);
 	num = 0;
 	while (i < size)
 	{
-		num = (*stack_a)->n - (*stack_b)->n;
-		if ((num < target) && ((*stack_a)->n > (*stack_b)->n))
+		num = aux->n - (*stack_b)->n;
+		if ((num < target) && ((aux)->n > (*stack_b)->n))
 		{
 			target = num;
-			(*stack_b)->target_node = (*stack_a);
+			(*stack_b)->target_node = (aux);
 		}
 		i++;
-		(*stack_a) = (*stack_a)->next;
+		(aux) = (aux)->next;
 	}
 }
