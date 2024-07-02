@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/01 17:37:42 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/02 13:36:00 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ typedef struct s_node
 	int				n;
 	int				index;
 	int				pos;
-	int				target_pos;
 	int				cost_a;
 	int				cost_b;
+	struct s_node	*target_node;
 	struct s_node	*next;
 }					t_node;
 
@@ -49,12 +49,16 @@ void		free_stack(t_node **stack);
 void		free_stacks(t_node **stack_a, t_node **stack_b);
 void		set_index_to_stack(t_node *stack_a, int length);
 void		save_and_push_3(t_node **stack_a, t_node **stack_b);
+int			stack_average(t_node **stack);
+void		cal_costs(t_node **stack_a, t_node **stack_b);
+void		set_positions(t_node **stack);
+void		get_target(t_node **stack_a, t_node **stack_b);
 
 //MOVEMENTS
 void		swap(t_node **node);
 void		rotate(t_node **node);
 void		reverse_rotate(t_node **node);
-void		push(t_node **node_a, t_node **node_b);
+void		push(t_node **src, t_node **dest);
 void		sa(t_node **node);
 void		sb(t_node **node);
 void		ss(t_node **node_a, t_node **node_b);

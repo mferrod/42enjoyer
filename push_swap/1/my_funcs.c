@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 20:55:07 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/01 18:08:20 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/02 13:21:08 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	stack_len(t_node **node)
 	int		i;
 	t_node	*node2;
 
-	i = 0;
-	node2 = (*node);
 	if (!node)
 		error();
+	i = 0;
+	node2 = (*node);
 	while (node2 != NULL)
 	{
 		i++;
