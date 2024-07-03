@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariano <mariano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/03 17:39:26 by mariano          ###   ########.fr       */
+/*   Updated: 2024/07/03 20:28:52 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_node
 	int				cost;
 	int				cost_target;
 	int				total_cost;
+	int				cheapest_node;
+	t_node			*cheapest_r_node;
 	struct s_node	*target_node;
 	struct s_node	*next;
 }					t_node;
@@ -55,7 +57,7 @@ void		set_positions(t_node **stack);
 void		get_target(t_node **stack_a, t_node **stack_b);
 void		print_stack_pos(t_node **pim);
 int			top_calc(t_node **stack);
-void		calc_total_cost(t_node **stack)
+void		calc_total_cost(t_node **stack);
 
 //MOVEMENTS
 void		swap(t_node **node);

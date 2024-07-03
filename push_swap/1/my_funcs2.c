@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_funcs2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariano <mariano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:36:26 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/03 17:41:25 by mariano          ###   ########.fr       */
+/*   Updated: 2024/07/03 20:30:37 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	stack_average(t_node **stack)
 	return (avg);
 }
 
-
 void	cal_costs(t_node **stack_a, t_node **stack_b)
 {
 	set_positions(stack_a);
@@ -72,5 +71,29 @@ void	cal_costs(t_node **stack_a, t_node **stack_b)
 		(*stack_b)->cost = top_calc(stack_b);
 		(*stack_b) = (*stack_b)->next;
 	}
-	
+	set_cheapest_node(stack_b);
+}
+
+void	set_cheapest_node(t_node **stack)
+{
+	int		cheapest;
+	int		i;
+	int		size;
+	t_node	*aux;
+
+	i = 0;
+	cheapest = (*stack)->total_cost;
+	aux = *(stack);
+	aux->cheapest_node = (*stack);
+	size = stack_len(stack);
+	while (i < size)
+	{
+		if (cheapest > (aux)->total_cost)
+		{
+			cheapest = aux->total_cost;
+			(*stack)->cheapest_r_node = aux;
+		}
+		aux = aux->next;
+		i++;
+	}
 }
