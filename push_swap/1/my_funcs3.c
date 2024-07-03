@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_funcs3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mariano <mariano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 12:18:22 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/02 17:25:28 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:39:13 by mariano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	get_target(t_node **stack_a, t_node **stack_b)
 	while (i <= size)
 	{
 		num = aux->n - (*stack_b)->n;
-		printf("NUM: %d\n", num);
 		if ((num < target) && ((aux)->n > (*stack_b)->n))
 		{
 			target = num;
@@ -55,4 +54,32 @@ void	get_target(t_node **stack_a, t_node **stack_b)
 		i++;
 		(aux) = (aux)->next;
 	}
+}
+
+int	top_calc(t_node **stack)
+{
+	int	num;
+	int	i;
+
+	num = stack_len(stack) - (*stack)->pos;
+	i = 0;
+	if (num + 1 > (*stack)->pos)
+		i = (*stack)->pos;
+	else
+		i = num * -1;
+	return (i);
+}
+
+void	calc_total_cost(t_node **stack)
+{
+	int	num_target;
+	int	num_stack;
+
+	num_target = (*stack)->cost_target;
+	num_stack = (*stack)->cost;
+	if (num_target < 0)
+		num_target = -num_target;
+	if (num_stack < 0)
+		num_stack = -num_stack;
+	(*stack)->total_cost = num_target + num_stack;
 }
