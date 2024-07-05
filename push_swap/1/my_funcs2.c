@@ -71,7 +71,7 @@ void	cal_costs(t_node **stack_a, t_node **stack_b)
 		(*stack_b)->cost = top_calc(stack_b);
 		(*stack_b) = (*stack_b)->next;
 	}
-	set_cheapest_node(stack_b);
+	//set_cheapest_node(stack_b);
 }
 
 void	set_cheapest_node(t_node **stack)
