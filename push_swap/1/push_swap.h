@@ -23,17 +23,17 @@
 
 typedef struct s_node
 {
-	int				n;
-	int				index;
-	int				pos;
-	int				cost;
-	int				cost_target;
-	int				total_cost;
-	int				cheapest_node;
-	t_node			*cheapest_r_node;
-	struct s_node	*target_node;
-	struct s_node	*next;
-}					t_node;
+	int					n;
+	int					index;
+	int					pos;
+	int					cost;
+	int					cost_target;
+	int					total_cost;
+	int					cheapest_node;
+	struct s_node		*cheapest_r_node;
+	struct s_node		*target_node;
+	struct s_node		*next;
+}						t_node;
 
 //PARSEO
 long		check_string(char *c);
