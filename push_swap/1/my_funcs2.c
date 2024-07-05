@@ -62,6 +62,7 @@ int	stack_average(t_node **stack)
 
 void	cal_costs(t_node **stack_a, t_node **stack_b)
 {
+	int i = 0;
 	set_positions(stack_a);
 	set_positions(stack_b);
 	while ((*stack_b)->next != NULL)
@@ -70,8 +71,9 @@ void	cal_costs(t_node **stack_a, t_node **stack_b)
 		(*stack_b)->cost_target = top_calc(&(*stack_b)->target_node);
 		(*stack_b)->cost = top_calc(stack_b);
 		(*stack_b) = (*stack_b)->next;
+		printf("mi iteración nº %d", i++);
 	}
-	printf("SALGO DEL BUCLE");
+	//printf("SALGO DEL BUCLE");
 	//set_cheapest_node(stack_b);
 }
 
