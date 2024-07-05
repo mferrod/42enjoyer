@@ -84,7 +84,7 @@ void	set_cheapest_node(t_node **stack)
 	i = 0;
 	cheapest = (*stack)->total_cost;
 	aux = *(stack);
-	aux->cheapest_node = (*stack);
+	aux->cheapest_r_node = (*stack);
 	size = stack_len(stack);
 	while (i < size)
 	{
