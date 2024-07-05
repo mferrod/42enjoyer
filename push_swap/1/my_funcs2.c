@@ -20,7 +20,7 @@ void	sort_big_stack(t_node **stack_a, t_node **stack_b)
 	i = 0;
 	length = stack_len(stack_a);
 	save_and_push_3(stack_a, stack_b);
-	sort_3_stack(stack_a);
+	//sort_3_stack(stack_a);
 	while (i < length - 3)
 	{
 		cal_costs(stack_a, stack_b);
