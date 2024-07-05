@@ -58,6 +58,7 @@ void		get_target(t_node **stack_a, t_node **stack_b);
 void		print_stack_pos(t_node **pim);
 int			top_calc(t_node **stack);
 void		calc_total_cost(t_node **stack);
+void		set_cheapest_node(t_node **stack);
 
 //MOVEMENTS
 void		swap(t_node **node);
