@@ -71,6 +71,7 @@ void	cal_costs(t_node **stack_a, t_node **stack_b)
 		(*stack_b)->cost = top_calc(stack_b);
 		(*stack_b) = (*stack_b)->next;
 	}
+	printf("SALGO DEL BUCLE");
 	//set_cheapest_node(stack_b);
 }
 
