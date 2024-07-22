@@ -6,25 +6,40 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:36:26 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/03 20:30:37 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/22 19:12:21 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static void	print_stacks(t_node *stack_a, t_node *stack_b)
+{
+	printf("STACK_A\n");
+	printf("NUM	INDEX	POS	TARGET\n");
+	while (stack_a)
+	{
+		printf("%d	%d	%d\n", stack_a->n, stack_a->index, stack_a->pos);
+		stack_a = stack_a->next;
+	}
+	printf("STACK_B\n");
+	printf("NUM	INDEX	POS	TARGET\n");
+	while (stack_b)
+	{
+		printf("%d	%d	%d\n", stack_b->n, stack_b->index, stack_b->pos);
+		stack_b = stack_b->next;
+	}
+}
+
 void	sort_big_stack(t_node **stack_a, t_node **stack_b)
 {
-	int	i;
 	int	length;
 
-	i = 0;
 	length = stack_len(stack_a);
 	save_and_push_3(stack_a, stack_b);
-	//sort_3_stack(stack_a);
-	while (i < length - 3)
+	sort_3_stack(stack_a);
+	while (*stack_b)
 	{
 		cal_costs(stack_a, stack_b);
-		i++;
 	}
 }
 
@@ -62,16 +77,17 @@ int	stack_average(t_node **stack)
 
 void	cal_costs(t_node **stack_a, t_node **stack_b)
 {
-	int i = 0;
 	set_positions(stack_a);
 	set_positions(stack_b);
+	print_stacks(*stack_a, *stack_b);
+	exit(0);
 	while ((*stack_b)->next != NULL)
 	{
 		get_target(stack_a, stack_b);
 		(*stack_b)->cost_target = top_calc(&(*stack_b)->target_node);
 		(*stack_b)->cost = top_calc(stack_b);
 		(*stack_b) = (*stack_b)->next;
-		printf("mi iteración nº %d", i++);
+		//printf("mi iteración nº %d", i++);
 	}
 	//printf("SALGO DEL BUCLE");
 	//set_cheapest_node(stack_b);
