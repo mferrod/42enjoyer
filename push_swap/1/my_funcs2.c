@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:36:26 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/22 19:12:21 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:56:54 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,14 @@ static void	print_stacks(t_node *stack_a, t_node *stack_b)
 	printf("NUM	INDEX	POS	TARGET\n");
 	while (stack_b)
 	{
-		printf("%d	%d	%d\n", stack_b->n, stack_b->index, stack_b->pos);
+		printf("%d	%d	%d	%d\n", stack_b->n, stack_b->index, stack_b->pos, stack_b->target_node->pos);
 		stack_b = stack_b->next;
 	}
 }
 
 void	sort_big_stack(t_node **stack_a, t_node **stack_b)
 {
-	int	length;
-
-	length = stack_len(stack_a);
+	assing_index(stack_a);
 	save_and_push_3(stack_a, stack_b);
 	sort_3_stack(stack_a);
 	while (*stack_b)
@@ -45,13 +43,23 @@ void	sort_big_stack(t_node **stack_a, t_node **stack_b)
 
 void	save_and_push_3(t_node **stack_a, t_node **stack_b)
 {
-	while (stack_len(stack_a) > 3)
+	int	length;
+	int	i;
+
+	length = stack_len(stack_a);
+	i = 0;
+	while (stack_len(stack_a) > 3 && i < length / 2)
 	{
-		if (stack_average(stack_a) <= (*stack_a)->n)
+		if ((*stack_a)->index <= length / 2)
+		{
 			push_b(stack_a, stack_b);
+			i++;
+		}
 		else
 			ra(stack_a);
 	}
+	while (stack_len(stack_a) > 3)
+		push_b(stack_a, stack_b);
 }
 
 int	stack_average(t_node **stack)
@@ -77,20 +85,12 @@ int	stack_average(t_node **stack)
 
 void	cal_costs(t_node **stack_a, t_node **stack_b)
 {
-	set_positions(stack_a);
-	set_positions(stack_b);
-	print_stacks(*stack_a, *stack_b);
-	exit(0);
 	while ((*stack_b)->next != NULL)
 	{
+		set_positions(stack_a);
+		set_positions(stack_b);
 		get_target(stack_a, stack_b);
-		(*stack_b)->cost_target = top_calc(&(*stack_b)->target_node);
-		(*stack_b)->cost = top_calc(stack_b);
-		(*stack_b) = (*stack_b)->next;
-		//printf("mi iteración nº %d", i++);
 	}
-	//printf("SALGO DEL BUCLE");
-	//set_cheapest_node(stack_b);
 }
 
 void	set_cheapest_node(t_node **stack)

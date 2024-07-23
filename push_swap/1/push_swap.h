@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/22 17:07:45 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:05:29 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void		get_target(t_node **stack_a, t_node **stack_b);
 int			top_calc(t_node **stack);
 void		calc_total_cost(t_node **stack);
 void		set_cheapest_node(t_node **stack);
+void		assing_index(t_node **stack);
+t_node		*find_smallest(t_node **stack);
 
 //MOVEMENTS
 void		swap(t_node **node);

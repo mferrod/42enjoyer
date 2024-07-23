@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 12:18:22 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/22 18:59:53 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:11:47 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,26 @@ void	set_positions(t_node **stack)
 
 void	get_target(t_node **stack_a, t_node **stack_b)
 {
-	int		i;
-	int		target;
-	int		size;
-	int		num;
 	t_node	*aux;
+	t_node	*current;
+	t_node	*target;
 
-	i = 0;
-	aux = *stack_a;
-	target = __INT_MAX__;
-	size = stack_len(stack_a);
-	num = 0;
-	while (i <= size)
+	aux = *stack_b;
+	while (aux)
 	{
-		num = aux->n - (*stack_b)->n;
-		if ((num < target) && ((aux)->n > (*stack_b)->n))
+		current = *stack_a;
+		target = NULL;
+		while (current)
 		{
-			target = num;
-			(*stack_b)->target_node = (aux);
+			if (current->n > aux->n
+				&& (target == NULL || current->n < target->n))
+				target = current;
+			current = current->next;
 		}
-		i++;
-		(aux) = (aux)->next;
+		if (target == NULL)
+			target = find_smallest(stack_a);
+		aux->target_node = target;
+		aux = aux->next;
 	}
 }
 
@@ -82,4 +81,27 @@ void	calc_total_cost(t_node **stack)
 	if (num_stack < 0)
 		num_stack = -num_stack;
 	(*stack)->total_cost = num_target + num_stack;
+}
+
+void	assing_index(t_node **stack)
+{
+	t_node	*tmp;
+	t_node	*aux;
+	int		i;
+
+	i = 1;
+	aux = *stack;
+	while (aux)
+	{
+		tmp = *stack;
+		while (tmp)
+		{
+			if (aux->n > tmp->n)
+				i++;
+			tmp = tmp->next;
+		}
+		aux->index = i;
+		i = 1;
+		aux = aux->next;
+	}
 }
