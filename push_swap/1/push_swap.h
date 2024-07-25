@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariano <mariano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/24 16:49:37 by mariano          ###   ########.fr       */
+/*   Updated: 2024/07/25 19:00:37 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ void		cal_costs(t_node **stack_a, t_node **stack_b);
 void		set_positions(t_node **stack);
 void		get_target(t_node **stack_a, t_node **stack_b);
 int			top_calc(t_node **stack);
-void		calc_total_cost(t_node **stack);
-void		set_cheapest_node(t_node **stack);
 void		assing_index(t_node **stack);
 t_node		*find_smallest(t_node **stack);
 void		get_cost(t_node **stack_a, t_node **stack_b);
+void		get_the_lowest_cost(t_node **stack_a, t_node **stack_b);
+int			absolute_cost(int a, int b);
 
 //MOVEMENTS
 void		swap(t_node **node);
@@ -78,6 +78,13 @@ void		rrb(t_node **node);
 void		rrr(t_node **node_a, t_node **node_b);
 void		push_a(t_node **node_a, t_node **node_b);
 void		push_b(t_node **node_a, t_node **node_b);
+void		make_moves(t_node **stack_a, t_node **stack_b, t_node *low_node);
+void		rrr_mov(t_node **a, t_node **b, int *cost_a, int *cost_b);
+void		rr_mov(t_node **a, t_node **b, int *cost_a, int *cost_b);
+void		ra_mov(t_node **stack_a, int *cost_of_a);
+void		rb_mov(t_node **stack_b, int *cost_of_b);
+void		rra_mov(t_node **stack_a, int *cost_of_a);
+void		rrb_mov(t_node **stack_b, int *cost_of_b);
 
 //SORTERS
 void		sort_big_stack(t_node **stack_a, t_node **stack_b);

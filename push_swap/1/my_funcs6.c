@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   my_funcs6.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 10:45:34 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/25 17:35:29 by marianof         ###   ########.fr       */
+/*   Created: 2024/07/25 18:49:25 by marianof          #+#    #+#             */
+/*   Updated: 2024/07/25 18:51:31 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_toupper(int c)
+void	rrb_mov(t_node **stack_b, int *cost_of_b)
 {
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	return (c);
+	while ((*cost_of_b) < 0)
+	{
+		rrb(stack_b);
+		(*cost_of_b)++;
+	}
 }

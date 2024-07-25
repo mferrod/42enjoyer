@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_funcs4.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariano <mariano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 17:56:48 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/24 16:50:44 by mariano          ###   ########.fr       */
+/*   Updated: 2024/07/25 19:23:17 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	get_cost(t_node **stack_a, t_node **stack_b)
 
 	aux_a = *stack_a;
 	aux_b = *stack_b;
-	size_a = stack_len(*stack_a);
-	size_b = stack_len(*stack_b);
+	size_a = stack_len(stack_a);
+	size_b = stack_len(stack_b);
 	while (aux_b)
 	{
 		if (aux_b->pos <= size_b / 2)
@@ -51,4 +51,65 @@ void	get_cost(t_node **stack_a, t_node **stack_b)
 			aux_b->cost_a = (size_a - aux_b->target_node->pos) * -1;
 		aux_b = aux_b->next;
 	}
+}
+
+void	get_the_lowest_cost(t_node **stack_a, t_node **stack_b)
+{
+	t_node	*aux;
+	t_node	*low_node;
+	int		cost;
+	int		my_low_num;
+
+	cost = 0;
+	my_low_num = -1;
+	aux = *stack_b;
+	while (aux)
+	{
+		cost = absolute_cost((*stack_a)->cost_a, (*stack_b)->cost_b);
+		if (cost < my_low_num || my_low_num == -1)
+		{
+			my_low_num = cost;
+			low_node = aux;
+		}
+		aux = aux->next;
+	}
+	make_moves(stack_a, stack_b, low_node);
+}
+
+int	absolute_cost(int a, int b)
+{
+	int	cost;
+
+	if (a == 0 && b == 0)
+		return (0);
+	if (a < 0)
+		cost = a * -1;
+	else
+		cost = a;
+	if (b < 0)
+		cost += b * -1;
+	else
+		cost += b;
+	return (cost);
+}
+
+void	make_moves(t_node **stack_a, t_node **stack_b, t_node *low_node)
+{
+	int	cost_of_a;
+	int	cost_of_b;
+
+	cost_of_a = low_node->cost_a;
+	cost_of_b = low_node->cost_b;
+	if (cost_of_a > 0 && cost_of_b > 0)
+		rr_mov(stack_a, stack_b, &cost_of_a, &cost_of_b);
+	else if (cost_of_a < 0 && cost_of_b < 0)
+		rrr_mov(stack_a, stack_b, &cost_of_a, &cost_of_b);
+	while (cost_of_a != 0 || cost_of_b != 0)
+	{
+		ra_mov(stack_a, &cost_of_a);
+		rb_mov(stack_b, &cost_of_b);
+		rra_mov(stack_a, &cost_of_a);
+		rrb_mov(stack_b, &cost_of_b);
+	}
+	push_a(stack_a, stack_b);
 }

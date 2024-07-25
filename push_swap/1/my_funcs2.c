@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_funcs2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariano <mariano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:36:26 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/24 17:27:38 by mariano          ###   ########.fr       */
+/*   Updated: 2024/07/25 19:08:31 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static void	print_stacks(t_node *stack_a, t_node *stack_b)
 	printf("NUM	INDEX	POS	TARGET\n");
 	while (stack_b)
 	{
-		printf("%d	%d	%d	%d\n", stack_b->n, stack_b->index, stack_b->pos, stack_b->target_node->pos);
+		printf("%d	%d	%d	%d\n", stack_b->n, stack_b->index, stack_b->pos,
+			stack_b->target_node->pos);
 		stack_b = stack_b->next;
 	}
 }
@@ -82,44 +83,13 @@ int	stack_average(t_node **stack)
 
 void	cal_costs(t_node **stack_a, t_node **stack_b)
 {
-	int		check;
-
 	while (*stack_b)
 	{
 		set_positions(stack_a);
 		set_positions(stack_b);
 		get_target(stack_a, stack_b);
 		get_cost(stack_a, stack_b);
-	}
-	while ((*stack_a)->index != 1)
-	{
-		if (check == 1)
-			ra(stack_a);
-		else
-			rra(stack_a);
-	}
-}
-
-void	set_cheapest_node(t_node **stack)
-{
-	int		cheapest;
-	int		i;
-	int		size;
-	t_node	*aux;
-
-	i = 0;
-	cheapest = (*stack)->total_cost;
-	aux = *(stack);
-	aux->cheapest_r_node = (*stack);
-	size = stack_len(stack);
-	while (i < size)
-	{
-		if (cheapest > (aux)->total_cost)
-		{
-			cheapest = aux->total_cost;
-			(*stack)->cheapest_r_node = aux;
-		}
-		aux = aux->next;
-		i++;
+		printf("SALGO DE get_cost\n");
+		get_the_lowest_cost(stack_a, stack_b);
 	}
 }
