@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_funcs2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mariano <mariano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:36:26 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/23 18:56:54 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/24 17:27:38 by mariano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ void	sort_big_stack(t_node **stack_a, t_node **stack_b)
 	assing_index(stack_a);
 	save_and_push_3(stack_a, stack_b);
 	sort_3_stack(stack_a);
-	while (*stack_b)
-	{
-		cal_costs(stack_a, stack_b);
-	}
+	cal_costs(stack_a, stack_b);
 }
 
 void	save_and_push_3(t_node **stack_a, t_node **stack_b)
@@ -85,11 +82,21 @@ int	stack_average(t_node **stack)
 
 void	cal_costs(t_node **stack_a, t_node **stack_b)
 {
-	while ((*stack_b)->next != NULL)
+	int		check;
+
+	while (*stack_b)
 	{
 		set_positions(stack_a);
 		set_positions(stack_b);
 		get_target(stack_a, stack_b);
+		get_cost(stack_a, stack_b);
+	}
+	while ((*stack_a)->index != 1)
+	{
+		if (check == 1)
+			ra(stack_a);
+		else
+			rra(stack_a);
 	}
 }
 
