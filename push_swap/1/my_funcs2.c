@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_funcs2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mariano <mariano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:36:26 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/25 19:08:31 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/26 20:21:09 by mariano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,22 @@ int	stack_average(t_node **stack)
 
 void	cal_costs(t_node **stack_a, t_node **stack_b)
 {
+	int	check;
+
 	while (*stack_b)
 	{
 		set_positions(stack_a);
 		set_positions(stack_b);
 		get_target(stack_a, stack_b);
 		get_cost(stack_a, stack_b);
-		printf("SALGO DE get_cost\n");
 		get_the_lowest_cost(stack_a, stack_b);
+	}
+	check = ft_lowest_to_top(stack_a);	
+	while ((*stack_a)->index != 1)
+	{
+		if (check == 1)
+			ra(stack_a);
+		else
+			rra(stack_a);
 	}
 }

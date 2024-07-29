@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_funcs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mariano <mariano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 20:55:07 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/25 17:20:26 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/26 20:33:19 by mariano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,23 @@ void	print_stack(t_node *list)
 
 void	free_stack(t_node **stack)
 {
-	t_node	*stacktemp;
+	t_node	*aux;
 
-	if (!stack || !*stack)
-		error();
-	while ((*stack)->next != NULL)
+	if (!(*stack) || !stack)
+		return ;
+	while (*stack)
 	{
-		stacktemp = (*stack)->next;
+		aux = (*stack)->next;
 		free(*stack);
-		*stack = stacktemp;
+		*stack = aux;
 	}
-	free(*stack);
 	*stack = NULL;
-	stacktemp = NULL;
+	free(stack);
 }
 
 void	free_stacks(t_node **stack_a, t_node **stack_b)
 {
 	free_stack(stack_a);
+	printf("SOY EL B EL PROBLEMA\n");
 	free_stack(stack_b);
 }

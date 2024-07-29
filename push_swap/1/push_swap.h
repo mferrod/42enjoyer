@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mariano <mariano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/25 19:00:37 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/26 20:22:51 by mariano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_node		*find_smallest(t_node **stack);
 void		get_cost(t_node **stack_a, t_node **stack_b);
 void		get_the_lowest_cost(t_node **stack_a, t_node **stack_b);
 int			absolute_cost(int a, int b);
+int			ft_lowest_to_top(t_node **stack_a);
 
 //MOVEMENTS
 void		swap(t_node **node);
