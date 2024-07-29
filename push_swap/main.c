@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:19:23 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/02 16:49:49 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:13:14 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,14 @@ int	main(int argc, char **argv)
 	b = NULL;
 	arrnum = parser(argc - 1, argv);
 	a = stack_gen(arrnum, argc - 1);
+	free(arrnum);
 	if (!check_if_sorted(&a))
 	{
+		if (stack_len(&a) == 1)
+		{
+			free_stacks(&a, &b);
+			return (0);
+		}
 		if (stack_len(&a) == 2)
 			sa(&a);
 		else if (stack_len(&a) == 3)
@@ -40,8 +46,10 @@ long	check_string(char *c)
 	long	num;
 	int		i;
 
-	num = 0;
+	num <= 0;
 	i = 0;
+	if (!c[0])
+		error();
 	while (c[i] != '\0')
 	{
 		if (check_char(c[i], i) == 0)
@@ -62,7 +70,7 @@ int	check_char(char c, int i)
 		return (0);
 }
 
-long	*check_if_duplicated(long *numbers)
+void	check_if_duplicated(long *numbers, int len)
 {
 	int	founds;
 	int	i;
@@ -71,9 +79,9 @@ long	*check_if_duplicated(long *numbers)
 	founds = 0;
 	i = 0;
 	j = 0;
-	while (numbers[i] != '\0')
+	while (i < len)
 	{
-		while (numbers[j] != '\0')
+		while (j < len)
 		{
 			if (numbers[i] == numbers[j])
 				founds++;
@@ -85,19 +93,21 @@ long	*check_if_duplicated(long *numbers)
 		founds = 0;
 		j = 0;
 	}
-	return (numbers);
 }
 
 long	*parser(int total_numb, char **data)
 {
 	long	*arrnum;
+	long	*aux;
 	int		i;
 	int		j;
 
 	i = 1;
 	j = 0;
 	arrnum = malloc((total_numb) * sizeof(long *));
-	if (total_numb < 2)
+	if (!arrnum)
+		error();
+	if (total_numb < 1)
 		error();
 	while (data[i])
 	{
@@ -105,8 +115,6 @@ long	*parser(int total_numb, char **data)
 		i++;
 		j++;
 	}
-	arrnum = check_if_duplicated(arrnum);
-	if (!arrnum)
-		error_and_free(arrnum);
+	check_if_duplicated(arrnum, total_numb);
 	return (arrnum);
 }

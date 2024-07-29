@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariano <mariano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:00:37 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/26 20:22:51 by mariano          ###   ########.fr       */
+/*   Updated: 2024/07/29 16:39:53 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ typedef struct s_node
 	int					pos;
 	int					cost_a;
 	int					cost_b;
-	int					total_cost;
 	int					cheapest_node;
-	struct s_node		*cheapest_r_node;
 	struct s_node		*target_node;
 	struct s_node		*next;
 }						t_node;
@@ -38,7 +36,7 @@ typedef struct s_node
 //PARSEO
 long		check_string(char *c);
 int			check_char(char c, int i);
-long		*check_if_duplicated(long *numbers);
+void		check_if_duplicated(long *numbers, int len);
 t_node		*new_node(long n);
 t_node		*stack_gen(long *numbers, int numbers_count);
 long		*parser(int total_numb, char **data);

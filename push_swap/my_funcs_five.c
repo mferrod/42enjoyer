@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 18:38:09 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/25 18:56:32 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:22:39 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	rra_mov(t_node **stack_a, int *cost_of_a)
 {
 	while ((*cost_of_a) < 0)
 	{
-		rrb(stack_a);
+		rra(stack_a);
 		(*cost_of_a)++;
 	}
 }

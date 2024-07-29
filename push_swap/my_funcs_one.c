@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_funcs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariano <mariano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 20:55:07 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/26 20:33:19 by mariano          ###   ########.fr       */
+/*   Updated: 2024/07/29 16:54:26 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,10 @@ int	stack_len(t_node **node)
 
 void	print_stack(t_node *list)
 {
+	printf("NUM	INDEX\n");
 	while (list)
 	{
-		printf("%d\n", list->n);
+		printf("%d	%d\n", list->n, list->index);
 		list = list->next;
 	}
 }
@@ -78,12 +79,10 @@ void	free_stack(t_node **stack)
 		*stack = aux;
 	}
 	*stack = NULL;
-	free(stack);
 }
 
 void	free_stacks(t_node **stack_a, t_node **stack_b)
 {
 	free_stack(stack_a);
-	printf("SOY EL B EL PROBLEMA\n");
 	free_stack(stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:15:44 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/02 16:02:55 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/29 16:59:43 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 int	check_if_sorted(t_node **node)
 {
-	while ((*node)->next != NULL)
+	t_node	*aux;
+
+	aux = *node;
+	while (aux->next != NULL)
 	{
-		if ((*node)->n > (*node)->next->n)
+		if (aux->n > aux->next->n)
 			return (0);
-		*node = (*node)->next;
+		aux = aux->next;
 	}
 	return (1);
 }

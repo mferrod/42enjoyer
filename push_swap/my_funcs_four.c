@@ -6,7 +6,7 @@
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 17:56:48 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/25 19:23:17 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:37:25 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@ t_node	*find_smallest(t_node **stack)
 
 void	get_cost(t_node **stack_a, t_node **stack_b)
 {
-	t_node	*aux_a;
 	t_node	*aux_b;
 	int		size_a;
 	int		size_b;
 
-	aux_a = *stack_a;
 	aux_b = *stack_b;
 	size_a = stack_len(stack_a);
 	size_b = stack_len(stack_b);
@@ -65,8 +63,8 @@ void	get_the_lowest_cost(t_node **stack_a, t_node **stack_b)
 	aux = *stack_b;
 	while (aux)
 	{
-		cost = absolute_cost((*stack_a)->cost_a, (*stack_b)->cost_b);
-		if (cost < my_low_num || my_low_num == -1)
+		cost = absolute_cost(aux->cost_a, aux->cost_b);
+		if (my_low_num == -1 || cost < my_low_num)
 		{
 			my_low_num = cost;
 			low_node = aux;
@@ -87,9 +85,9 @@ int	absolute_cost(int a, int b)
 	else
 		cost = a;
 	if (b < 0)
-		cost += b * -1;
+		cost = cost + (b * -1);
 	else
-		cost += b;
+		cost = cost + b;
 	return (cost);
 }
 

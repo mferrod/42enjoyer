@@ -1,46 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stacks.c                                           :+:      :+:    :+:   */
+/*   my_funcs6.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/06 20:30:00 by marianof          #+#    #+#             */
-/*   Updated: 2024/04/24 17:59:41 by marianof         ###   ########.fr       */
+/*   Created: 2024/07/25 18:49:25 by marianof          #+#    #+#             */
+/*   Updated: 2024/07/29 15:42:28 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*new_node(long n)
+void	rrb_mov(t_node **stack_b, int *cost_of_b)
 {
-	t_node	*node;
-
-	node = malloc(sizeof(t_node));
-	node->n = n;
-	node->next = NULL;
-	return (node);
+	while ((*cost_of_b) < 0)
+	{
+		rrb(stack_b);
+		(*cost_of_b)++;
+	}
 }
 
-t_node	*stack_gen(long *numbers, int numbers_count)
+int	ft_lowest_to_top(t_node **stack_a)
 {
-	t_node	*head;
 	t_node	*aux;
-	t_node	*node;
-	int		i;
+	int		position;
 
-	i = 1;
-	head = new_node(numbers[0]);
-	head->pos = 0;
-	aux = head;
-	while (i < numbers_count)
+	aux = *stack_a;
+	position = 1;
+	while (aux->index != 1)
 	{
-		node = new_node(numbers[i]);
-		node->pos = i;
-		aux->next = node;
-		aux = node;
-		i++;
+		aux = aux->next;
+		position++;
 	}
-	node->next = NULL;
-	return (head);
+	if (position < stack_len(stack_a) / 2)
+		return (1);
+	else
+		return (0);
 }

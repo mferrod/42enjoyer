@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_funcs2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariano <mariano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:36:26 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/26 20:21:09 by mariano          ###   ########.fr       */
+/*   Updated: 2024/07/29 17:52:08 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	cal_costs(t_node **stack_a, t_node **stack_b)
 		get_cost(stack_a, stack_b);
 		get_the_lowest_cost(stack_a, stack_b);
 	}
-	check = ft_lowest_to_top(stack_a);	
+	check = ft_lowest_to_top(stack_a);
 	while ((*stack_a)->index != 1)
 	{
 		if (check == 1)
