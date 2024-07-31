@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:10:21 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/31 19:52:07 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/31 23:31:07 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	error_and_free(void *c)
 	exit(1);
 }
 
-void	error_and_free_matrix(void **c)
+void	error_and_free_matrix(char **c)
 {
 	int	i;
 

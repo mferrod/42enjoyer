@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:55:27 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/31 19:50:02 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/31 23:32:39 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,38 @@
 # include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
 
-void		check_param(char *param);
+typedef struct sl_map
+{
+    int				map_h;
+	int				map_w;
+	int				player_x;
+	int				player_y;
+	int				player_c;
+	int				colec_c;
+	int				exit_c;
+	char			**map;
+	char			**c_map;
+}					sl_data;
+
+
+//ERRORS
 void		error(void);
 void		error_and_free(void *c);
-void		error_and_free_matrix(void **c);
-char		**make_matrix(char *path_to_file);
+void		error_and_free_matrix(char **c);
+
+//FLOOD FILL
+void		save_player_pos(sl_data *data);
+void		valid_map(sl_data *data);
+
+//UTILS
 int			count_lines_from_file(char *path);
+int			matrix_length(char **matrix);
+void		init_struct(sl_data *data);
+void		map_things(sl_data *data, char *param);
+
+//CHECKEER
+void		check_param(char *param);
+char		**make_matrix(char *path_to_file);
+void		check_matrix(char **matrix);
+
 #endif

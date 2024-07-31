@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils_a.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 18:36:02 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/31 19:23:34 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/31 23:29:36 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,27 @@ int	matrix_length(char **matrix)
 	while (matrix[i])
 		i++;
 	return (i);
+}
+
+void	init_struct(sl_data *data)
+{
+	data->player_c = 0;
+	data->player_x = 0;
+	data->player_y = 0;
+	data->colec_c = 0;
+	data->exit_c = 0;
+	data->map_h = 0;
+	data->map_w = 0;
+}
+
+void	map_things(sl_data *data, char *param)
+{
+	check_param(param);
+	init_struct(data);
+	data->map = make_matrix(param);
+	check_matrix(data->map);
+	data->map_w = ft_strlen(data->map[0]);
+	data->map_h = matrix_length(data->map);
+	save_player_pos(data);
+	printf("%d	%d", data->player_x, data->player_y);
 }

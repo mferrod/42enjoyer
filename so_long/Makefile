@@ -3,7 +3,7 @@ SRC_DIR     = src
 OBJ_DIR     = obj
 GNL_DIR     = get_next_line
 
-SRCS = main.c errors.c checker.c so_long_utils_a.c
+SRCS = main.c errors.c checker.c so_long_utils_a.c flood_fill.c
 GNL_SRCS = get_next_line.c get_next_line_utils.c  # Archivos .c en la carpeta get_next_line
 SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
 GNL_SRCS := $(addprefix $(GNL_DIR)/, $(GNL_SRCS))

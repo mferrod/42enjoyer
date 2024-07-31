@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:09:26 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/31 19:51:51 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/31 23:30:43 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	check_matrix(char **matrix)
 	length = ft_strlen(matrix[0]);
 	while (matrix[i])
 	{
-		if (ft_strlen(matrix[i] != length))
+		if (ft_strlen(matrix[i]) != length)
 			error_and_free_matrix(matrix);
 	}
 }

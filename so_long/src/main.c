@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:01:47 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/31 19:52:23 by marianof         ###   ########.fr       */
+/*   Updated: 2024/07/31 22:20:31 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 
 int	main(int argc, char **argv)
 {
-	char	**matrix;
-	int		i;
+	sl_data		data;
 
-	i = 0;
 	if (argc != 2)
 		error();
-	check_param(argv[1]);
-	matrix = make_matrix(argv[1]);
-	check_matrix(matrix);
+	map_things(&data, argv[1]);
 	return (0);
 }
