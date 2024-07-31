@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 21:26:28 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/31 23:31:55 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/01 00:47:04 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,25 @@ void	save_player_pos(sl_data *data)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (i < data->map_h)
 	{
-		while (data->map[i][j] != 'P')
-			if (data->map[i][j] == 'P')
-				break;
-			else
-				j++;
-		if (data->map[i][j] == 'P')
-				break;
 		j = 0;
+		while (data->map[i][j] != '\0')
+		{
+			if (data->map[i][j] == 'P')
+			{
+				data->player_x = j;
+				data->player_y = i;
+			}
+			j++;
+		}
 		i++;
 	}
 	valid_map(data);
-	data->player_x = j;
-	data->player_y = i;
 	i = -1;
 	while (++i < data->map_h)
 		data->c_map[i] = ft_strdup(data->map[i]);
-	//flood_fill(data, data->player_x, data->player_y);
+	flood_fill(data, data->player_x, data->player_y);
 }
 
 void	valid_map(sl_data *data)
@@ -47,7 +46,7 @@ void	valid_map(sl_data *data)
 
 	i = 0;
 	j = 0;
-	while (i < data->map_h)
+	while (data->map[i])
 	{
 		while (data->map[i][j])
 		{
@@ -63,5 +62,16 @@ void	valid_map(sl_data *data)
 		i++;
 	}
 	if (data->player_c != 1 || data->colec_c <= 0 || data->exit_c != 1)
-		error_and_free_matrix(data->map);
+		error();
+}
+
+void	flood_fill(sl_data *data, int x, int y)
+{
+	if (data->c_map[y][x] == '1' || data->c_map[y][x] == 'F')
+		return ;
+	data->c_map[y][x] = 'F';
+	flood_fill(data, x + 1, y);
+	flood_fill(data, x - 1, y);
+	flood_fill(data, x, y + 1);
+	flood_fill(data, x, y - 1);
 }

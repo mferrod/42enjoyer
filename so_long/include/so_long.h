@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:55:27 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/31 23:32:39 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/01 00:46:25 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void		error_and_free_matrix(char **c);
 //FLOOD FILL
 void		save_player_pos(sl_data *data);
 void		valid_map(sl_data *data);
+void		flood_fill(sl_data *data, int x, int y);
 
 //UTILS
 int			count_lines_from_file(char *path);
