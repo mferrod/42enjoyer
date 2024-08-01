@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 09:44:49 by marianof          #+#    #+#             */
-/*   Updated: 2023/12/05 16:33:02 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/01 13:25:25 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,26 +90,10 @@ char	*get_next_line(int fd)
 		return (ft_free(estatic));
 	estatic = ft_read(fd, estatic);
 	if (!estatic)
-		return(NULL);
+		return (NULL);
 	line = ft_get_line(estatic);
 	if (!line)
 		return (ft_free(estatic));
 	estatic = ft_new_estatic(estatic);
 	return (line);
 }
-
-/*
-int	main(void)
-{
-	int		c;
-	char	*as;
-	char	*l = "Kaksjaksjkasjkajs\nkjksdkad";
-
-	c = open("txt.txt", O_RDONLY);
-	ft_clnbuf(l);
-	as = get_next_line(c);
-	printf("%s", as);
-	close(c);
-	return (0);
-}*/
-//05880

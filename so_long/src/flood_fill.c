@@ -6,13 +6,13 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 21:26:28 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/01 00:47:04 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:15:22 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	save_player_pos(sl_data *data)
+void	save_player_pos(t_data *data)
 {
 	int	i;
 	int	j;
@@ -39,7 +39,7 @@ void	save_player_pos(sl_data *data)
 	flood_fill(data, data->player_x, data->player_y);
 }
 
-void	valid_map(sl_data *data)
+void	valid_map(t_data *data)
 {
 	int	i;
 	int	j;
@@ -65,7 +65,7 @@ void	valid_map(sl_data *data)
 		error();
 }
 
-void	flood_fill(sl_data *data, int x, int y)
+void	flood_fill(t_data *data, int x, int y)
 {
 	if (data->c_map[y][x] == '1' || data->c_map[y][x] == 'F')
 		return ;

@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:09:26 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/01 00:50:17 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:21:33 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	check_param(char *param)
 	extension = ft_substr(param, ft_strlen(param) - 4, ft_strlen(param));
 	if (ft_strncmp(extension, my_param, 4) != 0)
 		error_and_free(extension);
+	free(extension);
 }
 
 char	**make_matrix(char *path_to_file)
@@ -54,10 +55,10 @@ void	check_matrix(char **matrix)
 	int	i;
 
 	i = 0;
-	length = ft_strlen(matrix[0]);
+	length = ft_strlen_sl(matrix[0]);
 	while (matrix[i])
 	{
-		if (ft_strlen(matrix[i]) != length)
+		if (ft_strlen_sl(matrix[i]) != length)
 			error();
 		i++;
 	}

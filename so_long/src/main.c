@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:01:47 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/31 22:20:31 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:29:58 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int	main(int argc, char **argv)
 {
-	sl_data		data;
+	t_data		data;
 
 	if (argc != 2)
 		error();
 	map_things(&data, argv[1]);
+	free_flood_map(data.c_map);
 	return (0);
 }

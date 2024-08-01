@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 18:36:02 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/01 00:50:08 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:17:20 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	matrix_length(char **matrix)
 	return (i);
 }
 
-void	init_struct(sl_data *data)
+void	init_struct(t_data *data)
 {
 	data->player_c = 0;
 	data->player_x = 0;
@@ -54,7 +54,7 @@ void	init_struct(sl_data *data)
 	data->map_w = 0;
 }
 
-void	map_things(sl_data *data, char *param)
+void	map_things(t_data *data, char *param)
 {
 	check_param(param);
 	init_struct(data);
@@ -63,5 +63,5 @@ void	map_things(sl_data *data, char *param)
 	check_matrix(data->map);
 	data->map_w = ft_strlen(data->map[0]);
 	data->map_h = count_lines_from_file(param);
-	save_player_pos(data);	
+	save_player_pos(data);
 }

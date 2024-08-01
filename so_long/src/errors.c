@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:10:21 by marianof          #+#    #+#             */
-/*   Updated: 2024/07/31 23:31:07 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:30:53 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ void	error_and_free_matrix(char **c)
 
 	i = 0;
 	write(2, "ERROR.\n", 7);
-	while (c[i])
-	{
-		free(c[i]);
-		i++;
-	}
+	free_flood_map(c);
 	exit(1);
 }

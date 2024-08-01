@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:55:27 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/01 00:46:25 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:29:06 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 typedef struct sl_map
 {
-    int				map_h;
+	int				map_h;
 	int				map_w;
 	int				player_x;
 	int				player_y;
@@ -33,8 +33,7 @@ typedef struct sl_map
 	int				exit_c;
 	char			**map;
 	char			**c_map;
-}					sl_data;
-
+}					t_data;
 
 //ERRORS
 void		error(void);
@@ -42,15 +41,17 @@ void		error_and_free(void *c);
 void		error_and_free_matrix(char **c);
 
 //FLOOD FILL
-void		save_player_pos(sl_data *data);
-void		valid_map(sl_data *data);
-void		flood_fill(sl_data *data, int x, int y);
+void		save_player_pos(t_data *data);
+void		valid_map(t_data *data);
+void		flood_fill(t_data *data, int x, int y);
 
 //UTILS
 int			count_lines_from_file(char *path);
 int			matrix_length(char **matrix);
-void		init_struct(sl_data *data);
-void		map_things(sl_data *data, char *param);
+void		init_struct(t_data *data);
+void		map_things(t_data *data, char *param);
+int			ft_strlen_sl(const char *str);
+void		free_flood_map(char **map);
 
 //CHECKEER
 void		check_param(char *param);
