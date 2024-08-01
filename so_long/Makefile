@@ -1,4 +1,5 @@
 LIBFT_DIR   = libft
+MLX_DIR     = MLX42
 SRC_DIR     = src
 OBJ_DIR     = obj
 GNL_DIR     = get_next_line
@@ -13,7 +14,10 @@ OBJS = $(ALL_SRCS:%.c=$(OBJ_DIR)/%.o)
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 NAME = so_long
-INCLUDES = -I . -I ${LIBFT_DIR} -I ${GNL_DIR}  # Añade el directorio de includes de get_next_line
+INCLUDES = -I . -I ${LIBFT_DIR} -I ${GNL_DIR} -I ${MLX_DIR}/include  # Añade el directorio de includes de MLX42
+
+# Flags para Linux de MLX42
+MLX_FLAGS = -L$(MLX_DIR) -lmlx42 -ldl -lglfw -pthread -lm
 
 all: $(NAME)
 
@@ -33,7 +37,11 @@ $(OBJ_DIR)/$(GNL_DIR):
 
 $(NAME): $(OBJS)
 	@$(MAKE) -s -C $(LIBFT_DIR)
-	@$(CC) $(INCLUDES) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME)
+	@if [ ! -f $(MLX_DIR)/libmlx42.a ] && [ ! -f $(MLX_DIR)/libmlx42.so ]; then \
+		echo "Error: No se encontró la librería MLX42 en $(MLX_DIR)"; \
+		exit 1; \
+	fi
+	@$(CC) $(INCLUDES) $(OBJS) -L$(LIBFT_DIR) -lft $(MLX_FLAGS) -o $(NAME)
 
 clean:
 	make -C $(LIBFT_DIR) clean
