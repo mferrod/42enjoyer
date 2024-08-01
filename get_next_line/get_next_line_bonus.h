@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 09:44:52 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/01 13:42:00 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/01 13:54:01 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <limits.h>
 
 char	*ft_free(char **str);
 char	*ft_strdup(char *s1);

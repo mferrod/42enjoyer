@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 09:44:49 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/01 13:44:57 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/01 14:00:53 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (ft_free(&estatic[fd]));
-	estatic[fd] = ft_read(fd, estatic[fd]);
+	estatic[fd] = ft_read(-1, estatic[fd]);
 	if (!estatic[fd])
 		return (NULL);
 	line = ft_get_line(estatic[fd]);
@@ -97,3 +97,17 @@ char	*get_next_line(int fd)
 	estatic[fd] = ft_new_estatic(estatic[fd]);
 	return (line);
 }
+
+/*int main(int argc, char **argv)
+{
+	int	file;
+	char *text;
+
+	file = open("txt", O_RDONLY);
+	text = get_next_line(file);
+	while (text)
+	{
+		printf("%s", text);
+		text = get_next_line(file);
+	}
+}*/
