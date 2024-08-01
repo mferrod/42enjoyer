@@ -6,16 +6,16 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 09:44:49 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/01 13:19:02 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/01 13:44:57 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*ft_free(char *str)
+char	*ft_free(char **str)
 {
-	free(str);
-	str = NULL;
+	free(*str);
+	*str = NULL;
 	return (NULL);
 }
 
@@ -27,7 +27,7 @@ char	*ft_read(int fd, char *estatic)
 	nbytes = 1;
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
-		return (ft_free(estatic));
+		return (ft_free(&estatic));
 	buffer[0] = '\0';
 	while (nbytes > 0 && !ft_strchr(buffer, '\n'))
 	{
@@ -40,7 +40,7 @@ char	*ft_read(int fd, char *estatic)
 	}
 	free(buffer);
 	if (nbytes == -1)
-		return (ft_free(estatic));
+		return (ft_free(&estatic));
 	return (estatic);
 }
 
@@ -68,14 +68,14 @@ char	*ft_new_estatic(char *estatic)
 	if (!ptr)
 	{
 		new_estatic = NULL;
-		return (ft_free(estatic));
+		return (ft_free(&estatic));
 	}
 	else
 		len = (ptr - estatic) + 1;
 	if (!estatic[len])
-		return (ft_free(estatic));
+		return (ft_free(&estatic));
 	new_estatic = ft_substr(estatic, len, ft_strlen(estatic) - len);
-	ft_free(estatic);
+	ft_free(&estatic);
 	if (!new_estatic)
 		return (NULL);
 	return (new_estatic);
@@ -87,13 +87,13 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (ft_free(estatic[fd]));
+		return (ft_free(&estatic[fd]));
 	estatic[fd] = ft_read(fd, estatic[fd]);
 	if (!estatic[fd])
 		return (NULL);
 	line = ft_get_line(estatic[fd]);
 	if (!line)
-		return (ft_free(estatic[fd]));
+		return (ft_free(&estatic[fd]));
 	estatic[fd] = ft_new_estatic(estatic[fd]);
 	return (line);
 }

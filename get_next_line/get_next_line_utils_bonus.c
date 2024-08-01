@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 09:44:47 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/01 13:09:32 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/01 13:43:13 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str)
-		return (ft_free(s1));
+		return (ft_free(&s1));
 	i = 0;
 	while (s1[i])
 	{

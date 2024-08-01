@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 09:44:52 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/01 13:26:11 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/01 13:42:00 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <string.h>
 # include <unistd.h>
 
-char	*ft_free(char *str);
+char	*ft_free(char **str);
 char	*ft_strdup(char *s1);
 size_t	ft_strlen(char *c);
 char	*ft_strchr(char *s, int c);
