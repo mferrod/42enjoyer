@@ -23,6 +23,8 @@ int	count_lines_from_file(char *path)
 	file = open(path, O_RDONLY);
 	i = 0;
 	text_from_file = get_next_line(file);
+	if (!text_from_file)
+		error();
 	while (text_from_file)
 	{
 		i++;

@@ -20,5 +20,18 @@ int	main(int argc, char **argv)
 		error();
 	map_things(&data, argv[1]);
 	free_flood_map(data.c_map);
+	setup_game(&data);
 	return (0);
+}
+
+void	setup_game(t_data *data)
+{
+	data->game_init = mlx_init(data->map_w, data->map_h, "so_long", false);
+	if (!data->game_init)
+		error();
+	init_textures(data);
+	mlx_key_hook(data->game_init, init_controls, data);
+	mlx_loop(data->game_init);
+	free_flood_map(data->map);
+	mlx_terminate(data->game_init);
 }

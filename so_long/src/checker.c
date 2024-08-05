@@ -36,6 +36,8 @@ char	**make_matrix(char *path_to_file)
 	file = open(path_to_file, O_RDONLY);
 	matrix = malloc(sizeof(char *) * count_lines_from_file(path_to_file));
 	text_for_matrix = get_next_line(file);
+	if (!text_for_matrix)
+		error();
 	while (text_for_matrix)
 	{
 		matrix[i] = text_for_matrix;

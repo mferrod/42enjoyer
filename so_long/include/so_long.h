@@ -21,6 +21,7 @@
 # include <limits.h>
 # include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 
 typedef struct sl_map
 {
@@ -33,6 +34,12 @@ typedef struct sl_map
 	int				exit_c;
 	char			**map;
 	char			**c_map;
+	mlx_t			*game_init;
+	mlx_image_t		*player_img;
+	mlx_image_t		*exit_img;
+	mlx_image_t		*colec_img;
+	mlx_image_t		*wall_img;
+	mlx_image_t 	*ground_img;
 }					t_data;
 
 //ERRORS
@@ -52,6 +59,19 @@ void		init_struct(t_data *data);
 void		map_things(t_data *data, char *param);
 int			ft_strlen_sl(const char *str);
 void		free_flood_map(char **map);
+
+//SETUP GAME
+void		setup_game(t_data *data);
+void		init_textures(t_data *data);
+void		set_texture(mlx_t *game, mlx_image_t *image, char *path);
+void		set_textu_on_chars(t_data *data);
+
+//INIT CONTROLS
+void		init_controls(mlx_key_data_t keydata, void* param);
+void		player_mov_up(t_data *data);
+void		player_mov_down(t_data *data);
+void		player_mov_left(t_data *data);
+void		player_mov_right(t_data *data);
 
 //CHECKEER
 void		check_param(char *param);
