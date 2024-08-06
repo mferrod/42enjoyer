@@ -16,7 +16,8 @@ void	check_exit(t_data *data)
 {
 	if (data->colec_c == 0 && data->map[data->player_y][data->player_x] == 'E')
 	{
-		write(1, "YOU WIN, MAQUINA", 17);
+		write(1, "YOU WIN, MAQUINA\n", 18);
+		free_images(data);
 		exit(0);
 	}
 	else if (data->colec_c > 0
@@ -30,4 +31,18 @@ void	check_exit(t_data *data)
 			* IMG, data->player_y * IMG);
 		data->map[data->player_y][data->player_x] = '0';
 	}
+}
+
+void	free_images(t_data *data)
+{
+	if (data->exit_img)
+		mlx_delete_image(data->game_init, data->exit_img);
+	if (data->wall_img)
+		mlx_delete_image(data->game_init, data->wall_img);
+	if (data->colec_img)
+		mlx_delete_image(data->game_init, data->colec_img);
+	if (data->ground_img)
+		mlx_delete_image(data->game_init, data->ground_img);
+	if (data->player_img)
+		mlx_delete_image(data->game_init, data->player_img);
 }

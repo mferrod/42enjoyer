@@ -61,6 +61,7 @@ void		init_struct(t_data *data);
 void		map_things(t_data *data, char *param);
 int			ft_strlen_sl(const char *str);
 void		free_flood_map(char **map);
+void		free_images(t_data *data);
 
 //SETUP GAME
 void		setup_game(t_data *data);

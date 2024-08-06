@@ -30,9 +30,10 @@ void	setup_game(t_data *data)
 			"so_long", false);
 	if (!data->game_init)
 		error();
-	init_textures(data);
-	mlx_key_hook(data->game_init, init_controls, data);
-	mlx_loop(data->game_init);
+	//init_textures(data);
+	//mlx_key_hook(data->game_init, init_controls, data);
+	//mlx_loop(data->game_init);
+	printf("HASTA AQUÍ LLEGO\n");
 	free_flood_map(data->map);
 	mlx_terminate(data->game_init);
 }
