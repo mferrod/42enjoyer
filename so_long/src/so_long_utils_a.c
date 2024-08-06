@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 18:36:02 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/01 12:17:20 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/06 19:43:39 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,36 @@ void	map_things(t_data *data, char *param)
 	check_param(param);
 	init_struct(data);
 	data->map = make_matrix(param);
-	data->c_map = ft_calloc(sizeof(char *), count_lines_from_file(param));
+	data->c_map = (char **)malloc(sizeof(char *)
+			* count_lines_from_file(param));
 	check_matrix(data->map);
 	data->map_w = ft_strlen(data->map[0]);
 	data->map_h = count_lines_from_file(param);
 	save_player_pos(data);
+}
+
+void	textu_on_char_two(int i, int j, t_data *data)
+{
+	while (++j < data->map_w)
+	{
+		if (data->map[i][j] == '1')
+			mlx_image_to_window(data->game_init, data->wall_img, j * IMG, i
+				* IMG);
+		if (data->map[i][j] == '0')
+			mlx_image_to_window(data->game_init, data->ground_img, j * IMG, i
+				* IMG);
+		if (data->map[i][j] == 'E')
+			mlx_image_to_window(data->game_init, data->exit_img, j * IMG, i
+				* IMG);
+		if (data->map[i][j] == 'C')
+		{
+			mlx_image_to_window(data->game_init, data->ground_img, j * IMG, i
+				* IMG);
+			mlx_image_to_window(data->game_init, data->colec_img, j * IMG, i
+				* IMG);
+		}
+		if (data->map[i][j] == 'P')
+			mlx_image_to_window(data->game_init, data->ground_img, j * IMG, i
+				* IMG);
+	}
 }

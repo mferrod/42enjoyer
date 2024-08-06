@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 21:26:28 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/01 12:15:22 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/06 18:49:30 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void	save_player_pos(t_data *data)
 	}
 	valid_map(data);
 	i = -1;
-	while (++i < data->map_h)
+	while (data->map[++i])
 		data->c_map[i] = ft_strdup(data->map[i]);
+	data->c_map[i] = NULL;
 	flood_fill(data, data->player_x, data->player_y);
 }
 

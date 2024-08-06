@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:01:47 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/01 12:29:58 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/06 19:17:52 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	main(int argc, char **argv)
 
 void	setup_game(t_data *data)
 {
-	data->game_init = mlx_init(data->map_w, data->map_h, "so_long", false);
+	data->game_init = mlx_init(data->map_w * IMG, data->map_h * IMG,
+			"so_long", false);
 	if (!data->game_init)
 		error();
 	init_textures(data);

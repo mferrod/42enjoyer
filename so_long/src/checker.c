@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:09:26 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/01 12:21:33 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/06 19:04:21 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ char	**make_matrix(char *path_to_file)
 	matrix = NULL;
 	i = 0;
 	file = open(path_to_file, O_RDONLY);
-	matrix = malloc(sizeof(char *) * count_lines_from_file(path_to_file));
+	matrix = (char **) malloc(sizeof(char *)
+			* count_lines_from_file(path_to_file));
 	text_for_matrix = get_next_line(file);
 	if (!text_for_matrix)
 		error();
