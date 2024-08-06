@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:55:27 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/06 19:41:53 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/06 20:44:23 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void		init_textures(t_data *data);
 void		set_texture(mlx_t *game, mlx_image_t **image, char *path);
 void		set_textu_on_chars(t_data *data);
 void		textu_on_char_two(int i, int j, t_data *data);
+void		check_exit(t_data *data);
 
 //INIT CONTROLS
 void		init_controls(mlx_key_data_t keydata, void *param);
