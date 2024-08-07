@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 20:36:30 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/06 20:52:42 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/07 19:08:05 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	check_exit(t_data *data)
 	if (data->colec_c == 0 && data->map[data->player_y][data->player_x] == 'E')
 	{
 		write(1, "YOU WIN, MAQUINA\n", 18);
-		free_images(data);
-		exit(0);
+		free_all(data);
 	}
 	else if (data->colec_c > 0
 		&& data->map[data->player_y][data->player_x] == 'C')
@@ -45,4 +44,16 @@ void	free_images(t_data *data)
 		mlx_delete_image(data->game_init, data->ground_img);
 	if (data->player_img)
 		mlx_delete_image(data->game_init, data->player_img);
+}
+
+void	free_all(t_data *data)
+{
+	if (data)
+	{
+		free_flood_map(data->map);
+		free_images(data);
+		mlx_close_window(data->game_init);
+		mlx_terminate(data->game_init);
+	}
+	exit(0);
 }

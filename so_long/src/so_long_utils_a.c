@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 18:36:02 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/06 19:43:39 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/07 18:57:52 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ int	count_lines_from_file(char *path)
 	while (text_from_file)
 	{
 		i++;
+		free(text_from_file);
 		text_from_file = get_next_line(file);
 	}
 	close(file);
-	text_from_file = NULL;
 	free(text_from_file);
+	text_from_file = NULL;
 	return (i);
 }
 
@@ -55,6 +56,7 @@ void	init_struct(t_data *data)
 	data->exit_c = 0;
 	data->map_h = 0;
 	data->map_w = 0;
+	data->player_steps = 0;
 }
 
 void	map_things(t_data *data, char *param)
@@ -63,7 +65,9 @@ void	map_things(t_data *data, char *param)
 	init_struct(data);
 	data->map = make_matrix(param);
 	data->c_map = (char **)malloc(sizeof(char *)
-			* count_lines_from_file(param));
+			* (count_lines_from_file(param) + 1));
+	if (!data->c_map)
+		error_and_free(data->map);
 	check_matrix(data->map);
 	data->map_w = ft_strlen(data->map[0]);
 	data->map_h = count_lines_from_file(param);

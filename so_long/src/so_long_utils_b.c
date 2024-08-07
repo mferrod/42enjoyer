@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 12:12:55 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/06 19:43:49 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/07 18:03:35 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	free_flood_map(char **map)
 		free(map[i]);
 		i++;
 	}
-	//free(map);
+	free(map);
 	map = NULL;
 }
 

@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:01:47 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/06 19:17:52 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/07 18:41:34 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	setup_game(t_data *data)
 			"so_long", false);
 	if (!data->game_init)
 		error();
-	//init_textures(data);
-	//mlx_key_hook(data->game_init, init_controls, data);
-	//mlx_loop(data->game_init);
-	printf("HASTA AQUÍ LLEGO\n");
-	free_flood_map(data->map);
+	init_textures(data);
+	mlx_key_hook(data->game_init, init_controls, data);
+	mlx_loop(data->game_init);
+	if (data->map)
+		free_flood_map(data->map);
 	mlx_terminate(data->game_init);
 }

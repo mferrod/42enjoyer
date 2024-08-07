@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:55:27 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/06 20:44:23 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/07 19:06:23 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
 # include "../MLX42/include/MLX42/MLX42.h"
+# include "../ft_printf/ft_printf.h"
 
 # define IMG 64
 
@@ -34,6 +35,7 @@ typedef struct s_map
 	int				player_c;
 	int				colec_c;
 	int				exit_c;
+	int				player_steps;
 	char			**map;
 	char			**c_map;
 	mlx_t			*game_init;
@@ -62,6 +64,7 @@ void		map_things(t_data *data, char *param);
 int			ft_strlen_sl(const char *str);
 void		free_flood_map(char **map);
 void		free_images(t_data *data);
+void		free_all(t_data *data);
 
 //SETUP GAME
 void		setup_game(t_data *data);
