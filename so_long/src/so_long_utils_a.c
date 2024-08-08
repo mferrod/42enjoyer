@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 18:36:02 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/07 18:57:52 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/08 19:36:04 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	count_lines_from_file(char *path)
 	char	*text_from_file;
 
 	if (!path)
-		error();
+		error("INVALID PATH");
 	file = open(path, O_RDONLY);
 	i = 0;
 	text_from_file = get_next_line(file);
 	if (!text_from_file)
-		error();
+		error("INVALID MAP");
 	while (text_from_file)
 	{
 		i++;
@@ -64,11 +64,11 @@ void	map_things(t_data *data, char *param)
 	check_param(param);
 	init_struct(data);
 	data->map = make_matrix(param);
+	check_matrix(data->map);
 	data->c_map = (char **)malloc(sizeof(char *)
 			* (count_lines_from_file(param) + 1));
 	if (!data->c_map)
 		error_and_free(data->map);
-	check_matrix(data->map);
 	data->map_w = ft_strlen(data->map[0]);
 	data->map_h = count_lines_from_file(param);
 	save_player_pos(data);

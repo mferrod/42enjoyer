@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 12:12:55 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/07 18:03:35 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/08 19:36:16 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ void	set_texture(mlx_t *game, mlx_image_t **image, char *path)
 
 	texture = mlx_load_png(path);
 	if (!texture)
-		error();
+		error("INVALID TEXTURE");
 	(*image) = mlx_texture_to_image(game, texture);
 	if (!(*image))
-		error();
+		error("INVALID IMAGE");
 	mlx_delete_texture(texture);
 }
 

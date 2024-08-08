@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 20:36:30 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/07 19:08:05 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/08 19:36:25 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,50 @@ void	free_all(t_data *data)
 		mlx_terminate(data->game_init);
 	}
 	exit(0);
+}
+
+void	valid_map_flood(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (data->c_map[i])
+	{
+		while (data->c_map[i][j])
+		{
+			if (data->c_map[i][j] == 'P')
+				error("INVALID MAP");
+			if (data->c_map[i][j] == 'C')
+				error("INVALID MAP");
+			if (data->c_map[i][j] == 'E')
+				error("INVALID MAP");
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+}
+
+void	check_interiors(char **matrix)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (matrix[i])
+	{
+		while (matrix[i][j])
+		{
+			if (matrix[i][j] != 'P' && matrix[i][j] != 'C'
+				&& matrix[i][j] != 'E' && matrix[i][j] != '1'
+				&& matrix[i][j] != '0' && matrix[i][j] != '\n')
+				error("INVALID MAP");
+			j++;
+		}
+		j = 0;
+		i++;
+	}
 }

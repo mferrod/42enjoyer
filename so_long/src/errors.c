@@ -6,15 +6,15 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:10:21 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/01 16:41:55 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/08 19:36:34 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	error(void)
+void	error(char *str)
 {
-	write(2, "ERROR.\n", 7);
+	ft_printf("ERROR: %s", str);
 	exit(1);
 }
 

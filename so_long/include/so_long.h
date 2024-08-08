@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:55:27 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/07 19:06:23 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/08 19:33:58 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,14 @@ typedef struct s_map
 }					t_data;
 
 //ERRORS
-void		error(void);
+void		error(char *str);
 void		error_and_free(void *c);
 void		error_and_free_matrix(char **c);
 
 //FLOOD FILL
 void		save_player_pos(t_data *data);
 void		valid_map(t_data *data);
+void		valid_map_flood(t_data *data);
 void		flood_fill(t_data *data, int x, int y);
 
 //UTILS
@@ -65,6 +66,9 @@ int			ft_strlen_sl(const char *str);
 void		free_flood_map(char **map);
 void		free_images(t_data *data);
 void		free_all(t_data *data);
+void		check_all_exteriors(char **matrix);
+int			ft_arraylen(char **array);
+void		check_interiors(char **matrix);
 
 //SETUP GAME
 void		setup_game(t_data *data);
