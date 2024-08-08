@@ -45,7 +45,7 @@ $(NAME): $(OBJS)
 		echo "Error: No se encontró la librería MLX42 en $(MLX_DIR)/build"; \
 		exit 1; \
 	fi
-	@$(CC) $(INCLUDES) -fsanitize=address,undefined $(OBJS) -L$(LIBFT_DIR) -lft -L$(PRINTF_DIR) -lftprintf $(MLX_FLAGS) -o $(NAME)
+	@$(CC) $(INCLUDES) $(OBJS) -L$(LIBFT_DIR) -lft -L$(PRINTF_DIR) -lftprintf $(MLX_FLAGS) -o $(NAME)
 
 clean:
 	make -C $(LIBFT_DIR) clean
