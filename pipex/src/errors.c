@@ -10,11 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 void	error_and_free(t_data *data, char *error)
 {
 	ft_putendl_fd(error, 2);
 	free(data);
+	exit(EXIT_FAILURE);
+}
+
+void	error(char *error)
+{
+	ft_putendl_fd(error, 2);
 	exit(EXIT_FAILURE);
 }

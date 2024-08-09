@@ -10,12 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
-void	**parser(char **env, t_data *data)
+void	parser(char **env, t_data *data)
 {
-	char	*path;
-	char	**path_splitted;
 	int		i;
 
 	i = 0;
@@ -23,11 +21,12 @@ void	**parser(char **env, t_data *data)
 	{
 		if (ft_strncmp("PATH=", env[i], 5) == 0)
 		{
-			path_splitted = ft_split(env[i], ':');
+			data->path = ft_split(env[i], ':');
 			break ;
 		}
 		i++;
 	}
-	if (!path_splitted)
-		error_and_free();
+	if (!data->path)
+		error_and_free(data, "FAILED TO SPLIT");
+	data->path[0] = ft_substr(data->path[0], 5, ft_strlen(data->path[0]));
 }

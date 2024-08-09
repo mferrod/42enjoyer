@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -19,15 +19,22 @@ int	main(int argc, char **argv, char **envp)
 	ft_memset(&data, 0, sizeof(t_data));
 	if (argc == 5)
 	{
+		pipex(&data, argv, envp);
 	}
 	else
-		error_and_free(&data, "ONLY 5 ARGUMENTS");
+		error("ONLY 5 ARGUMENTS");
 	return (EXIT_SUCCESS);
 }
 
 void	pipex(t_data *data, char **args, char **env)
 {
+	(void) args;
 	if (pipe(data->pipe) == -1)
 		error_and_free(data, "CANT DO PIPE");
-	data->path = parser(env);
+	parser(env, data);
+	int i = 0;
+	while (data->path[i]) {
+		ft_putendl_fd(data->path[i], 0);
+		i++;
+	}
 }

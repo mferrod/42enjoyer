@@ -33,7 +33,13 @@ typedef struct s_data
 	pid_t	child;
 	pid_t	child_s;
 }			t_data;
-
+//ERRORS
 void	error_and_free(t_data *data, char *error);
+void	error(char *error);
+
+void	pipex(t_data *data, char **args, char **env);
+
+//PARSER
+void	parser(char **env, t_data *data);
 
 #endif
