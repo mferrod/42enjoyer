@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/08 20:57:56 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/09 15:54:27 by marianof         ###   ########.fr       */
+/*   Created: 2024/08/09 15:54:38 by marianof          #+#    #+#             */
+/*   Updated: 2024/08/09 16:07:01 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+void	**parser(char **env, t_data *data)
 {
-	t_data	data;
+	char	*path;
+	char	**path_splitted;
+	int		i;
 
-	ft_memset(&data, 0, sizeof(t_data));
-	if (argc == 5)
+	i = 0;
+	while (env[i])
 	{
+		if (ft_strncmp("PATH=", env[i], 5) == 0)
+		{
+			path_splitted = ft_split(env[i], ':');
+			break ;
+		}
+		i++;
 	}
-	else
-		error_and_free(&data, "ONLY 5 ARGUMENTS");
-	return (EXIT_SUCCESS);
-}
-
-void	pipex(t_data *data, char **args, char **env)
-{
-	if (pipe(data->pipe) == -1)
-		error_and_free(data, "CANT DO PIPE");
-	data->path = parser(env);
+	if (!path_splitted)
+		error_and_free();
 }

@@ -3,14 +3,14 @@ SRC_DIR     = src
 OBJ_DIR     = obj
 PRINTF_DIR  = ft_printf
 
-SRCS = main.c
+SRCS = main.c errors.c parser.c
 SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
 ALL_SRCS = $(SRCS)
 OBJS = $(ALL_SRCS:%.c=$(OBJ_DIR)/%.o)
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g 
-NAME = so_long
+NAME = pipex
 INCLUDES = -I . -I ${LIBFT_DIR} -I ${PRINTF_DIR}
 
 all: $(NAME)

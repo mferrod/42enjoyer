@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:55:45 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/08 21:20:36 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/09 15:13:43 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@ typedef struct s_data
 	int		fd_in;
 	int		fd_out;
 	char	*cmd;
-	char	**args;
+	char	**path;
 	int		pipe[2];
 	pid_t	child;
 	pid_t	child_s;
 }			t_data;
+
+void	error_and_free(t_data *data, char *error);
 
 #endif
