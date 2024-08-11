@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   childs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/09 15:00:51 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/11 20:32:58 by marianof         ###   ########.fr       */
+/*   Created: 2024/08/11 20:13:10 by marianof          #+#    #+#             */
+/*   Updated: 2024/08/11 20:30:21 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	error_and_free(void *c, char *error)
+void	create_first_child(int fd[2], char **args)
 {
-	ft_putendl_fd(error, 2);
-	free(c);
-	exit(EXIT_FAILURE);
-}
+	int	fd_file;
 
-void	error(char *error)
-{
-	ft_putendl_fd(error, 2);
-	exit(EXIT_FAILURE);
+	close(fd[0]);
+	fd_file = open(args[1], O_RDONLY);
+	if (fd_file == -1)
+		error("ERROR AT OPEN FILE");
 }

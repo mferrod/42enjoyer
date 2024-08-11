@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:57:56 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/09 15:54:27 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/11 21:11:44 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,32 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_data	data;
+	int	fd[2];
 
-	ft_memset(&data, 0, sizeof(t_data));
 	if (argc == 5)
 	{
-		pipex(&data, argv, envp);
+		pipex(argv, envp, fd);
 	}
 	else
 		error("ONLY 5 ARGUMENTS");
 	return (EXIT_SUCCESS);
 }
 
-void	pipex(t_data *data, char **args, char **env)
+void	pipex(char **args, char **env, int fd[2])
 {
-	(void) args;
-	if (pipe(data->pipe) == -1)
-		error_and_free(data, "CANT DO PIPE");
-	parser(env, data);
-	int i = 0;
-	while (data->path[i]) {
-		ft_putendl_fd(data->path[i], 0);
-		i++;
+	pid_t	child;
+	pid_t	child_s;
+	char	**c;
+
+	if (pipe(fd) == -1)
+		error("CANT DO PIPE");
+	c = parser(env);
+	printf("PRUEBA: %s\n", search_command(args[2], c));
+	child = fork();
+	if (child == -1)
+		error("ERROR CREATING CHILD");
+	if (child == 0)
+	{
+		//CREAR HIJOS Y COSAS
 	}
 }

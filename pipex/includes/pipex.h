@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:55:45 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/09 15:13:43 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/11 20:50:56 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,16 @@
 # include "../ft_printf/ft_printf.h"
 # include "../libft/libft.h"
 
-typedef struct s_data
-{
-	int		fd_in;
-	int		fd_out;
-	char	*cmd;
-	char	**path;
-	int		pipe[2];
-	pid_t	child;
-	pid_t	child_s;
-}			t_data;
 //ERRORS
-void	error_and_free(t_data *data, char *error);
+void	error_and_free(void *c, char *error);
 void	error(char *error);
 
-void	pipex(t_data *data, char **args, char **env);
+void	pipex(char **args, char **env, int fd[2]);
+void	create_first_child(int fd[2], char **args);
+char	*search_command(char *cmd, char **cmd_paths);
 
 //PARSER
-void	parser(char **env, t_data *data);
+char	**parser(char **env);
+char	*search_command(char *cmd, char **cmd_paths);
 
 #endif
