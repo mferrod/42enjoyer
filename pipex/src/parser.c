@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 15:54:38 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/11 21:04:20 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/12 18:25:28 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,13 @@ char	**parser(char **env)
 	{
 		if (ft_strncmp("PATH=", env[i], 5) == 0)
 		{
-			path = ft_split(env[i], ':');
+			path = ft_split(&env[i][5], ':');
 			break ;
 		}
 		i++;
 	}
 	if (!path)
-		error_and_free(path, "FAILED TO SPLIT");
-	path[0] = ft_substr(path[0], 5, ft_strlen(path[0]));
+		error_and_free_matrix(path, "FAILED TO SPLIT");
 	return (path);
 }
 
@@ -37,19 +36,30 @@ char	*search_command(char *cmd, char **cmd_paths)
 {
 	int		i;
 	char	*c;
+	char	**cmd_matrix;
+	char	*aux;
 
 	i = 0;
+	cmd_matrix = ft_split(cmd, ' ');
 	while (cmd_paths[i])
 	{
-		c = ft_strjoin(cmd_paths[i], "/");
-		c = ft_strjoin(c, ft_substr(cmd, 0, ft_strlen(ft_strchr(cmd,
-							' '))));
-		if (access(c, F_OK) == 0)
-			return (c);
-		printf("ACCESO: %d\n", access(c, F_OK));
-		printf("ITERACIÓN: %s\n", c);
+		aux = ft_strjoin(cmd_paths[i], "/");
+		c = ft_strjoin(aux, cmd_matrix[0]);
+		if (access(c, F_OK | X_OK) == 0)
+			return (free_matrix(cmd_matrix), free(aux), c);
 		i++;
 		free(c);
+		free(aux);
 	}
-	return (NULL);
+	return (free_matrix(cmd_matrix), NULL);
+}
+
+char	**cmd_split(char *args)
+{
+	char	**cmd_split;
+
+	cmd_split = ft_split(args, ' ');
+	if (!cmd_split)
+		error("error in cmd split");
+	return (cmd_split);
 }

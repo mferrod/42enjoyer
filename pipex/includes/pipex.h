@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:55:45 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/11 20:50:56 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/12 18:15:08 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,20 @@
 //ERRORS
 void	error_and_free(void *c, char *error);
 void	error(char *error);
+void	error_and_free_matrix(char **matrix, char *error);
 
-void	pipex(char **args, char **env, int fd[2]);
-void	create_first_child(int fd[2], char **args);
+//FREE
+void	free_matrix(char **matrix);
+
+//PIPEX
+void	pipex(char **args, char **env, int *fd);
+void	create_first_child(int *fd, char **pars, char **args, char **envp);
+void	create_second_child(int *fd, char **pars, char **args, char **envp);
 char	*search_command(char *cmd, char **cmd_paths);
 
 //PARSER
 char	**parser(char **env);
 char	*search_command(char *cmd, char **cmd_paths);
+char	**cmd_split(char *args);
 
 #endif

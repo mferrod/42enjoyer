@@ -3,7 +3,7 @@ SRC_DIR     = src
 OBJ_DIR     = obj
 PRINTF_DIR  = ft_printf
 
-SRCS = main.c errors.c parser.c
+SRCS = main.c errors.c parser.c childs.c frees.c
 SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
 ALL_SRCS = $(SRCS)
 OBJS = $(ALL_SRCS:%.c=$(OBJ_DIR)/%.o)

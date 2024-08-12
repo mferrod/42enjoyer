@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:57:56 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/11 21:11:44 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/12 17:55:01 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,30 @@ int	main(int argc, char **argv, char **envp)
 	return (EXIT_SUCCESS);
 }
 
-void	pipex(char **args, char **env, int fd[2])
+void	pipex(char **args, char **env, int *fd)
 {
 	pid_t	child;
 	pid_t	child_s;
-	char	**c;
+	char	**pars;
 
 	if (pipe(fd) == -1)
 		error("CANT DO PIPE");
-	c = parser(env);
-	printf("PRUEBA: %s\n", search_command(args[2], c));
+	pars = parser(env);
 	child = fork();
 	if (child == -1)
 		error("ERROR CREATING CHILD");
 	if (child == 0)
 	{
-		//CREAR HIJOS Y COSAS
+		create_first_child(fd, pars, args, env);
+		waitpid(child, NULL, 0);
 	}
+	close(fd[1]);
+	child_s = fork();
+	if (child_s == -1)
+		error("ERROR CREATING CHILD");
+	if (child_s == 0)
+		create_second_child(fd, pars, args, env);
+	close(fd[0]);
+	waitpid(child_s, NULL, 0);
+	free_matrix(pars);
 }
