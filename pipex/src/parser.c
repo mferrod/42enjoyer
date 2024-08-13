@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 15:54:38 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/13 17:00:13 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:33:44 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,10 @@ char	**cmd_split(char *args)
 {
 	char	**cmd_split;
 	int		count;
-	int		i;
 	char	**cmd_split_args;
 
-	i = 0;
-	count = 0;
-	while (args[i])
-		if (args[i++] == '\'')
-			count++;
-	if ((count % 2) == 0)
+	count = wordcount(args, '\'');
+	if (count == 2)
 	{
 		cmd_split_args = ft_split(args, '\'');
 		cmd_split = funcioncilla(cmd_split_args, args);
@@ -79,7 +74,7 @@ char	**cmd_split(char *args)
 	return (cmd_split);
 }
 
-char	*funcioncilla(char **split_arg, char *args)
+char	**funcioncilla(char **split_arg, char *args)
 {
 	char	**to_malloc;
 	int		i;
@@ -88,10 +83,10 @@ char	*funcioncilla(char **split_arg, char *args)
 	to_malloc = (char **)malloc(sizeof(char *) * (wordcount(args, '\'') + 1));
 	if (!to_malloc)
 		return (NULL);
-	to_malloc[0] = ft_strtrim(split_arg, " ");
+	to_malloc[0] = ft_strtrim(split_arg[0], " ");
 	while (args[i])
 	{
-		to_malloc[i] = ft_strdup(args[i]);
+		to_malloc[i] = ft_strdup(split_arg[i]);
 		i++;
 	}
 	to_malloc[i] = NULL;

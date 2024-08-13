@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 20:13:10 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/12 18:30:38 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:39:09 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	create_second_child(int *fd, char **pars, char **args, char **envp)
 	char	*cmd;
 
 	close(fd[1]);
-	fd_file = open(args[4], O_WRONLY | O_CREAT | O_TRUNC | 0644);
+	fd_file = open(args[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd_file == -1)
 		error("ERROR AT OPEN FILE");
 	if (dup2(fd_file, 1) == -1)
