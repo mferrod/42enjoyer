@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:55:45 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/13 16:35:51 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:04:08 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <sys/types.h>
 
 // MY LIBRARIES
-# include "../ft_printf/ft_printf.h"
 # include "../libft/libft.h"
 
 //ERRORS
