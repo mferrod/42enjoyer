@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 20:55:45 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/12 18:15:08 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/13 16:35:51 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ char	*search_command(char *cmd, char **cmd_paths);
 char	**parser(char **env);
 char	*search_command(char *cmd, char **cmd_paths);
 char	**cmd_split(char *args);
+char	*funcioncilla(char **split_arg, char *args);
+int		wordcount(char const *s, char c);
 
 #endif

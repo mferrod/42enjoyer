@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_p.c                                      :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianof <marianof@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 08:33:26 by marianof          #+#    #+#             */
-/*   Updated: 2023/11/03 13:34:27 by marianof         ###   ########.fr       */
+/*   Created: 2024/08/13 16:29:13 by marianof          #+#    #+#             */
+/*   Updated: 2024/08/13 16:29:27 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/pipex.h"
 
-int	ft_putstr_p(char *str)
+int	wordcount(char const *s, char c)
 {
+	int	wordcount;
 	int	i;
 
 	i = 0;
-	if (!str)
-		return (ft_putstr_p("(null)"));
-	while (str[i])
+	wordcount = 0;
+	while (s[i] != '\0')
 	{
-		write(1, &str[i], 1);
+		if (s[i] != c)
+		{
+			wordcount++;
+			while (s[i] != c && s[i + 1] != '\0')
+				i++;
+		}
 		i++;
 	}
-	return (i);
+	return (wordcount);
 }
