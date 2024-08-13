@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 15:54:38 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/13 17:33:44 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/13 19:44:33 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ char	**funcioncilla(char **split_arg, char *args)
 	while (args[i])
 	{
 		to_malloc[i] = ft_strdup(split_arg[i]);
+		ft_putstr_fd(to_malloc[i], 2);
 		i++;
 	}
 	to_malloc[i] = NULL;
