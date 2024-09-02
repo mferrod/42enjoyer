@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 15:54:38 by marianof          #+#    #+#             */
-/*   Updated: 2024/08/13 19:44:33 by marianof         ###   ########.fr       */
+/*   Updated: 2024/08/14 16:54:41 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	**cmd_split(char *args)
 	if (count == 2)
 	{
 		cmd_split_args = ft_split(args, '\'');
-		cmd_split = funcioncilla(cmd_split_args, args);
+		cmd_split = func_cmd_split(cmd_split_args, args);
 		free(cmd_split_args);
 	}
 	else
@@ -74,22 +74,21 @@ char	**cmd_split(char *args)
 	return (cmd_split);
 }
 
-char	**funcioncilla(char **split_arg, char *args)
+char	**func_cmd_split(char **split_arg, char *args)
 {
-	char	**to_malloc;
+	char	**cmd;
 	int		i;
 
-	i = 0;
-	to_malloc = (char **)malloc(sizeof(char *) * (wordcount(args, '\'') + 1));
-	if (!to_malloc)
+	i = 1;
+	cmd = (char **)malloc(sizeof(char *) * wordcount(args, '\'') + 1);
+	if (!cmd)
 		return (NULL);
-	to_malloc[0] = ft_strtrim(split_arg[0], " ");
-	while (args[i])
+	cmd[0] = ft_strtrim(split_arg[0], " ");
+	while (split_arg[i])
 	{
-		to_malloc[i] = ft_strdup(split_arg[i]);
-		ft_putstr_fd(to_malloc[i], 2);
+		cmd[i] = ft_strdup(split_arg[i]);
 		i++;
 	}
-	to_malloc[i] = NULL;
-	return (to_malloc);
+	cmd[i] = NULL;
+	return (cmd);
 }
