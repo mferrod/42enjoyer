@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:25:11 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/06 13:22:29 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:56:13 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	create_threads(t_table *table)
 	i = -1;
 	while (++i < table->n_philos)
 	{
-		if (pthread_create(&table->philos[i], NULL) != 0) //CREAR RUTINAS (LO QUE TIENEN QUE HACER LOS FILÓSOFOS)
+		if (pthread_create(&table->philos[i], NULL, &philo_routine,
+				(void *)&table->philos[i]) != 0)
 		{
 			error_msg("PHILOSOPHERS: ERROR CREATING THREADS FOR PHILOS.");
 		}

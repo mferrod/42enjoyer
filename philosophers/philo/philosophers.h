@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:19:20 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/06 13:11:00 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:56:09 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,21 @@
 # include <sys/time.h>
 # include <stdbool.h>
 
+struct	s_philo;
+
+typedef struct s_table
+{
+	int							n_philos;
+	int							ttd;
+	int							tte;
+	int							tts;
+	int							times_to_eat;
+	struct s_philo				*philos;
+	pthread_mutex_t				*forks;
+	int							eating;
+	long						start_time;
+}						t_table;
+
 typedef struct s_philo
 {
 	int				id;
@@ -35,19 +50,6 @@ typedef struct s_philo
 	t_table			*table;
 }					t_philo;
 
-typedef struct s_table
-{
-	int					n_philos;
-	int					ttd;
-	int					tte;
-	int					tts;
-	int					times_to_eat;
-	t_philo				*philos;
-	pthread_mutex_t		*forks;
-	int					eating;
-	long				start_time;
-}						t_table;
-
 //PARSING
 int		handle_param(char **argv, int argc, t_table *philo);
 int		make_number(char *number);
@@ -59,4 +61,7 @@ void	init_philos(t_philo *philo, int i, t_table *table);
 void	ft_sleep(long milliseconds);
 long	get_current_time(void);
 void	error_msg(char *str);
+void	print_msg(char *str, t_philo *philo);
+//ROUTINES
+void	*philo_routine(void *arg);
 #endif

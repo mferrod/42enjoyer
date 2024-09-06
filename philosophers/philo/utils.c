@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:17:14 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/06 12:42:08 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:31:24 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,9 @@ long	get_current_time(void)
 void	error_msg(char *str)
 {
 	printf("%s\n", str);
+}
+
+void	print_msg(char *str, t_philo *philo)
+{
+	printf("%ld %d %s", get_current_time(), philo->id, str);
 }
