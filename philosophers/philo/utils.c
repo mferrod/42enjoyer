@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 15:40:36 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/05 18:25:40 by marianof         ###   ########.fr       */
+/*   Created: 2024/09/05 18:17:14 by marianof          #+#    #+#             */
+/*   Updated: 2024/09/05 19:20:19 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int argc, char **argv)
+void	ft_sleep(size_t milliseconds)
 {
-	t_philosophers	philosophers;
+	size_t	start;
 
-	if (argc - 1 != 4 && argc - 1 != 5)
-		return (printf("PHILOSOPHERS: INVALID NUMBER OF ARGUMENTS.\n"));
-	if (handle_param(argv, argc - 1, &philosophers) == -1)
-		return (printf("PHILOSOPHERS: INVALID ARGUMENTS.\n"));
-	return (0);
+	start = get_current_time();
+	while ((get_current_time() - start) < milliseconds)
+		usleep(500);
 }
+
+long	get_current_time(void)
+{
+	struct timeval	time;
+
+	if (gettimeofday(&time, NULL) == -1)
+		write(2, "gettimeofday() error\n", 22);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}
+
+void	error_msg(char *str, )
