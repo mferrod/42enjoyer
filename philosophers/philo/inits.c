@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:25:11 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/06 13:21:33 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:22:29 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	init_forks(t_table *table)
 	if (!table->forks)
 		return ;
 	i = -1;
+	table->start_time = get_current_time();
 	while (++i < table->n_philos)
 	{
 		if (pthread_mutex_init(&table->forks[i], NULL) != 0)
