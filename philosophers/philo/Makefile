@@ -1,9 +1,7 @@
 NAME	:= philosophers
-CFLAGS	:= -g -Wall -Werror -Wextra \
-	#-g -fsanitize=address,undefined \
-	#-Wunreachable-code -Ofast 
+CFLAGS	:= -g -Wall -Werror -Wextra
 
-SRCS	:= main.c parsing.c
+SRCS	:= main.c parsing.c inits.c utils.c
 	
 OBJS	:= ${SRCS:.c=.o}
 
@@ -23,7 +21,5 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean all
-
-rebonus: fclean bonus
 
 .PHONY: all, clean, fclean, re

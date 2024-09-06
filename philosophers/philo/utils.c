@@ -6,15 +6,15 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:17:14 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/05 19:20:19 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:42:08 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	ft_sleep(size_t milliseconds)
+void	ft_sleep(long milliseconds)
 {
-	size_t	start;
+	long	start;
 
 	start = get_current_time();
 	while ((get_current_time() - start) < milliseconds)
@@ -30,4 +30,7 @@ long	get_current_time(void)
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
-void	error_msg(char *str, )
+void	error_msg(char *str)
+{
+	printf("%s\n", str);
+}

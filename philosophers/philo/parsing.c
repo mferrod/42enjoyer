@@ -6,33 +6,30 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:50:34 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/05 19:14:36 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:37:18 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	handle_param(char **argv, int argc, t_global *philo)
+int	handle_param(char **argv, int argc, t_table *table)
 {
-	t_philo_param	*param;
-
-	param = malloc(sizeof(t_philo_param *));
-	param->n_philos = make_number(argv[1]);
-	param->ttd = make_number(argv[2]);
-	param->tte = make_number(argv[3]);
-	param->tts = make_number(argv[4]);
+	table = malloc(sizeof(t_table *));
+	table->n_philos = make_number(argv[1]);
+	table->ttd = make_number(argv[2]);
+	table->tte = make_number(argv[3]);
+	table->tts = make_number(argv[4]);
 	if (argc == 5)
-		param->times_to_eat = make_number(
+		table->times_to_eat = make_number(
 				argv[5]);
 	else
-		param->times_to_eat = -1;
-	if (param->n_philos == -500
-		|| param->ttd == -500
-		|| param->tte == -500
-		|| param->tts == -500
-		|| param->times_to_eat == -500)
+		table->times_to_eat = -1;
+	if (table->n_philos == -500
+		|| table->ttd == -500
+		|| table->tte == -500
+		|| table->tts == -500
+		|| table->times_to_eat == -500)
 		return (-1);
-	philo->params = param;
 	return (0);
 }
 
@@ -51,5 +48,7 @@ int	make_number(char *number)
 			return (-500);
 		i++;
 	}
+	if (to_ret > INT_MAX)
+		return (-500);
 	return (to_ret);
 }

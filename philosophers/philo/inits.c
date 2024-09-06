@@ -6,40 +6,57 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:25:11 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/05 19:19:07 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:21:33 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	init_philos(t_global *philosophers)
+void	init_philos(t_philo *philo, int i, t_table *table)
 {
-	int i;
-
-	i = 0;
-	philosophers->philos = malloc(sizeof(t_philo) * 
-		philosophers->params->n_philos);
-	while (i <= philosophers->params->n_philos)
-	{
-		
-	}
-	
+	philo->id = i + 1;
+	philo->r_fork = &table->forks[i];
+	philo->l_fork = &table->forks[i + 1 % table->n_philos];
+	pthread_mutex_init(&philo->last_food_t, NULL);
+	pthread_mutex_init(&philo->num_food_t, NULL);
+	philo->table = table;
 }
 
-void	init_forks(t_global *philosophers)
+void	init_forks(t_table *table)
 {
 	int	i;
 
-	philosophers->forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * 
-		philosophers->params->n_philos);
-	if (!philosophers->forks)
+	table->forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t)
+			* table->n_philos);
+	if (!table->forks)
 		return ;
 	i = -1;
-	while (++i < philosophers->params->n_philos)
+	while (++i < table->n_philos)
 	{
-		if (pthread_mutex_init(&philosophers->forks[i], NULL) != 0)
+		if (pthread_mutex_init(&table->forks[i], NULL) != 0)
 		{
+			error_msg("PHILOSOPHERS: ERROR CREATING FORKS.");
 			return ;
+		}
+	}
+}
+
+void	create_threads(t_table *table)
+{
+	int	i;
+
+	i = -1;
+	table->philos = (t_philo *)malloc(sizeof(t_philo) * table->n_philos);
+	if (!table->philos)
+		return ;
+	while (++i < table->n_philos)
+		init_philos(&table->philos[i], i, table);
+	i = -1;
+	while (++i < table->n_philos)
+	{
+		if (pthread_create(&table->philos[i], NULL) != 0) //CREAR RUTINAS (LO QUE TIENEN QUE HACER LOS FILÓSOFOS)
+		{
+			error_msg("PHILOSOPHERS: ERROR CREATING THREADS FOR PHILOS.");
 		}
 	}
 }
