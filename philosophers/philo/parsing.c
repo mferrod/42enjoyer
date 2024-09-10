@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:50:34 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/06 12:37:18 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:51:55 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	handle_param(char **argv, int argc, t_table *table)
 {
-	table = malloc(sizeof(t_table *));
 	table->n_philos = make_number(argv[1]);
 	table->ttd = make_number(argv[2]);
 	table->tte = make_number(argv[3]);

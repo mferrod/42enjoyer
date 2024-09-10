@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 15:40:36 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/10 19:22:52 by marianof         ###   ########.fr       */
+/*   Created: 2024/09/10 19:50:23 by marianof          #+#    #+#             */
+/*   Updated: 2024/09/10 20:02:27 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int argc, char **argv)
+void	monitoring(void *arg)
 {
-	t_table	table;
+	t_philo	*philos;
 
-	if (argc - 1 != 4 && argc - 1 != 5)
-		return (printf("PHILOSOPHERS: INVALID NUMBER OF ARGUMENTS.\n"));
-	init_table(&table);
-	if (handle_param(argv, argc - 1, &table) == -1)
-		return (printf("PHILOSOPHERS: INVALID ARGUMENTS.\n"));
-	if (init_global(&table) == 1)
-		return (1);
-	return (0);
+	philos = (t_philo *) arg;
 }

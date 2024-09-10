@@ -1,7 +1,7 @@
 NAME	:= philosophers
 CFLAGS	:= -g -Wall -Werror -Wextra
 
-SRCS	:= main.c parsing.c inits.c utils.c
+SRCS	:= main.c parsing.c inits.c utils.c routines.c errors.c monitor.c
 	
 OBJS	:= ${SRCS:.c=.o}
 
