@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 14:41:53 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/11 17:04:36 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/11 20:27:40 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	*philo_routine(void *arg)
 	philo = (t_philo *)arg;
 	if ((philo->id % 2) == 0)
 		usleep(100);
-	while (philo->table->death_flag == 0)
+	while (check_death_global(philo) == 0)
 	{
- 		if (philo->table->death_flag == 1 || (
+ 		if (check_death_global(philo) == 1 || (
 			(philo->table->times_to_eat != -500 && philo->table->times_to_eat != -1)
 				&& philo->table->times_to_eat <= philo->times_eaten))
 			break ;
@@ -36,6 +36,8 @@ void	*philo_routine(void *arg)
 
 void	eat_routine(t_philo *philo)
 {
+	if (check_death_global(philo) == 1)
+		return ;
 	print_msg("is eating", philo);
 	ft_sleep(philo->table->tte);
 	pthread_mutex_lock(&philo->last_food_t);
@@ -48,11 +50,24 @@ void	eat_routine(t_philo *philo)
 
 void	sleep_routine(t_philo *philo)
 {
+	if (check_death_global(philo) == 1)
+		return ;
 	print_msg("is sleeping", philo);
 	ft_sleep(philo->table->tts);
 }
 
 void	think_routine(t_philo *philo)
 {
+	if (check_death_global(philo) == 1)
+		return ;
 	print_msg("is thinking", philo);
+}
+
+void	*one_philo(void *arg)
+{
+	t_philo	*philo;
+
+	philo = (t_philo *) arg;
+	philo->id = 1;
+	return NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:25:11 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/11 17:05:42 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/11 20:25:18 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	init_forks(t_table *table)
 	if (!table->forks)
 		return (error_msg("PHILOSOPHERS: ERROR ON FORKS MALLOC", table));
 	i = -1;
-	//table->start_time = get_current_time();
 	while (++i < table->n_philos)
 	{
 		if (pthread_mutex_init(&table->forks[i], NULL) != 0)
@@ -53,17 +52,13 @@ int	create_threads(t_table *table)
 		return (error_msg("PHILOSOPHERS: ERROR ON PHILOS MALLOC", table));
 	while (++i < table->n_philos)
 		init_philos(&table->philos[i], i, table);
-	i = -1;
 	table->start_time = get_current_time();
 	if (pthread_create(&monitor, NULL, monitoring, (void *)table->philos) != 0)
 		return (error_msg("PHILOSOPHERS: ERROR CREATING MONITOR", table));
-	while (++i < table->n_philos)
-	{		
-		if (pthread_create(&table->philos[i].thread, NULL, philo_routine,
-				(void *)&table->philos[i]) != 0)
-			return (error_msg("PHILOSOPHERS: ERROR CREATING THREADS FOR PHILOS.",
-				table));
-	}
+	if (init_threads(table) == 1)
+		return (1);
+	if (pthread_join(monitor, NULL))
+		return (error_msg("PHILOSOPHERS: ERROR JOINING MONITOR", table));
 	return (0);
 }
 
@@ -89,4 +84,5 @@ void	init_table(t_table *table)
 	table->eating = 0;
 	table->death_flag = 0;
 	pthread_mutex_init(&table->write_t, NULL);
+	pthread_mutex_init(&table->death_t, NULL);
 }

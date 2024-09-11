@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:17:14 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/11 17:07:48 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/11 20:00:13 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ long	get_current_time(void)
 void	print_msg(char *str, t_philo *philo)
 {
 	pthread_mutex_lock(&philo->table->write_t);
-	if (philo->table->death_flag == 0)
+	if (check_death_global(philo) == 0)
 		printf("[%ld] %d %s\n", get_current_time() - philo->table->start_time,
 			philo->id, str);
 	pthread_mutex_unlock(&philo->table->write_t);
@@ -45,15 +45,25 @@ void	forks_states(t_philo *philo, int i)
 {
 	if (i == 1)
 	{
-		pthread_mutex_lock(philo->r_fork);
-		print_msg("has taken a fork", philo);
-		pthread_mutex_lock(philo->l_fork);
-		print_msg("has taken a fork", philo);
+		if ((philo->id % 2) == 0)
+		{
+			pthread_mutex_lock(philo->l_fork);
+			print_msg("has taken a fork", philo);
+			pthread_mutex_lock(philo->r_fork);
+			print_msg("has taken a fork", philo);
+		}
+		else
+		{
+			pthread_mutex_lock(philo->r_fork);
+			print_msg("has taken a fork", philo);
+			pthread_mutex_lock(philo->l_fork);
+			print_msg("has taken a fork", philo);
+		}
 	}
 	else
 	{
-		pthread_mutex_unlock(philo->r_fork);
 		pthread_mutex_unlock(philo->l_fork);
+		pthread_mutex_unlock(philo->r_fork);
 	}
 }
 

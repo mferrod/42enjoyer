@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:19:20 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/11 16:45:09 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/11 20:27:13 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ struct	s_philo;
 typedef struct s_table
 {
 	int							n_philos;
-	int							ttd;
-	int							tte;
-	int							tts;
+	int							ttd; //Time to die
+	int							tte; //Time to eat
+	int							tts; //Time to sleep
 	int							times_to_eat;
 	struct s_philo				*philos;
 	pthread_mutex_t				*forks;
@@ -37,6 +37,7 @@ typedef struct s_table
 	long						start_time;
 	int							death_flag;
 	pthread_mutex_t				write_t;
+	pthread_mutex_t				death_t;
 }						t_table;
 
 typedef struct s_philo
@@ -69,6 +70,9 @@ void	ft_sleep(long milliseconds);
 long	get_current_time(void);
 void	print_msg(char *str, t_philo *philo);
 void	forks_states(t_philo *philo, int i);
+int		check_death_global(t_philo *philo);
+int		check_times_eaten(t_philo *philo);
+int		init_threads(t_table *table);
 
 //ERRORS AND FREES
 int		error_msg(char *str, t_table *table);
@@ -82,5 +86,6 @@ void	sleep_routine(t_philo *philo);
 void	think_routine(t_philo *philo);
 void	*monitoring(void *arg);
 int		check_death(t_philo *philo, long time);
+void	*one_philo(void *arg);
 
 #endif
