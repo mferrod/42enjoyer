@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:19:20 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/10 19:59:32 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:45:09 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	int				times_eaten;
 	long			last_food;
+	int				alive;
 	pthread_mutex_t	*r_fork;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	last_food_t;
@@ -79,6 +80,7 @@ void	*philo_routine(void *arg);
 void	eat_routine(t_philo *philo);
 void	sleep_routine(t_philo *philo);
 void	think_routine(t_philo *philo);
-void	monitoring(void *arg);
+void	*monitoring(void *arg);
+int		check_death(t_philo *philo, long time);
 
 #endif

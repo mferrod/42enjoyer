@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 14:41:53 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/10 19:48:09 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:04:36 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	*philo_routine(void *arg)
 		usleep(100);
 	while (philo->table->death_flag == 0)
 	{
-		if (philo->table->death_flag == 1 || (philo->table->times_to_eat != -500
+ 		if (philo->table->death_flag == 1 || (
+			(philo->table->times_to_eat != -500 && philo->table->times_to_eat != -1)
 				&& philo->table->times_to_eat <= philo->times_eaten))
 			break ;
 		forks_states(philo, 1);
@@ -38,7 +39,7 @@ void	eat_routine(t_philo *philo)
 	print_msg("is eating", philo);
 	ft_sleep(philo->table->tte);
 	pthread_mutex_lock(&philo->last_food_t);
-	philo->last_food = get_current_time();
+	philo->last_food = get_current_time() - philo->table->start_time;
 	pthread_mutex_unlock(&philo->last_food_t);
 	pthread_mutex_lock(&philo->num_food_t);
 	philo->times_eaten++;

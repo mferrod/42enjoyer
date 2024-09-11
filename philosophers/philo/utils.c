@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:17:14 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/10 19:31:01 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:07:48 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ long	get_current_time(void)
 void	print_msg(char *str, t_philo *philo)
 {
 	pthread_mutex_lock(&philo->table->write_t);
-	printf("[%ld] %d %s\n", get_current_time() - philo->table->start_time,
-		philo->id, str);
+	if (philo->table->death_flag == 0)
+		printf("[%ld] %d %s\n", get_current_time() - philo->table->start_time,
+			philo->id, str);
 	pthread_mutex_unlock(&philo->table->write_t);
 }
 
@@ -63,7 +64,7 @@ int	create_joins(t_table *table)
 	i = -1;
 	while (++i < table->n_philos)
 	{
-		if (pthread_join(&table->philos[i].thread, NULL))
+		if (pthread_join(table->philos[i].thread, NULL))
 			return (error_msg("PHILOSOPHERS: ERROR JOINING THREADS FOR PHILOS.",
 					table));
 	}

@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:58:09 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/10 19:35:58 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:26:56 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	error_msg(char *str, t_table *table)
 		free_philos(table->philos);
 	if (table->forks)
 		free(table->forks);
+	return (1);
 }
 
 void	free_philos(t_philo *philo)
