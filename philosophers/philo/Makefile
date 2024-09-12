@@ -1,5 +1,5 @@
 NAME	:= philosophers
-CFLAGS	:= -g -Wall -Werror -Wextra -fsanitize=thread
+CFLAGS	:= -g -Wall -Werror -Wextra #-fsanitize=thread
 
 SRCS	:= main.c parsing.c inits.c utils.c routines.c errors.c monitor.c utils_dr.c
 	

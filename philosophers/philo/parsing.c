@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:50:34 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/10 18:51:55 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:14:18 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,18 @@ int	handle_param(char **argv, int argc, t_table *table)
 		|| table->ttd == -500
 		|| table->tte == -500
 		|| table->tts == -500
-		|| table->times_to_eat == -500)
+		|| table->times_to_eat == -500
+		|| table->n_philos == 0
+		|| table->n_philos > 200
+		|| check_times(table) == 1)
 		return (-1);
 	return (0);
 }
 
 int	make_number(char *number)
 {
-	int	i;
-	int	to_ret;
+	int		i;
+	long	to_ret;
 
 	i = 0;
 	to_ret = 0;
@@ -50,4 +53,12 @@ int	make_number(char *number)
 	if (to_ret > INT_MAX)
 		return (-500);
 	return (to_ret);
+}
+
+int	check_times(t_table *table)
+{
+	if (table->ttd < 60 || table->tte < 60
+		|| table->tts < 60)
+		return (1);
+	return (0);
 }

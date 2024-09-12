@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:21:57 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/11 20:28:34 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:50:18 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,18 @@ int	init_threads(t_table *table)
 	if (table->n_philos == 1)
 	{
 		if (pthread_create(&table->philos[0].thread, NULL, one_philo,
-				(void *)&table->philos[i]) != 0)
-				return (error_msg("PHILOSOPHERS: ERROR CREATING ONE PHILO", table));
+				(void *)&table->philos[0]) != 0)
+			return (error_msg("PHILOSOPHERS: ERROR CREATING ONE PHILO", table));
 	}
 	else
 	{
 		while (++i < table->n_philos)
-		{		
+		{
 			if (pthread_create(&table->philos[i].thread, NULL, philo_routine,
 					(void *)&table->philos[i]) != 0)
-				return (error_msg("PHILOSOPHERS: ERROR CREATING THREADS FOR PHILOS.",
-					table));
+				return (error_msg(
+						"PHILOSOPHERS: ERROR CREATING THREADS FOR PHILOS.",
+						table));
 		}
 	}
 	return (0);

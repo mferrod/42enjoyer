@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:19:20 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/11 20:27:13 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:13:45 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_philo
 //PARSING
 int		handle_param(char **argv, int argc, t_table *philo);
 int		make_number(char *number);
+int		check_times(t_table *table);
 
 //INITS
 int		init_forks(t_table *philosophers);

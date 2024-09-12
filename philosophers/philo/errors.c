@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:58:09 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/11 15:26:56 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/12 15:30:31 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	free_philos(t_philo *philo)
 	i = 0;
 	while (&philo[i])
 	{
-		pthread_mutex_destroy(philo->l_fork);
-		pthread_mutex_destroy(philo->r_fork);
 		pthread_mutex_destroy(&philo->last_food_t);
 		pthread_mutex_destroy(&philo->num_food_t);
 		i++;

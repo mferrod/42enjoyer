@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:25:11 by marianof          #+#    #+#             */
-/*   Updated: 2024/09/11 20:25:18 by marianof         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:50:26 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	init_forks(t_table *table)
 int	create_threads(t_table *table)
 {
 	pthread_t	monitor;
-	int	i;
+	int			i;
 
 	i = -1;
 	table->philos = (t_philo *)malloc(sizeof(t_philo) * table->n_philos);
