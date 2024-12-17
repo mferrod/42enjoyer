@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "pipex.h": "c",
-        "errno.h": "c",
-        "unistd.h": "c"
-    }
-}
