@@ -23,7 +23,7 @@
 ## PHILOSOPHERS
 * 100% - COMPLETED
 
-## MINISHELL
+## MINISHELL - [@squee4](https://github.com/squee4)
 * 100% - COMPLETED
 
 ## CPP-00
