@@ -5,7 +5,7 @@ CFLAGS	:=  -Wall -Werror -Wextra -std=c++98 \
 	#-g #-fsanitize=address,undefined \
 	#-Wunreachable-code -Ofast 
 
-SRCS	:= megaphone.cpp
+SRCS	:= Contact.hpp Conctact.cpp PhoneBook.cpp PhoneBook.hpp
 
 OBJS	:= ${SRCS:.cpp=.o}
 CC		:= g++

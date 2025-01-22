@@ -2,15 +2,18 @@
 #define PHONEBOOK_HPP
 
 #include <iostream>
-#include "Conctact.hpp"
+#include "Contact.hpp"
 
 class PhoneBook
 {
 	private:
-		Contact
+		Contact contacts[8];
+		int		actualNumberContacts;
+		void	replaceContactList(Contact contact);
 	public:
-		PhoneBook(/* args */);
+		PhoneBook();
 		~PhoneBook();
+		void addContact(Contact contact);
 };
 
 #endif
