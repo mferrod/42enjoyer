@@ -1,14 +1,14 @@
 ### // MAKEFILE // ###
 
-NAME	:= megaphone
+NAME	:= phonebook
 CFLAGS	:=  -Wall -Werror -Wextra -std=c++98 \
 	#-g #-fsanitize=address,undefined \
 	#-Wunreachable-code -Ofast 
 
-SRCS	:= Contact.hpp Conctact.cpp PhoneBook.cpp PhoneBook.hpp
+SRCS	:= Contact.cpp PhoneBook.cpp main.cpp
 
 OBJS	:= ${SRCS:.cpp=.o}
-CC		:= g++
+CC		:= c++
 
 all: $(NAME)
 

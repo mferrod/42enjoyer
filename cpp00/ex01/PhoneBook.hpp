@@ -10,10 +10,13 @@ class PhoneBook
 		Contact contacts[8];
 		int		actualNumberContacts;
 		void	replaceContactList(Contact contact);
+		std::string	charWider(std::string str);
 	public:
 		PhoneBook();
 		~PhoneBook();
 		void addContact(Contact contact);
+		void searchContact(int contactIndex);
+		void listContacts();
 };
 
 #endif

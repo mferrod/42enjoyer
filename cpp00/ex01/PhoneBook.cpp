@@ -1,16 +1,15 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 #include <string>
+#include <sstream>
 
 PhoneBook::PhoneBook(void)
 {
 	this->actualNumberContacts = 0;
-	std::cout << "PhoneBook default constructor called." << std::endl;
 }
 
 PhoneBook::~PhoneBook(void)
 {
-	std::cout << "PhoneBook default deconstructor called." << std::endl;
 }
 
 void  PhoneBook :: addContact(Contact contact)
@@ -73,9 +72,40 @@ void  PhoneBook :: addContact(Contact contact)
 void PhoneBook :: replaceContactList(Contact contact)
 {
 	Contact aux[8];
-	for (size_t i = 0; i < this->actualNumberContacts - 1; i++)
+	for (int i = 0; i < this->actualNumberContacts - 1; i++)
 		aux[i] = contacts[i + 1];
 	aux[this->actualNumberContacts - 1] = contact;
-	for (size_t i = 0; i < this->actualNumberContacts; i++)
+	for (int i = 0; i < this->actualNumberContacts; i++)
 		this->contacts[i] = aux[i];
+}
+
+void PhoneBook :: listContacts()
+{
+	std::cout << "INDEX\tFIRST NAME\tLAST NAME\tNICKNAME\n";
+	for (int i = 0; i < this->actualNumberContacts; i++)
+	{
+		std::ostringstream oss;
+		oss << i;
+		std::cout << oss.str() + "\t|\t" + charWider(this->contacts[i].getFirstName()) + "\t|\t"
+	+ charWider(this->contacts[i].getLastName()) + "\t|\t"
+	+ charWider(this->contacts[i].getNickName()) << std::endl;
+	}
+}
+
+void PhoneBook :: searchContact(int contactIndex)
+{
+	if (contactIndex > this->actualNumberContacts)
+		return ;
+	std::cout << "\n" +  charWider(this->contacts[contactIndex].getFirstName()) + "\n"
+	+ charWider(this->contacts[contactIndex].getLastName()) + "\n"
+	+ charWider(this->contacts[contactIndex].getNickName()) + "\n"
+	+ charWider(this->contacts[contactIndex].getNumber()) + "\n"
+	+ charWider(this->contacts[contactIndex].getSecret()) + "\n";
+}
+
+std::string PhoneBook :: charWider(std::string str)
+{
+	if (str.size() > 10)
+		return (str.substr(0, 9) + ".");
+	return (str);
 }
