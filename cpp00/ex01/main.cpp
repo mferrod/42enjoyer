@@ -11,6 +11,8 @@ int main(void)
 	{
 		std::cout << "TO ADD A CONTACT, TYPE ADD, TO SEARCH A CONTACT, TYPE SEARCH, TO EXIT, TYPE EXIT" << std::endl;
 		std::getline(std::cin, phrase);
+		if (phrase.empty())
+			return (1);
 		if (phrase == "ADD")
 		{
 			Contact contact;
