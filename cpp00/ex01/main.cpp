@@ -13,6 +13,8 @@ int main(void)
 		std::getline(std::cin, phrase);
 		if (phrase.empty())
 			return (1);
+		if (std::cin.eof() || !std::cin.good())
+			return (1);
 		if (phrase == "ADD")
 		{
 			Contact contact;
