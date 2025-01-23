@@ -5,7 +5,7 @@ CFLAGS	:=  -Wall -Werror -Wextra -std=c++98 \
 	#-g #-fsanitize=address,undefined \
 	#-Wunreachable-code -Ofast 
 
-SRCS	:= main.cpp Zombie.cpp
+SRCS	:= main.cpp Zombie.cpp zombieHorde.cpp
 
 OBJS	:= ${SRCS:.cpp=.o}
 CC		:= c++

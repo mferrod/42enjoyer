@@ -1,8 +1,8 @@
 #include "Zombie.hpp"
 #include <string>
 
-Zombie :: Zombie(std::string name) {
-	this->name = name;
+Zombie :: Zombie() {
+	
 }
 
 Zombie :: ~Zombie() {
