@@ -1,6 +1,6 @@
 ### // MAKEFILE // ###
 
-NAME	:= zombie
+NAME	:= hi_this_is_brain
 CFLAGS	:=  -Wall -Werror -Wextra -std=c++98 \
 	#-g #-fsanitize=address,undefined \
 	#-Wunreachable-code -Ofast 
