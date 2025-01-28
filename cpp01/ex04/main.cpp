@@ -4,11 +4,19 @@
 
 std::string replaceWords(std::string text, std::string w1, std::string w2)
 {
-	for (size_t i = 0; i < text.size(); i++)
+	size_t	position;
+	size_t	found;
+
+	std::string result;
+	position = 0;
+	while ((found = text.find(w1, position)) != std::string::npos)
 	{
-		text.find()
+		result.append(text, position, found - position);
+		result.append(w2);
+		position = found + w1.length();
 	}
-		
+	result.append(text, position, text.length() - position);
+	return (result);
 }
 
 int main(int argc, char const *argv[])
