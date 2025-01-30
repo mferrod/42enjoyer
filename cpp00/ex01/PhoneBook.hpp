@@ -17,6 +17,7 @@ class PhoneBook
 		void addContact(Contact contact);
 		void searchContact(int contactIndex);
 		void listContacts();
+		bool checkIfNumber(char *str);
 };
 
 #endif

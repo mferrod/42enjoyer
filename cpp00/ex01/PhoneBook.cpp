@@ -43,9 +43,14 @@ void  PhoneBook :: addContact(Contact contact)
 	contact.setNickName(phrase);
 	phrase.erase();
 	while (phrase == "")
-	{ //Hacer checker para ver que el número esté bien.
+	{
 		std::cout << "ENTER NUMBER: ";
 		std::getline(std::cin, phrase);
+		if (!checkIfNumber((char*)phrase.c_str()))
+		{
+			phrase.erase();
+			std::cout << "ONLY NUMBERS!" << std::endl;
+		}
 		if (std::cin.eof() || !std::cin.good())
 			return;
 	}
@@ -96,6 +101,8 @@ void PhoneBook :: searchContact(int contactIndex)
 {
 	if (contactIndex > this->actualNumberContacts)
 		return ;
+	if (contactIndex < 0)
+		return ;
 	std::cout << "\n" +  charWider(this->contacts[contactIndex].getFirstName()) + "\n"
 	+ charWider(this->contacts[contactIndex].getLastName()) + "\n"
 	+ charWider(this->contacts[contactIndex].getNickName()) + "\n"
@@ -108,4 +115,17 @@ std::string PhoneBook :: charWider(std::string str)
 	if (str.size() > 10)
 		return (str.substr(0, 9) + ".");
 	return (str);
+}
+
+bool PhoneBook :: checkIfNumber(char *str)
+{
+	int i = 0;
+	while (str[i])
+	{
+		if (str[i] < '0' && str[i] > '9')
+			return (false);
+		i++;
+	}
+	
+	return (true);
 }
