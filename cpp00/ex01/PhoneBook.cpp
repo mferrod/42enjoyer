@@ -46,7 +46,7 @@ void  PhoneBook :: addContact(Contact contact)
 	{
 		std::cout << "ENTER NUMBER: ";
 		std::getline(std::cin, phrase);
-		if (!checkIfNumber((char*)phrase.c_str()))
+		if (checkIfNumber((char*)phrase.c_str()) == false)
 		{
 			phrase.erase();
 			std::cout << "ONLY NUMBERS!" << std::endl;
@@ -103,11 +103,11 @@ void PhoneBook :: searchContact(int contactIndex)
 		return ;
 	if (contactIndex < 0)
 		return ;
-	std::cout << "\n" +  charWider(this->contacts[contactIndex].getFirstName()) + "\n"
-	+ charWider(this->contacts[contactIndex].getLastName()) + "\n"
-	+ charWider(this->contacts[contactIndex].getNickName()) + "\n"
-	+ charWider(this->contacts[contactIndex].getNumber()) + "\n"
-	+ charWider(this->contacts[contactIndex].getSecret()) + "\n";
+	std::cout << "\nName: " + charWider(this->contacts[contactIndex].getFirstName()) + "\nLast name: "
+	+ charWider(this->contacts[contactIndex].getLastName()) + "\nNickname: "
+	+ charWider(this->contacts[contactIndex].getNickName()) + "\nNumber: "
+	+ charWider(this->contacts[contactIndex].getNumber()) + "\nSecret: "
+	+ charWider(this->contacts[contactIndex].getSecret()) << std::endl;
 }
 
 std::string PhoneBook :: charWider(std::string str)
@@ -122,10 +122,9 @@ bool PhoneBook :: checkIfNumber(char *str)
 	int i = 0;
 	while (str[i])
 	{
-		if (str[i] < '0' && str[i] > '9')
+		if (str[i] < '0' || str[i] > '9')
 			return (false);
 		i++;
 	}
-	
 	return (true);
 }
