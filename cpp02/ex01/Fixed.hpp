@@ -6,7 +6,6 @@
 class Fixed {
 private:
 	int fixedPoint;
-	float fixedPoint;
 	static const int fractionalNumber = 8;
 public:
 	Fixed();
