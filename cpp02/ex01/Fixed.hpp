@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 
 #ifndef FIXED_HPP
 #define FIXED_HPP
@@ -19,4 +20,5 @@ public:
 	float toFloat(void) const;
 	int toInt(void) const;
 };
+std::ostream &operator<<(std::ostream &o, const Fixed &ex);
 #endif
