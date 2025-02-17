@@ -9,5 +9,5 @@ ScavTrap :: ~ScavTrap() {
 }
 
 void ScavTrap :: guardGate() {
-	
+
 }

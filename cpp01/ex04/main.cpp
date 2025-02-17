@@ -32,6 +32,11 @@ int main(int argc, char const *argv[])
 	std::fstream new_file;
 	std::string txt;
 
+	if (word1.size() <= 0)
+	{
+		std::cout << "First argument is need more than 0 characters." << std::endl;
+		return 1;
+	}
 	new_file.open(pathToFile.c_str(), std::fstream::in);
 	if (new_file.is_open())
 	{
