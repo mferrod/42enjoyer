@@ -9,9 +9,36 @@ ClapTrap :: ClapTrap()
 	this->name = "NULL";
 }
 
+ClapTrap :: ClapTrap(const ClapTrap &fix)
+{
+	//std::cout << "Copy constructor called";
+	*this = fix;
+}
+
+ClapTrap :: ClapTrap(std::string name)
+{
+	this->name = name;
+	this->hitPoints = 10;
+	this->energyPoints = 10;
+	this->attackDamage = 0;
+}
+
 ClapTrap :: ~ClapTrap()
 {
 	std::cout << "DECONSTRUCTOR CALLED" << std::endl;
+}
+
+ClapTrap& ClapTrap :: operator=(const ClapTrap &fix)
+{
+	//std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &fix)
+	{
+		this->name = fix.name;
+		this->hitPoints = fix.hitPoints;
+		this->energyPoints = fix.energyPoints;
+		this->attackDamage = fix.attackDamage;
+	}
+	return *this;
 }
 
 void ClapTrap :: takeDamage(unsigned int amount)
@@ -22,14 +49,14 @@ void ClapTrap :: takeDamage(unsigned int amount)
 
 void ClapTrap :: beRepaired(unsigned int amount)
 {
-	if (this->energyPoints < amount)
+	if (this->energyPoints <= 0)
 	{
-		std::cout << "ClapTrap can't be repaired, because the energy points are below than the total repair points." << std::endl;
+		std::cout << "ClapTrap can't be repaired, because the energy points is zero or negative." << std::endl;
 		return ;
 	}
 	if (amount <= 0)
 	{
-		std::cout << "ClapTrap wasn't repair because the repair points are 0 or negative." << std::endl;
+		std::cout << "ClapTrap wasn't repair because the repair points are zero or negative." << std::endl;
 		return ;
 	}
 	else

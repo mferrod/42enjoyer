@@ -15,6 +15,14 @@ ClapTrap :: ClapTrap(const ClapTrap &fix)
 	*this = fix;
 }
 
+ClapTrap :: ClapTrap(std::string name)
+{
+	this->name = name;
+	this->hitPoints = 10;
+	this->energyPoints = 10;
+	this->attackDamage = 0;
+}
+
 ClapTrap :: ~ClapTrap()
 {
 	std::cout << "DECONSTRUCTOR CALLED" << std::endl;
@@ -25,10 +33,10 @@ ClapTrap& ClapTrap :: operator=(const ClapTrap &fix)
 	//std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &fix)
 	{
-		this->setName(fix.getName());
-		this->setHitPoints(fix.getHitPoints());
-		this->setEnergyPoints(fix.getEnergyPoints());
-		this->setAttackDamage(fix.getAttackDamage());
+		this->name = fix.name;
+		this->hitPoints = fix.hitPoints;
+		this->energyPoints = fix.energyPoints;
+		this->attackDamage = fix.attackDamage;
 	}
 	return *this;
 }
@@ -71,44 +79,4 @@ void ClapTrap :: attack(const std::string& target)
 		return ;
 	}
 	std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->attackDamage << " points of damage!" << std::endl;
-}
-
-std::string ClapTrap :: getName(void) const
-{
-	return this->name; 
-}
-
-int ClapTrap :: getHitPoints(void) const
-{
-	return this->hitPoints;
-}
-
-int ClapTrap :: getEnergyPoints(void) const
-{
-	return this->energyPoints;
-}
-
-int ClapTrap :: getAttackDamage(void) const
-{
-	return this->attackDamage;
-}
-
-void ClapTrap :: setName(std::string name)
-{
-	this->name = name;
-}
-
-void ClapTrap :: setHitPoints(int points)
-{
-	this->hitPoints = points;
-}
-
-void ClapTrap :: setEnergyPoints(int points)
-{
-	this->energyPoints = points;
-}
-
-void ClapTrap :: setAttackDamage(int damage)
-{
-	this->attackDamage = damage;
 }
