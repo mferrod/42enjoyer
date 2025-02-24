@@ -2,7 +2,7 @@
 
 ClapTrap :: ClapTrap()
 {
-	std::cout << "CONSTRUCTOR CALLED" << std::endl;
+	std::cout << "Claptrap default CONSTRUCTOR CALLED" << std::endl;
 	this->attackDamage = 0;
 	this->energyPoints = 10;
 	this->hitPoints = 10;
@@ -17,6 +17,7 @@ ClapTrap :: ClapTrap(const ClapTrap &fix)
 
 ClapTrap :: ClapTrap(std::string name)
 {
+	std::cout << "Claptrap name CONSTRUCTOR CALLED" << std::endl;
 	this->name = name;
 	this->hitPoints = 10;
 	this->energyPoints = 10;
@@ -25,7 +26,7 @@ ClapTrap :: ClapTrap(std::string name)
 
 ClapTrap :: ~ClapTrap()
 {
-	std::cout << "DECONSTRUCTOR CALLED" << std::endl;
+	std::cout << "ClapTrap DECONSTRUCTOR CALLED" << std::endl;
 }
 
 ClapTrap& ClapTrap :: operator=(const ClapTrap &fix)

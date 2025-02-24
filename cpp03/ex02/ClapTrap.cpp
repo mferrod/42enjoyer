@@ -17,7 +17,7 @@ ClapTrap :: ClapTrap(const ClapTrap &fix)
 
 ClapTrap :: ClapTrap(std::string name)
 {
-	std::cout << "Claptrap name CONSTRUCTOR CALLED" << std::endl;
+	std::cout << "ClapTrap name constructor called" << std::endl;
 	this->name = name;
 	this->hitPoints = 10;
 	this->energyPoints = 10;
@@ -26,7 +26,7 @@ ClapTrap :: ClapTrap(std::string name)
 
 ClapTrap :: ~ClapTrap()
 {
-	std::cout << "ClapTRap DECONSTRUCTOR CALLED" << std::endl;
+	std::cout << "ClapTrap DECONSTRUCTOR CALLED" << std::endl;
 }
 
 ClapTrap& ClapTrap :: operator=(const ClapTrap &fix)
