@@ -11,7 +11,7 @@ ClapTrap :: ClapTrap()
 
 ClapTrap :: ClapTrap(const ClapTrap &fix)
 {
-	//std::cout << "Copy constructor called";
+	//std::cout << "ClapTrap copy constructor called";
 	*this = fix;
 }
 
@@ -31,7 +31,7 @@ ClapTrap :: ~ClapTrap()
 
 ClapTrap& ClapTrap :: operator=(const ClapTrap &fix)
 {
-	//std::cout << "Copy assignment operator called" << std::endl;
+	//std::cout << "ClapTrap copy assignment operator called" << std::endl;
 	if (this != &fix)
 	{
 		this->name = fix.name;

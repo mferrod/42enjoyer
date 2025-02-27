@@ -7,6 +7,10 @@ class Dog : public Animal {
 	private:
 
 	public:
+		Dog();
+		Dog(const Dog &data);
+		~Dog();
+		Dog &operator=(const Dog &data);
 		void makeSound();
 };
 
