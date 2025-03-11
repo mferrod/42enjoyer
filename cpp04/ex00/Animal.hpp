@@ -13,7 +13,7 @@ class Animal
 		Animal &operator=(const Animal &data);
 		~Animal();
 		std::string getType() const;
-		void setType(std::string type) ;
+		void setType(std::string type);
 		void makeSound() const;
 };
 
