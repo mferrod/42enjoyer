@@ -1,22 +1,24 @@
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(/* args */)
+WrongAnimal::WrongAnimal(void)
 {
+	std::cout << "Call WrongAnimal default constructor" << std::endl;
 }
 
-WrongAnimal::~WrongAnimal()
+WrongAnimal::~WrongAnimal(void)
 {
+	std::cout << "Call WrongAnimal default desconstructor" << std::endl;
 }
 
 WrongAnimal :: WrongAnimal(const WrongAnimal &data)
 {
-	//std::cout << "WrongAnimal Copy constructor called";
+	std::cout << "WrongAnimal Copy constructor called";
 	*this = data;
 }
 
 WrongAnimal& WrongAnimal :: operator=(const WrongAnimal &data)
 {
-	//std::cout << "WrongAnimal copy assignment operator called" << std::endl;
+	std::cout << "WrongAnimal copy assignment operator called" << std::endl;
 	if (this != &data)
 	{
 		*this = data;
@@ -24,7 +26,7 @@ WrongAnimal& WrongAnimal :: operator=(const WrongAnimal &data)
 	return *this;
 }
 
-std::string WrongAnimal :: getType() const
+std::string WrongAnimal :: getType(void) const
 {
 	return this->type;
 }
@@ -36,5 +38,5 @@ void WrongAnimal :: setType(std::string type)
 
 void WrongAnimal :: makeSound() const
 {
-	std::cout << "DEFAULT SOUND." << std::endl;
+	std::cout << "WrongAnimal SOUND." << std::endl;
 }

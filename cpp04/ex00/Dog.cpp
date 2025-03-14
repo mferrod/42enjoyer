@@ -12,13 +12,13 @@ Dog :: ~Dog()
 
 Dog :: Dog(const Dog &fix)
 {
-	//std::cout << "Dog copy constructor called";
-	*this = fix;
+	std::cout << "Dog copy constructor called";
+	this->type = fix.type;
 }
 
 Dog& Dog :: operator=(const Dog &fix)
 {
-	//std::cout << "Dog copy assignment operator called" << std::endl;
+	std::cout << "Dog copy assignment operator called" << std::endl;
 	if (this != &fix)
 	{
 		this->type = fix.type;
@@ -26,7 +26,7 @@ Dog& Dog :: operator=(const Dog &fix)
 	return *this;
 }
 
-void Dog :: makeSound()
+void Dog :: makeSound() const
 {
 	std::cout << "GUAU GUAU" << std::endl;
 }

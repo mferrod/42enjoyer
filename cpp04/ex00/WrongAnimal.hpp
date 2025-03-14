@@ -11,8 +11,9 @@ private:
 public:
 	WrongAnimal(/* args */);
 	~WrongAnimal();
+	WrongAnimal(const WrongAnimal &data);
 	WrongAnimal &operator=(const WrongAnimal &data);
-	std::string WrongAnimal :: getType() const;
+	std::string getType() const;
 	void setType(std::string type);
 	void makeSound() const;
 };

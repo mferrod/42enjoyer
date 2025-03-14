@@ -11,7 +11,7 @@ class Dog : public Animal {
 		Dog(const Dog &data);
 		~Dog();
 		Dog &operator=(const Dog &data);
-		void makeSound();
+		void makeSound() const ;
 };
 
 #endif

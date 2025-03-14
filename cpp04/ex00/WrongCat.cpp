@@ -7,13 +7,13 @@ WrongCat :: WrongCat()
 
 WrongCat :: WrongCat(const WrongCat &data)
 {
-	//std::cout << "WrongCat Copy constructor called";
+	std::cout << "WrongCat Copy constructor called";
 	*this = data;
 }
 
 WrongCat& WrongCat :: operator=(const WrongCat &data)
 {
-	//std::cout << "WrongCat copy assignment operator called" << std::endl;
+	std::cout << "WrongCat copy assignment operator called" << std::endl;
 	if (this != &data)
 	{
 		*this = data;
@@ -28,5 +28,5 @@ WrongCat :: ~WrongCat()
 
 void WrongCat :: makeSound()
 {
-	std::cout << "MIAU MIAU" << std::endl;
+	std::cout << "Wrong Cat Sound." << std::endl;
 }

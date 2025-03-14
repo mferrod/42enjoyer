@@ -7,13 +7,13 @@ Cat :: Cat()
 
 Cat :: Cat(const Cat &data)
 {
-	//std::cout << "Cat Copy constructor called";
-	*this = data;
+	std::cout << "Cat Copy constructor called";
+	this->type = data.type;
 }
 
 Cat& Cat :: operator=(const Cat &data)
 {
-	//std::cout << "Cat copy assignment operator called" << std::endl;
+	std::cout << "Cat copy assignment operator called" << std::endl;
 	if (this != &data)
 	{
 		*this = data;
@@ -26,7 +26,7 @@ Cat :: ~Cat()
 	std::cout << "Default Cat destructor called." << std::endl;
 }
 
-void Cat :: makeSound()
+void Cat :: makeSound() const
 {
 	std::cout << "MIAU MIAU" << std::endl;
 }

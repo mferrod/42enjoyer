@@ -12,13 +12,13 @@ Animal :: ~Animal()
 
 Animal :: Animal(const Animal &data)
 {
-	//std::cout << "Animal Copy constructor called";
+	std::cout << "Animal Copy constructor called";
 	*this = data;
 }
 
 Animal& Animal :: operator=(const Animal &data)
 {
-	//std::cout << "Animal copy assignment operator called" << std::endl;
+	std::cout << "Animal copy assignment operator called" << std::endl;
 	if (this != &data)
 	{
 		*this = data;
