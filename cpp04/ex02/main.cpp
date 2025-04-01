@@ -1,16 +1,10 @@
-#include "WrongAnimal.hpp"
 #include "Animal.hpp"
-#include "Cat.hpp"
-#include "WrongCat.hpp"
 #include "Dog.hpp"
-#include "Brain.hpp"
+#include "Cat.hpp"
 
-int main()
-{
-	Animal mati;
-	//Dog mati;
-	Cat Tobi;
-
-
-
+int main() {
+    Dog dog;
+    Animal *animal = new Dog(dog);
+    std::cout << "Animal type: " << animal->getType() << std::endl;
+    return 0;
 }

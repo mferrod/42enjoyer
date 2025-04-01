@@ -1,4 +1,4 @@
-TARGET = Polymorphism
+TARGET = idontwanttosettheworldonfire
 
 SRCS = main.cpp \
 		Dog.cpp \

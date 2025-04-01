@@ -10,7 +10,7 @@ Dog :: ~Dog()
 	std::cout << "Default Dog destructor called." << std::endl;
 }
 
-Dog :: Dog(const Dog &fix)
+Dog :: Dog(const Dog &fix) : Animal()
 {
 	std::cout << "Dog copy constructor called";
 	this->type = fix.type;

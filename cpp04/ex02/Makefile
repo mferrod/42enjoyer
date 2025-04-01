@@ -1,4 +1,4 @@
-TARGET = Polymorphism
+TARGET = abstractclass
 
 SRCS = main.cpp \
 		Dog.cpp \

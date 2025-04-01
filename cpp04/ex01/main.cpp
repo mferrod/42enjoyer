@@ -10,19 +10,19 @@ int main()
 	int x = 10;
 	Animal *AnimalArray[x];
 	int i = 0;
-	std::cout << "Create a Dog" << std::endl;
+	std::cout << "Creating dog" << std::endl;
 	while(i < x / 2)
 	{
 		AnimalArray[i] = new Dog();
 		i++;
 	}
-	std::cout << "Create a Cat" << std::endl;
+	std::cout << "Creating cat" << std::endl;
 	while(i < x)
 	{
 		AnimalArray[i] = new Cat();
 		i++;
 	}
-	std::cout << "Animal Sounds" << std::endl;
+	std::cout << "Creating animal sounds" << std::endl;
 	i = 0;
 	while(i < x)
 	{
@@ -31,7 +31,7 @@ int main()
 		i++;
 	}
 	i = 0;
-	std::cout << "Destructor" << std::endl;
+	std::cout << "Calling destructor" << std::endl;
 	while(i < x)
 	{
 		delete AnimalArray[i];
