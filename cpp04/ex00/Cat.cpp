@@ -3,6 +3,7 @@
 Cat :: Cat()
 {
 	std::cout << "Default Cat constructor called." << std::endl;
+	type = "Cat";
 }
 
 Cat :: Cat(const Cat &data) : Animal()

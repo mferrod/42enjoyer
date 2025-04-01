@@ -3,6 +3,7 @@
 Dog :: Dog()
 {
 	std::cout << "Default Dog constructor called." << std::endl;
+	type = "Dog";
 }
 
 Dog :: ~Dog()

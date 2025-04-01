@@ -3,6 +3,7 @@
 Cat::Cat(void)
 {
 	std::cout << "Call Cat default constructor" << std::endl;
+	type = "Cat";
 	this->ideas = new Brain;
 }
 Cat::Cat(Cat const &data) : Animal ()
