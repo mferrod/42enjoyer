@@ -3,6 +3,7 @@
 Animal :: Animal()
 {
 	std::cout << "Default Animal constructor called." << std::endl;
+	type = "Unkown";
 }
 
 Animal :: ~Animal()

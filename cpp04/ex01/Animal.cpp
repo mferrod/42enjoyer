@@ -3,6 +3,7 @@
 Animal::Animal(void)
 {
 	std::cout << "Call Animal default constructor" << std::endl;
+	type = "Unkown";
 }
 Animal::Animal(Animal const &data)
 {
