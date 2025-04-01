@@ -3,6 +3,7 @@
 WrongAnimal::WrongAnimal(void)
 {
 	std::cout << "Call WrongAnimal default constructor" << std::endl;
+	type = "Unknown";
 }
 
 WrongAnimal::~WrongAnimal(void)

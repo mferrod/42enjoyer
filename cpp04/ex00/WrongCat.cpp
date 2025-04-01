@@ -3,6 +3,7 @@
 WrongCat :: WrongCat()
 {
 	std::cout << "Default WrongCat constructor called." << std::endl;
+	type = "WrongCat";
 }
 
 WrongCat :: WrongCat(const WrongCat &data) : WrongAnimal()
