@@ -49,6 +49,11 @@
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
 		"cinttypes": "cpp",
-		"typeinfo": "cpp"
+		"typeinfo": "cpp",
+		"mlx42.h": "c",
+		"so_long.h": "c",
+		"cub3d.h": "c",
+		"get_next_line.h": "c",
+		"stdio.h": "c"
 	}
 }
