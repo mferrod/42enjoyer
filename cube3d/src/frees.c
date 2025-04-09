@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   frees.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 17:35:02 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/09 11:57:10 by marianof         ###   ########.fr       */
+/*   Created: 2025/04/09 15:57:01 by marianof          #+#    #+#             */
+/*   Updated: 2025/04/09 15:58:42 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "includes/cub3d.h"
 
-void	init_parse(t_data *data, char *param)
+char	**free_matrix(char **matrix)
 {
-	check_param(param);
-	init_list(data, param);
-}
+	int	t;
 
-int	main(int argc, char const *argv[])
-{
-	t_data	data;
-
-	if (argc != 2)
-		error("Only one parameter.");
-	init_parse(&data, (char *)argv[1]);
-	return (0);
+	t = 0;
+	while (matrix[t])
+	{
+		free(matrix[t]);
+		t++;
+	}
+	free(matrix);
+	return (NULL);
 }

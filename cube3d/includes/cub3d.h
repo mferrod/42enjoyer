@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:15:03 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/07 17:56:46 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:58:20 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,28 @@ typedef struct s_game
 {
 	int		map_h;
 	int		map_w;
+	char	**map;
+	char	**c_map;
 	char	*north_tex;
 	char	*south_tex;
 	char	*east_tex;
 	char	*west_tex;
+	int		*floor_tex;
+	int		*ceiling_tex;
 }				t_data;
 
 void	error(char *str);
 void	error_and_free(void *c);
 void	check_param(char *param);
+void	init_parse(t_data *data, char *param);
+void	init_list(t_data *list, char *param);
+void	get_textures(t_data *list, char *param);
+char	**make_matrix(char *path_to_file);
+void	set_textures_on_list(t_data *list, char *tex);
+int		find_char(const char *s, int c);
+int		*parse_numbers(t_data *list, char *param);
+int		ft_arraylen(char **array);
+char	**free_matrix(char **matrix);
+void	error_and_finish(t_data *list, char *txt);
 
 #endif
