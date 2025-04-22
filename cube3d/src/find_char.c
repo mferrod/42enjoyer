@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:34:35 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/22 16:23:25 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:11:20 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,9 @@ int	*parse_numbers(t_data *data, char *param)
 		i++;
 	}
 	return (ret);
+}
+
+void	check_map(t_data *data)
+{
+	
 }
