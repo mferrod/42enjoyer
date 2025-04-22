@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:34:35 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/09 16:03:13 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:39:00 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,22 @@ int	find_char(const char *s, int c)
 	return (i);
 }
 
+static char **get_numbers(char *param, t_data *data)
+{
+	char *parsed_param;
+	char **sp;
+	
+	parsed_param = ft_substr(param, 2, ft_strlen(param) - 3);
+	sp = ft_split(parsed_param, ',');
+	if (!sp)
+		error_and_finish(data, NULL);
+	if (ft_arraylen(sp) != 3)
+		error_and_finish(data, "Error: Incompleted floor or ceiling colors.");
+	if (parsed_param)
+		free(parsed_param);
+	return (sp);
+}
+
 int	*parse_numbers(t_data *data, char *param)
 {
 	char **sp;
@@ -45,14 +61,10 @@ int	*parse_numbers(t_data *data, char *param)
 	int	i;
 
 	i = 0;
-	ret = (int *)malloc(sizeof(int));
+	ret = (int *)malloc(sizeof(int) * 3);
 	if (!ret)
 		return (NULL);
-	sp = ft_split(param, ',');
-	if (!sp)
-		error_and_finish(data, NULL);
-	if (ft_arraylen(sp) != 3)
-		error_and_finish(data, NULL);
+	sp = get_numbers(param, data);
 	while (sp[i])
 	{
 		ret[i] = ft_atoi(sp[i]);

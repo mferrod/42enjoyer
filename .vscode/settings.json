@@ -55,5 +55,6 @@
 		"cub3d.h": "c",
 		"get_next_line.h": "c",
 		"stdio.h": "c"
-	}
+	},
+	"cmake.sourceDirectory": "/home/mariano/Documentos/42enjoyer/so_long/MLX42"
 }

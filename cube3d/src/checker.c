@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:43:34 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/09 15:32:18 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/16 22:10:36 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	set_textures_on_list(t_data *list, char *tex)
 	else if (tex[0] == 'F')
 		list->floor_tex = parse_numbers(list, tex);
 	else if (tex[0] == 'C')
-		list->floor_tex = parse_numbers(list, tex);
+		list->ceiling_tex = parse_numbers(list, tex);
 	
 }
 
@@ -48,7 +48,10 @@ void	get_textures(t_data *list, char *param)
 		free(text_check);
 		text_check = get_next_line(file);
 	}
-	list->map = make_matrix(param);
+	set_textures_on_list(list, text_check);
+	list->map = make_matrix(file, text_check);
+	if (text_check)
+		free(text_check);
 }
 
 void	init_list(t_data *list, char *param)
@@ -70,15 +73,13 @@ void	check_param(char *param)
 	free(extension);
 }
 
-char	**make_matrix(char *path_to_file)
+char	**make_matrix(int file, char *param)
 {
 	char	**matrix;
-	int		file;
 	char	*text_for_matrix;
 	int		i;
 
 	i = 0;
-	file = open(path_to_file, O_RDONLY);
 	matrix = (char **) malloc(sizeof(char *)
 			* 1);//(count_lines_from_file(path_to_file) + 1));
 	if (!matrix)
