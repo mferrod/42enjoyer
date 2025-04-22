@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:15:03 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/15 13:33:35 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:23:20 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	check_param(char *param);
 void	init_parse(t_data *data, char *param);
 void	init_list(t_data *list, char *param);
 void	get_textures(t_data *list, char *param);
-char	**make_matrix(int file);
+char	**make_matrix(int file, char *param);
 void	set_textures_on_list(t_data *list, char *tex);
 int		find_char(const char *s, int c);
 int		*parse_numbers(t_data *list, char *param);

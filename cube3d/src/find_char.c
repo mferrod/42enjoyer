@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:34:35 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/16 17:39:00 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:23:25 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int	find_char(const char *s, int c)
 	return (i);
 }
 
-static char **get_numbers(char *param, t_data *data)
+static char	**get_numbers(char *param, t_data *data)
 {
-	char *parsed_param;
-	char **sp;
-	
+	char	*parsed_param;
+	char	**sp;
+
 	parsed_param = ft_substr(param, 2, ft_strlen(param) - 3);
 	sp = ft_split(parsed_param, ',');
 	if (!sp)
@@ -56,9 +56,9 @@ static char **get_numbers(char *param, t_data *data)
 
 int	*parse_numbers(t_data *data, char *param)
 {
-	char **sp;
-	int	*ret;
-	int	i;
+	char	**sp;
+	int		*ret;
+	int		i;
 
 	i = 0;
 	ret = (int *)malloc(sizeof(int) * 3);
