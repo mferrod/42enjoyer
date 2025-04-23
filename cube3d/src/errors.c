@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:35:05 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/09 16:00:25 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/23 18:46:11 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	error_and_finish(t_data *list, char *txt)
 		printf("%s\n", txt);
 	if (list)
 	{
-		if (list->c_map)
-			list->map = free_matrix(list->c_map);
 		if (list->map)
 			list->map = free_matrix(list->map);
 		if (list->east_tex)
