@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:43:34 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/22 17:01:55 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:03:37 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	init_list(t_data *list, char *param)
 	list->map_h = 0;
 	list->map_w = 0;
 	get_textures(list, param);
-	check_map(param);
 }
 
 void	check_param(char *param)

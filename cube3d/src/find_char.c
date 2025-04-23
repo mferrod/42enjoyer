@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:34:35 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/22 17:11:20 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:48:09 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,30 @@ int	*parse_numbers(t_data *data, char *param)
 	return (ret);
 }
 
-void	check_map(t_data *data)
+void	check_map(t_data *data, int i, int j, char **map)
 {
-	
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][0] == '0')
+				error_and_finish(data, "Error zero first caracter\n");
+			if (map[i][j] == '0' && (i == 0 || (map[i][j - 1] == '\0')
+				|| (map[i][j + 1] == '\0')
+				|| (!map[i + 1] || map[i + 1][j] == '\0')
+				|| (map[i - 1][j] == '\0')))
+				error_and_finish(data, "Error null around zero\n");
+			if (map[i][j] == '0' && ((map[i][j - 1] == ' ')
+				|| (map[i][j + 1] == ' ')
+				|| (map[i + 1][j] == ' ') || (map[i - 1][j] == ' ')))
+				error_and_finish(data, "Error spaces around zero\n");
+			if (map[i][j] == '0' && ((map[i][j - 1] == '\n')
+				|| (map[i][j + 1] == '\n')
+				|| (map[i + 1][j] == '\n') || (map[i - 1][j] == '\n')))
+				error_and_finish(data, "Error new line around zero\n");
+			j++;
+		}
+		i++;
+	}
 }

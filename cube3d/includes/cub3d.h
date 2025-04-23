@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:15:03 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/22 16:23:20 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:53:58 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct s_game
 	int		map_h;
 	int		map_w;
 	char	**map;
-	char	**c_map;
 	char	*north_tex;
 	char	*south_tex;
 	char	*east_tex;
@@ -44,6 +43,7 @@ void	init_parse(t_data *data, char *param);
 void	init_list(t_data *list, char *param);
 void	get_textures(t_data *list, char *param);
 char	**make_matrix(int file, char *param);
+void	check_map(t_data *data, int i, int j, char **map);
 void	set_textures_on_list(t_data *list, char *tex);
 int		find_char(const char *s, int c);
 int		*parse_numbers(t_data *list, char *param);

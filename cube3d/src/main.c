@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:35:02 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/22 16:42:10 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:53:51 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	init_parse(t_data *data, char *param)
 {
 	check_param(param);
 	init_list(data, param);
+	check_map(data, 0, 0, data->map);
 }
 
 int	main(int argc, char const *argv[])
