@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:43:34 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/24 17:35:51 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:29:08 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	set_textures_on_list(t_data *list, char *tex)
 {
-	if (tex[0] == 'N')
+	if (ft_strncmp(tex, "NO ", 3) == 0)
 		list->north_tex = ft_substr(tex, find_char(tex, '.'), (ft_strlen(tex)
 					- 4));
-	else if (tex[0] == 'S')
+	else if (ft_strncmp(tex, "SO ", 3) == 0)
 		list->south_tex = ft_substr(tex, find_char(tex, '.'), ft_strlen(tex)
 				- 4);
-	else if (tex[0] == 'W')
+	else if (ft_strncmp(tex, "WE ", 3) == 0)
 		list->west_tex = ft_substr(tex, find_char(tex, '.'), (ft_strlen(tex)
 					- 4));
-	else if (tex[0] == 'E')
+	else if (ft_strncmp(tex, "EA ", 3) == 0)
 		list->east_tex = ft_substr(tex, find_char(tex, '.'), (ft_strlen(tex)
 					- 4));
-	else if (tex[0] == 'F')
+	else if (ft_strncmp(tex, "F ", 2) == 0)
 		list->floor_tex = parse_numbers(list, tex);
-	else if (tex[0] == 'C')
+	else if (ft_strncmp(tex, "C ", 2) == 0)
 		list->ceiling_tex = parse_numbers(list, tex);
 }
 
