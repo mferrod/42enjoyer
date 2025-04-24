@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:43:34 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/23 16:03:37 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:35:51 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	get_textures(t_data *list, char *param)
 	file = open(param, O_RDONLY);
 	text_check = get_next_line(file);
 	if (!text_check)
-		error("FAILED TO MALLOC MATRIX");
+		error("Error: FAILED TO MALLOC on get_textures");
 	while (text_check[0] != 32)
 	{
 		set_textures_on_list(list, text_check);
@@ -58,6 +58,8 @@ void	init_list(t_data *list, char *param)
 {
 	list->map_h = 0;
 	list->map_w = 0;
+	list->player_x = 0;
+	list->player_y = 0;
 	get_textures(list, param);
 }
 
@@ -83,7 +85,7 @@ char	**make_matrix(int file, char *param)
 	text_join = ft_strdup(param);
 	text_for_matrix = get_next_line(file);
 	if (!text_for_matrix)
-		error("FAILED TO MALLOC MATRIX");
+		error("Error: FAILED TO MALLOC on make_matrix");
 	while (text_for_matrix)
 	{
 		text_aux = ft_strdup(text_join);

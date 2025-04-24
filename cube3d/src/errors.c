@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:35:05 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/23 18:46:11 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:28:29 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,6 @@ void	error_and_finish(t_data *list, char *txt)
 {
 	if (txt)
 		printf("%s\n", txt);
-	if (list)
-	{
-		if (list->map)
-			list->map = free_matrix(list->map);
-		if (list->east_tex)
-			free(list->east_tex);
-		if (list->north_tex)
-			free(list->north_tex);
-		if (list->south_tex)
-			free(list->south_tex);
-		if (list->west_tex)
-			free(list->west_tex);
-		if (list->ceiling_tex)
-			free(list->ceiling_tex);
-		if (list->floor_tex)
-			free(list->floor_tex);
-	}
-	free(list);
+	free_all(list);
 	exit(1);
 }

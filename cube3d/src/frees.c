@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:57:01 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/22 14:40:47 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:28:42 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,30 @@ char	**free_matrix(char **matrix)
 	while (matrix[t])
 	{
 		free(matrix[t]);
+		matrix[t] = NULL;
 		t++;
 	}
 	free(matrix);
 	return (NULL);
+}
+
+void	free_all(t_data *data)
+{
+	if (data)
+	{
+		if (data->map)
+			data->map = free_matrix(data->map);
+		if (data->east_tex)
+			free(data->east_tex);
+		if (data->north_tex)
+			free(data->north_tex);
+		if (data->south_tex)
+			free(data->south_tex);
+		if (data->west_tex)
+			free(data->west_tex);
+		if (data->ceiling_tex)
+			free(data->ceiling_tex);
+		if (data->floor_tex)
+			free(data->floor_tex);
+	}
 }
