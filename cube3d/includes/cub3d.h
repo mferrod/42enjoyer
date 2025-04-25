@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:15:03 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/24 17:28:57 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:22:20 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,8 @@ int		ft_arraylen(char **array);
 char	**free_matrix(char **matrix);
 void	error_and_finish(t_data *list, char *txt);
 void	free_all(t_data *data);
+int		skip_spaces(char *str);
+void	check_map_positions(t_data *data);
+void	valid_list(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:34:35 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/24 17:35:00 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:10:30 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	find_char(const char *s, int c)
 
 	i = 0;
 	str = (char *)s;
-	while (str[i] != (char)c)
+	while (str[i] == (char)c)
 	{
 		if (!str[i])
 			return (-1);

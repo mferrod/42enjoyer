@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:43:34 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/24 18:29:08 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:29:22 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	set_textures_on_list(t_data *list, char *tex)
 {
 	if (ft_strncmp(tex, "NO ", 3) == 0)
-		list->north_tex = ft_substr(tex, find_char(tex, '.'), (ft_strlen(tex)
-					- 4));
+		list->north_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
+				(ft_strlen(tex) - 4));
 	else if (ft_strncmp(tex, "SO ", 3) == 0)
-		list->south_tex = ft_substr(tex, find_char(tex, '.'), ft_strlen(tex)
-				- 4);
+		list->south_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
+				ft_strlen(tex) - 4);
 	else if (ft_strncmp(tex, "WE ", 3) == 0)
-		list->west_tex = ft_substr(tex, find_char(tex, '.'), (ft_strlen(tex)
-					- 4));
+		list->west_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
+				(ft_strlen(tex) - 4));
 	else if (ft_strncmp(tex, "EA ", 3) == 0)
-		list->east_tex = ft_substr(tex, find_char(tex, '.'), (ft_strlen(tex)
-					- 4));
+		list->east_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
+				(ft_strlen(tex) - 4));
 	else if (ft_strncmp(tex, "F ", 2) == 0)
 		list->floor_tex = parse_numbers(list, tex);
 	else if (ft_strncmp(tex, "C ", 2) == 0)
@@ -60,7 +60,13 @@ void	init_list(t_data *list, char *param)
 	list->map_w = 0;
 	list->player_x = 0;
 	list->player_y = 0;
+	list->north_tex = NULL;
+	list->south_tex = NULL;
+	list->east_tex = NULL;
+	list->west_tex = NULL;
+	list->map = NULL;
 	get_textures(list, param);
+	valid_list(list);
 }
 
 void	check_param(char *param)
