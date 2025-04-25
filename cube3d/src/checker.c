@@ -6,48 +6,53 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:43:34 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/25 17:29:22 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/25 19:01:34 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	set_textures_on_list(t_data *list, char *tex)
+void	set_textures_on_list(t_data *list, char *tex, int *num)
 {
-	if (ft_strncmp(tex, "NO ", 3) == 0)
+	if (!list->north_tex && ft_strncmp(tex, "NO ", 3) == 0)
+	{
 		list->north_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
 				(ft_strlen(tex) - 4));
-	else if (ft_strncmp(tex, "SO ", 3) == 0)
+		*(num) += 1;
+	}
+	else if (!list->south_tex && ft_strncmp(tex, "SO ", 3) == 0)
+	{
 		list->south_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
 				ft_strlen(tex) - 4);
-	else if (ft_strncmp(tex, "WE ", 3) == 0)
+		*(num) += 1;
+	}
+	else if (!list->west_tex && ft_strncmp(tex, "WE ", 3) == 0)
+	{
 		list->west_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
 				(ft_strlen(tex) - 4));
-	else if (ft_strncmp(tex, "EA ", 3) == 0)
-		list->east_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
-				(ft_strlen(tex) - 4));
-	else if (ft_strncmp(tex, "F ", 2) == 0)
-		list->floor_tex = parse_numbers(list, tex);
-	else if (ft_strncmp(tex, "C ", 2) == 0)
-		list->ceiling_tex = parse_numbers(list, tex);
+		*(num) += 1;
+	}
+	else
+		set_tex_color(list, tex, num);
 }
 
 void	get_textures(t_data *list, char *param)
 {
 	int		file;
 	char	*text_check;
+	int		num;
 
+	num = 0;
 	file = open(param, O_RDONLY);
 	text_check = get_next_line(file);
 	if (!text_check)
 		error("Error: FAILED TO MALLOC on get_textures");
-	while (text_check[0] != 32)
+	while (num != 6)
 	{
-		set_textures_on_list(list, text_check);
+		set_textures_on_list(list, text_check, &num);
 		free(text_check);
 		text_check = get_next_line(file);
 	}
-	set_textures_on_list(list, text_check);
 	list->map = make_matrix(file, text_check);
 	close(file);
 	if (text_check)
@@ -65,6 +70,8 @@ void	init_list(t_data *list, char *param)
 	list->east_tex = NULL;
 	list->west_tex = NULL;
 	list->map = NULL;
+	list->ceiling_tex = NULL;
+	list->floor_tex = NULL;
 	get_textures(list, param);
 	valid_list(list);
 }

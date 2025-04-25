@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:41:33 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/25 17:35:11 by marianof         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:59:30 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,15 @@ void	check_map_positions(t_data *data)
 		j = 0;
 		while (data->map[i][j])
 		{
-			if (data->map[i][j] != 'N' || data->map[i][j] != 'E'
-				|| data->map[i][j] != 'S' || data->map[i][j] != 'W'
-				|| data->map[i][j] != ' ' || data->map[i][j] != '\n'
-				|| data->map[i][j] != '0' || data->map[i][j] != '1'
-				|| data->map[i][j] != '\0')
+			if (data->map[i][j] != 'N' && data->map[i][j] != 'E'
+				&& data->map[i][j] != 'S' && data->map[i][j] != 'W'
+				&& data->map[i][j] != ' ' && data->map[i][j] != '\n'
+				&& data->map[i][j] != '0' && data->map[i][j] != '1')
 				error_and_finish(data, "Error: Bad character on map.");
+			j++;
 		}
-		j++;
+		i++;
 	}
-	i++;
 }
 
 void	valid_list(t_data *data)
