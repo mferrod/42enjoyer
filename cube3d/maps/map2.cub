@@ -4,12 +4,11 @@ EA /home/path_to_the_south_texture
 WE ./path_to_the_south_texture
 
 
-C 225,55,0
+C 225,55,2
 F 220,109,210
 
 
 
-patata
 
         1111111111111111111111111
         1000000000110000000000001

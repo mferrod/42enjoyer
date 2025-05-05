@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:35:02 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/25 17:19:59 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/05 18:34:27 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,23 @@ void	init_parse(t_data *data, char *param)
 	save_player_pos(data, 0, 0);
 }
 
+void	init_list(t_data *list, char *param)
+{
+	list->map_h = 0;
+	list->map_w = 0;
+	list->player_x = 0;
+	list->player_y = 0;
+	list->north_tex = NULL;
+	list->south_tex = NULL;
+	list->east_tex = NULL;
+	list->west_tex = NULL;
+	list->map = NULL;
+	list->ceiling_tex = NULL;
+	list->floor_tex = NULL;
+	get_textures(list, param);
+	valid_list(list);
+}
+
 int	main(int argc, char const *argv[])
 {
 	t_data	data;
@@ -27,6 +44,7 @@ int	main(int argc, char const *argv[])
 	if (argc != 2)
 		error("Only one parameter.");
 	init_parse(&data, (char *)argv[1]);
+	//init_game();
 	free_all(&data);
 	return (0);
 }

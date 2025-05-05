@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:43:34 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/25 19:01:34 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/05 18:36:22 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,27 +53,23 @@ void	get_textures(t_data *list, char *param)
 		free(text_check);
 		text_check = get_next_line(file);
 	}
-	list->map = make_matrix(file, text_check);
+	make_matrix(file, text_check, list);
 	close(file);
 	if (text_check)
 		free(text_check);
 }
 
-void	init_list(t_data *list, char *param)
+static int	check_newline(char *line)
 {
-	list->map_h = 0;
-	list->map_w = 0;
-	list->player_x = 0;
-	list->player_y = 0;
-	list->north_tex = NULL;
-	list->south_tex = NULL;
-	list->east_tex = NULL;
-	list->west_tex = NULL;
-	list->map = NULL;
-	list->ceiling_tex = NULL;
-	list->floor_tex = NULL;
-	get_textures(list, param);
-	valid_list(list);
+	int	i;
+
+	i = -1;
+	if (!line)
+		return (1);
+	while (line[++i])
+		if (line[i + 1] && line[i] == '\n' && line[i + 1] == '\n')
+			return (0);
+	return (1);
 }
 
 void	check_param(char *param)
@@ -88,12 +84,12 @@ void	check_param(char *param)
 	free(extension);
 }
 
-char	**make_matrix(int file, char *param)
+void	make_matrix(int file, char *param, t_data *list)
 {
-	char	**matrix;
 	char	*text_for_matrix;
 	char	*text_join;
 	char	*text_aux;
+	int		flag;
 
 	text_join = ft_strdup(param);
 	text_for_matrix = get_next_line(file);
@@ -105,11 +101,13 @@ char	**make_matrix(int file, char *param)
 		free(text_join);
 		text_join = ft_strjoin(text_aux, text_for_matrix);
 		free(text_aux);
+		flag = check_newline(text_for_matrix);
 		free(text_for_matrix);
 		text_for_matrix = get_next_line(file);
 	}
+	if (flag == 1)
+		error_and_finish(list, "ERROR");
 	text_for_matrix = NULL;
-	matrix = ft_split(text_join, '\n');
+	list->map = ft_split(text_join, '\n');
 	free(text_join);
-	return (matrix);
 }
