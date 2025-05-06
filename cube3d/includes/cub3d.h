@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:15:03 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/05 18:36:28 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:49:56 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_game
 	int		map_h;
 	int		map_w;
 	char	**map;
+	int		map_count;
 	char	*north_tex;
 	char	*south_tex;
 	char	*east_tex;
@@ -58,5 +59,6 @@ int		skip_spaces(char *str);
 void	check_map_positions(t_data *data);
 void	valid_list(t_data *data);
 void	set_tex_color(t_data *list, char *tex, int *num);
+int		get_char_index(char *str, char c);
 
 #endif

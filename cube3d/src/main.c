@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:35:02 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/05 18:34:27 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/06 14:47:10 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	init_list(t_data *list, char *param)
 {
 	list->map_h = 0;
 	list->map_w = 0;
+	list->map_count = 0;
 	list->player_x = 0;
 	list->player_y = 0;
 	list->north_tex = NULL;
