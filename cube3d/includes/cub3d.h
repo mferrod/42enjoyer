@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:15:03 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/06 16:49:56 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/09 12:58:43 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ int		skip_spaces(char *str);
 void	check_map_positions(t_data *data);
 void	valid_list(t_data *data);
 void	set_tex_color(t_data *list, char *tex, int *num);
-int		get_char_index(char *str, char c);
+char	**remake_map(char *str, int count);
 
 #endif
