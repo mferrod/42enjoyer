@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:35:02 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/06 14:47:10 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/09 14:16:58 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ void	init_list(t_data *list, char *param)
 	valid_list(list);
 }
 
+void	init_game(t_data *data)
+{
+	data->mlx = mlx_init(1920, 1080, "Cub3D", false);
+	load_textures(data);
+	mlx_loop(data->mlx);
+}
+
 int	main(int argc, char const *argv[])
 {
 	t_data	data;
@@ -45,7 +52,7 @@ int	main(int argc, char const *argv[])
 	if (argc != 2)
 		error("Only one parameter.");
 	init_parse(&data, (char *)argv[1]);
-	//init_game();
+	init_game(&data);
 	free_all(&data);
 	return (0);
 }

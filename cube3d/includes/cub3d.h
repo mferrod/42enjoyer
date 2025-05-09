@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:15:03 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/09 12:58:43 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/09 14:17:12 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ typedef struct s_game
 	int		*ceiling_tex;
 	int		player_x;
 	int		player_y;
+	mlx_t	*mlx;
+	mlx_texture_t	*tex_floor;
+	mlx_texture_t	*texture_north;
+	mlx_texture_t	*texture_south;
+	mlx_texture_t	*texture_east;
+	mlx_texture_t	*texture_west;
 }				t_data;
 
 void	error(char *str);
@@ -60,5 +66,7 @@ void	check_map_positions(t_data *data);
 void	valid_list(t_data *data);
 void	set_tex_color(t_data *list, char *tex, int *num);
 char	**remake_map(char *str, int count);
+void	load_textures(t_data *data);
+void	set_texture(mlx_t *game, mlx_image_t **image, char *path);
 
 #endif
