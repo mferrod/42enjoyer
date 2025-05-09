@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:43:34 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/09 12:58:15 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:54:16 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,10 @@ void	make_matrix(int file, char *param, t_data *list)
 		text_for_matrix = get_next_line(file);
 		list->map_count++;
 	}
+	list->map_count++;
+	free(text_for_matrix);
 	text_for_matrix = NULL;
 	list->map = remake_map(text_join, list->map_count);
-	free(text_join);
+	if (text_join)
+		free(text_join);
 }

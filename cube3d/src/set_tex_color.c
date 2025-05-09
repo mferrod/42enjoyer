@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 18:39:09 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/09 12:58:25 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:57:10 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	**remake_map(char *str, int count)
 	{
 		map[i] = extract_line(str, &start);
 		if (!map[i])
-			break ;
+			break;
 		i++;
 	}
 	map[i] = NULL;
