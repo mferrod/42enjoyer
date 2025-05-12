@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:43:34 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/09 13:54:16 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/12 17:59:18 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,14 @@ void	get_textures(t_data *list, char *param)
 	text_check = get_next_line(file);
 	if (!text_check)
 		error("Error: FAILED TO MALLOC on get_textures");
-	while (num != 6)
+	while (num != 6 && text_check)
 	{
 		set_textures_on_list(list, text_check, &num);
 		free(text_check);
 		text_check = get_next_line(file);
 	}
+	if (num != 6)
+		error_and_finish(list, "ERROR: DATA MAP NOT FOUND.");
 	make_matrix(file, text_check, list);
 	close(file);
 	if (text_check)

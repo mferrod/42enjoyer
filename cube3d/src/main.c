@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:35:02 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/09 14:16:58 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/12 17:48:11 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int argc, char const *argv[])
 	if (argc != 2)
 		error("Only one parameter.");
 	init_parse(&data, (char *)argv[1]);
-	init_game(&data);
+	//init_game(&data);
 	free_all(&data);
 	return (0);
 }
