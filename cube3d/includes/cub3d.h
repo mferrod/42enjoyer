@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:15:03 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/12 18:42:28 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/13 15:12:20 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_game
 	int			map_w;
 	char		**map;
 	int			map_count;
+	int			file_pid;
 	char		*north_tex;
 	char		*south_tex;
 	char		*east_tex;

@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:43:34 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/12 17:59:18 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/13 15:12:05 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 
 void	set_textures_on_list(t_data *list, char *tex, int *num)
 {
-	if (!list->north_tex && ft_strncmp(tex, "NO ", 3) == 0)
+	if (ft_strncmp(tex, "NO ", 3) == 0)
 	{
+		if (list->north_tex)
+			error_and_finish(list, "ERROR: TEXTURE_NO ALREADY SETTED.");
 		list->north_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
 				(ft_strlen(tex) - 4));
 		*(num) += 1;
 	}
-	else if (!list->south_tex && ft_strncmp(tex, "SO ", 3) == 0)
+	else if (ft_strncmp(tex, "SO ", 3) == 0)
 	{
+		if (list->south_tex)
+			error_and_finish(list, "ERROR: TEXTURE_SO ALREADY SETTED.");
 		list->south_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
 				ft_strlen(tex) - 4);
-		*(num) += 1;
-	}
-	else if (!list->west_tex && ft_strncmp(tex, "WE ", 3) == 0)
-	{
-		list->west_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
-				(ft_strlen(tex) - 4));
 		*(num) += 1;
 	}
 	else
@@ -43,7 +41,7 @@ void	get_textures(t_data *list, char *param)
 	int		num;
 
 	num = 0;
-	file = open(param, O_RDONLY);
+	list->file_pid = open(param, O_RDONLY);
 	text_check = get_next_line(file);
 	if (!text_check)
 		error("Error: FAILED TO MALLOC on get_textures");

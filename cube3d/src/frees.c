@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:57:01 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/09 13:57:31 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/13 15:13:15 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ void	free_all(t_data *data)
 			free(data->ceiling_tex);
 		if (data->floor_tex)
 			free(data->floor_tex);
+		if (data->file_pid > 0)
+			close(data->file_pid);
 	}
 }

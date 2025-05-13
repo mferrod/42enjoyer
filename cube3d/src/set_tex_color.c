@@ -6,30 +6,50 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 18:39:09 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/12 17:43:08 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/13 15:04:49 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
 
+static void	last_text(t_data *list, char *tex, int *num)
+{
+	if (ft_strncmp(tex, "WE ", 3) == 0)
+	{
+		if (list->west_tex)
+			error_and_finish(list, "ERROR: TEXTURE_WE already setted.");
+		list->west_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
+				(ft_strlen(tex) - 4));
+		*(num) += 1;
+	}
+}
+
 void	set_tex_color(t_data *list, char *tex, int *num)
 {
-	if (!list->east_tex && ft_strncmp(tex, "EA ", 3) == 0)
+	if (ft_strncmp(tex, "EA ", 3) == 0)
 	{
+		if (list->east_tex)
+			error_and_finish(list, "ERROR: TEXTURE_EA already setted.");
 		list->east_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
 				(ft_strlen(tex) - 4));
 		*(num) += 1;
 	}
-	else if (!list->floor_tex && ft_strncmp(tex, "F ", 2) == 0)
+	else if (ft_strncmp(tex, "F ", 2) == 0)
 	{
+		if (list->floor_tex)
+			error_and_finish(list, "ERROR: Floor already setted.");
 		list->floor_tex = parse_numbers(list, tex);
 		*(num) += 1;
 	}
-	else if (!list->ceiling_tex && ft_strncmp(tex, "C ", 2) == 0)
+	else if (ft_strncmp(tex, "C ", 2) == 0)
 	{
+		if (list->ceiling_tex)
+			error_and_finish(list, "ERROR: Ceiling already setted.");
 		list->ceiling_tex = parse_numbers(list, tex);
 		*(num) += 1;
 	}
+	else
+		last_text(list, tex, num);
 }
 
 static char	*extract_line(char *str, int *start)
