@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:35:02 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/13 15:12:40 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/14 17:54:46 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ void	init_parse(t_data *data, char *param)
 
 void	init_list(t_data *list, char *param)
 {
+	list->flag_dupe = 0;
 	list->map_h = 0;
 	list->map_w = 0;
 	list->map_count = 0;
+	list->file_count = 0;
 	list->player_x = 0;
 	list->player_y = 0;
 	list->file_pid = 0;

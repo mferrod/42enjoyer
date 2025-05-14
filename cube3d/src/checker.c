@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:43:34 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/13 15:12:05 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/14 18:29:15 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,50 +25,51 @@ void	set_textures_on_list(t_data *list, char *tex, int *num)
 	else if (ft_strncmp(tex, "SO ", 3) == 0)
 	{
 		if (list->south_tex)
-			error_and_finish(list, "ERROR: TEXTURE_SO ALREADY SETTED.");
-		list->south_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
-				ft_strlen(tex) - 4);
+			list->flag_dupe = 1;
+		else
+			list->south_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
+					ft_strlen(tex) - 4);
 		*(num) += 1;
 	}
 	else
 		set_tex_color(list, tex, num);
 }
 
+static void	check_flag(t_data *list, char *param)
+{
+	if (list->flag_dupe == 1)
+	{
+		if (param)
+			free(param);
+		error_and_finish(list, "ERROR: TEXTURE OR COLOR DUPED.");
+	}
+}
+
 void	get_textures(t_data *list, char *param)
 {
-	int		file;
 	char	*text_check;
 	int		num;
 
 	num = 0;
 	list->file_pid = open(param, O_RDONLY);
-	text_check = get_next_line(file);
+	text_check = get_next_line(list->file_pid);
 	if (!text_check)
 		error("Error: FAILED TO MALLOC on get_textures");
-	while (num != 6 && text_check)
+	while (text_check)
 	{
 		set_textures_on_list(list, text_check, &num);
 		free(text_check);
-		text_check = get_next_line(file);
+		text_check = get_next_line(list->file_pid);
+		list->file_count++;
 	}
+	check_flag(list, text_check);
+	close(list->file_pid);
 	if (num != 6)
 		error_and_finish(list, "ERROR: DATA MAP NOT FOUND.");
-	make_matrix(file, text_check, list);
-	close(file);
+	make_matrix(list->file_pid, text_check, list);
+	close(list->file_pid);
 	if (text_check)
 		free(text_check);
-}
-
-void	check_param(char *param)
-{
-	char	*my_param;
-	char	*extension;
-
-	my_param = ".cub";
-	extension = ft_substr(param, ft_strlen(param) - 4, ft_strlen(param));
-	if (ft_strncmp(extension, my_param, 4) != 0)
-		error_and_free(extension);
-	free(extension);
 }
 
 void	make_matrix(int file, char *param, t_data *list)

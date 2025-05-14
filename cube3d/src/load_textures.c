@@ -6,11 +6,48 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 14:11:37 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/09 14:17:42 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/14 18:18:57 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
+
+void	check_param(char *param)
+{
+	char	*my_param;
+	char	*extension;
+
+	my_param = ".cub";
+	extension = ft_substr(param, ft_strlen(param) - 4, ft_strlen(param));
+	if (ft_strncmp(extension, my_param, 4) != 0)
+		error_and_free(extension);
+	free(extension);
+}
+
+void	paint_all(t_data *data, int x, int y)
+{
+	int	rgb_ceiling;
+	int	rgb_floor;
+
+	rgb_ceiling = rgb(data->ceiling_tex[0], data->ceiling_tex[1],
+			data->ceiling_tex[2], 255);
+	rgb_floor = rgb(data->floor_tex[0], data->floor_tex[1],
+			data->floor_tex[2], 255);
+	while (M_HEIGHT / 2 > y)
+	{
+		x = 0;
+		while (M_WIDTH > x++)
+			mlx_put_pixel(data->cub_img, x, y, rgb_ceiling);
+		y++;
+	}
+	while (M_HEIGHT > y)
+	{
+		x = 0;
+		while (M_WIDTH > x++)
+			mlx_put_pixel(data->cub_img, x, y, rgb_floor);
+		y++;
+	}
+}
 
 void	set_texture(mlx_t *game, mlx_image_t **image, char *path)
 {
