@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:35:02 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/14 17:54:46 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:07:08 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	init_list(t_data *list, char *param)
 
 void	init_game(t_data *data)
 {
-	data->mlx = mlx_init(1920, 1080, "Cub3D", false);
+	data->mlx = mlx_init(M_WIDTH, M_HEIGHT, "Cub3D", false);
+	data->mapi = mlx_new_image(data->mlx, M_WIDTH, M_HEIGHT);
 	load_textures(data);
 	mlx_loop(data->mlx);
 }

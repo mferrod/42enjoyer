@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 14:11:37 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/14 18:18:57 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:28:52 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	check_param(char *param)
 	free(extension);
 }
 
-void	paint_all(t_data *data, int x, int y)
+/*void	paint_all(t_data *data, int x, int y)
 {
 	int	rgb_ceiling;
 	int	rgb_floor;
@@ -37,17 +37,17 @@ void	paint_all(t_data *data, int x, int y)
 	{
 		x = 0;
 		while (M_WIDTH > x++)
-			mlx_put_pixel(data->cub_img, x, y, rgb_ceiling);
+			mlx_put_pixel(data->mapi, x, y, rgb_ceiling);
 		y++;
 	}
 	while (M_HEIGHT > y)
 	{
 		x = 0;
 		while (M_WIDTH > x++)
-			mlx_put_pixel(data->cub_img, x, y, rgb_floor);
+			mlx_put_pixel(data->mapi, x, y, rgb_floor);
 		y++;
 	}
-}
+}*/
 
 void	set_texture(mlx_t *game, mlx_image_t **image, char *path)
 {

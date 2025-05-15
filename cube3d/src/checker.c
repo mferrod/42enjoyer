@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:43:34 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/14 18:29:15 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/15 12:21:36 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,38 @@ void	get_textures(t_data *list, char *param)
 	close(list->file_pid);
 	if (num != 6)
 		error_and_finish(list, "ERROR: DATA MAP NOT FOUND.");
-	make_matrix(list->file_pid, text_check, list);
+	make_matrix(param, list);
 	close(list->file_pid);
 	if (text_check)
 		free(text_check);
 }
 
-void	make_matrix(int file, char *param, t_data *list)
+static char	*find_map(char *dir, t_data *data)
+{
+	char	*get_next;
+
+	data->file_pid = open(dir, O_RDONLY);
+	get_next = get_next_line(data->file_pid);
+	if (!get_next)
+		error_and_finish(data, "Error: FAILED TO MALLOC on find_map");
+	while (get_next[skip_spaces(get_next)] != '1'
+		&& get_next[skip_spaces(get_next)] != '0')
+	{
+		free(get_next);
+		get_next = NULL;
+		get_next = get_next_line(data->file_pid);
+	}
+	return (get_next);
+}
+
+void	make_matrix(char *param, t_data *list)
 {
 	char	*text_for_matrix;
 	char	*text_join;
 	char	*text_aux;
 
-	text_join = ft_strdup(param);
-	text_for_matrix = get_next_line(file);
+	text_join = find_map(param, list);
+	text_for_matrix = get_next_line(list->file_pid);
 	if (!text_for_matrix)
 		error("Error: FAILED TO MALLOC on make_matrix");
 	while (text_for_matrix)
@@ -89,7 +107,7 @@ void	make_matrix(int file, char *param, t_data *list)
 		text_join = ft_strjoin(text_aux, text_for_matrix);
 		free(text_aux);
 		free(text_for_matrix);
-		text_for_matrix = get_next_line(file);
+		text_for_matrix = get_next_line(list->file_pid);
 		list->map_count++;
 	}
 	list->map_count++;
