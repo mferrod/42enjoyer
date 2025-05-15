@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:34:35 by marianof          #+#    #+#             */
-/*   Updated: 2025/04/25 16:10:30 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/15 17:37:53 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	check_map(t_data *data, int i, int j, char **map)
 	while (map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (map[i][j] && map[i])
 		{
 			if (map[i][0] == '0')
 				error_and_finish(data, "Error: Zero first caracter\n");

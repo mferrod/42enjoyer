@@ -6,50 +6,47 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 18:39:09 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/13 15:04:49 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/15 17:43:35 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
 
-static void	last_text(t_data *list, char *tex, int *num)
+static void	pepe(char ***map, int j, int i, int max)
 {
-	if (ft_strncmp(tex, "WE ", 3) == 0)
+	char	*tmp;
+
+	tmp = (char *)malloc(sizeof(char) * (max + 1));
+	if (!tmp)
+		return ;
+	while (j < max)
 	{
-		if (list->west_tex)
-			error_and_finish(list, "ERROR: TEXTURE_WE already setted.");
-		list->west_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
-				(ft_strlen(tex) - 4));
-		*(num) += 1;
+		if (j >= ft_strlen((*map)[i]))
+			tmp[j] = ' ';
+		else
+			tmp[j] = (*map)[i][j];
+		j++;
 	}
+	tmp[j] = '\0';
+	free((*map)[i]);
+	(*map)[i] = tmp;
 }
 
-void	set_tex_color(t_data *list, char *tex, int *num)
+void	modify_less(char ***map, int i, int j)
 {
-	if (ft_strncmp(tex, "EA ", 3) == 0)
+	int		max;
+
+	max = get_max_lenght((*map));
+	i = 0;
+	while ((*map)[i])
 	{
-		if (list->east_tex)
-			error_and_finish(list, "ERROR: TEXTURE_EA already setted.");
-		list->east_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
-				(ft_strlen(tex) - 4));
-		*(num) += 1;
+		if (max > ft_strlen((*map)[i]))
+		{
+			j = 0;
+			pepe(map, j, i, max);
+		}
+		i++;
 	}
-	else if (ft_strncmp(tex, "F ", 2) == 0)
-	{
-		if (list->floor_tex)
-			error_and_finish(list, "ERROR: Floor already setted.");
-		list->floor_tex = parse_numbers(list, tex);
-		*(num) += 1;
-	}
-	else if (ft_strncmp(tex, "C ", 2) == 0)
-	{
-		if (list->ceiling_tex)
-			error_and_finish(list, "ERROR: Ceiling already setted.");
-		list->ceiling_tex = parse_numbers(list, tex);
-		*(num) += 1;
-	}
-	else
-		last_text(list, tex, num);
 }
 
 static char	*extract_line(char *str, int *start)

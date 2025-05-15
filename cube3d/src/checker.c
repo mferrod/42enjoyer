@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:43:34 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/15 12:21:36 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/15 17:26:23 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ void	set_textures_on_list(t_data *list, char *tex, int *num)
 	if (ft_strncmp(tex, "NO ", 3) == 0)
 	{
 		if (list->north_tex)
-			error_and_finish(list, "ERROR: TEXTURE_NO ALREADY SETTED.");
-		list->north_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
-				(ft_strlen(tex) - 4));
+			list->flag_dupe = 1;
+		else
+			list->north_tex = ft_substr(tex, skip_spaces(tex + 2) + 2,
+					ft_strlen(tex) - 4);
 		*(num) += 1;
 	}
 	else if (ft_strncmp(tex, "SO ", 3) == 0)
@@ -114,6 +115,7 @@ void	make_matrix(char *param, t_data *list)
 	free(text_for_matrix);
 	text_for_matrix = NULL;
 	list->map = remake_map(text_join, list->map_count);
+	modify_less(&list->map, 0, 0);
 	if (text_join)
 		free(text_join);
 }

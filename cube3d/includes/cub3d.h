@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:15:03 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/15 12:21:52 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/15 17:37:27 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,7 @@ void			set_tex_color(t_data *list, char *tex, int *num);
 char			**remake_map(char *str, int count);
 void			load_textures(t_data *data);
 void			set_texture(mlx_t *game, mlx_image_t **image, char *path);
-
+void			modify_less(char ***map, int i, int j);
+int				get_max_lenght(char **str);
+void			last_text(t_data *list, char *tex, int *num);
 #endif
