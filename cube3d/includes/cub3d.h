@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:15:03 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/15 17:37:27 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/15 19:42:26 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
+# include <fcntl.h>
 # include <limits.h>
+# include <math.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <sys/time.h>
 # include <unistd.h>
 
 # define M_WIDTH 1920
@@ -78,4 +81,6 @@ void			set_texture(mlx_t *game, mlx_image_t **image, char *path);
 void			modify_less(char ***map, int i, int j);
 int				get_max_lenght(char **str);
 void			last_text(t_data *list, char *tex, int *num);
+int				get_rgb(int r, int g, int b, int a);
+void			paint_all(t_data *data, int x, int y);
 #endif

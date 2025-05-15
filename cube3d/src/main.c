@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:35:02 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/15 15:49:13 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/15 19:43:15 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ void	init_game(t_data *data)
 {
 	data->mlx = mlx_init(M_WIDTH, M_HEIGHT, "Cub3D", false);
 	data->mapi = mlx_new_image(data->mlx, M_WIDTH, M_HEIGHT);
-	load_textures(data);
+	paint_all(data, 0, 0);
+	mlx_image_to_window(data->mlx, data->mapi, 0, 0);
+	//load_textures(data);
 	mlx_loop(data->mlx);
 }
 
@@ -56,7 +58,7 @@ int	main(int argc, char const *argv[])
 	if (argc != 2)
 		error("Only one parameter.");
 	init_parse(&data, (char *)argv[1]);
-	//init_game(&data);
+	init_game(&data);
 	free_all(&data);
 	return (0);
 }

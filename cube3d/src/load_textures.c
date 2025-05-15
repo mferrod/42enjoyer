@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 14:11:37 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/14 20:28:52 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/15 19:39:39 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,19 @@ void	check_param(char *param)
 	free(extension);
 }
 
-/*void	paint_all(t_data *data, int x, int y)
+int	get_rgb(int r, int g, int b, int a)
+{
+	return (r << 24 | g << 16 | b << 8 | a);
+}
+
+void	paint_all(t_data *data, int x, int y)
 {
 	int	rgb_ceiling;
 	int	rgb_floor;
 
-	rgb_ceiling = rgb(data->ceiling_tex[0], data->ceiling_tex[1],
+	rgb_ceiling = get_rgb(data->ceiling_tex[0], data->ceiling_tex[1],
 			data->ceiling_tex[2], 255);
-	rgb_floor = rgb(data->floor_tex[0], data->floor_tex[1],
+	rgb_floor = get_rgb(data->floor_tex[0], data->floor_tex[1],
 			data->floor_tex[2], 255);
 	while (M_HEIGHT / 2 > y)
 	{
@@ -47,7 +52,7 @@ void	check_param(char *param)
 			mlx_put_pixel(data->mapi, x, y, rgb_floor);
 		y++;
 	}
-}*/
+}
 
 void	set_texture(mlx_t *game, mlx_image_t **image, char *path)
 {
