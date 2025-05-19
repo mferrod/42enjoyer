@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:57:01 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/13 15:13:15 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:15:27 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,22 @@ char	**free_matrix(char **matrix)
 	}
 	free(matrix);
 	return (NULL);
+}
+
+void	free_mlx_t(t_data *t_data)
+{
+	if (t_data->mapi)
+		mlx_delete_image(t_data->mlx, t_data->mapi);
+	if (t_data->texture_east)
+		mlx_delete_image(t_data->mlx, t_data->texture_east);
+	if (t_data->texture_north)
+		mlx_delete_image(t_data->mlx, t_data->texture_north);
+	if (t_data->texture_south)
+		mlx_delete_image(t_data->mlx, t_data->texture_south);
+	if (t_data->texture_west)
+		mlx_delete_image(t_data->mlx, t_data->texture_west);
+//	if (t_data->mlx)
+		//mlx_terminate(t_data->mlx);
 }
 
 void	free_all(t_data *data)
@@ -47,5 +63,6 @@ void	free_all(t_data *data)
 			free(data->floor_tex);
 		if (data->file_pid > 0)
 			close(data->file_pid);
+		free_mlx_t(data);
 	}
 }

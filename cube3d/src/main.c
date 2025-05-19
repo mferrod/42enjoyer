@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:35:02 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/15 19:43:15 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/19 16:01:51 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init_game(t_data *data)
 	data->mapi = mlx_new_image(data->mlx, M_WIDTH, M_HEIGHT);
 	paint_all(data, 0, 0);
 	mlx_image_to_window(data->mlx, data->mapi, 0, 0);
-	//load_textures(data);
+	load_textures(data);
 	mlx_loop(data->mlx);
 }
 

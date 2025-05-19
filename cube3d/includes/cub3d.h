@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:15:03 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/15 19:42:26 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/19 18:16:33 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ void			modify_less(char ***map, int i, int j);
 int				get_max_lenght(char **str);
 void			last_text(t_data *list, char *tex, int *num);
 int				get_rgb(int r, int g, int b, int a);
-void			paint_all(t_data *data, int x, int y);
+void			paint_all(t_data *data);
+void			free_mlx_t(t_data *t_data);
 #endif
