@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:15:03 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/19 18:16:33 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/20 21:05:41 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@
 
 # define M_WIDTH 1920
 # define M_HEIGHT 1080
+# define M_PI 3.14159265358979323846
+# define M_PI_2 1.57079632679489661923
+# define FIOV 50.0
+# define ANGLE_MOVE 0.1
+# define ANGLE_D 1.5
+# define PLAYER_SPEED 0.1
 
 typedef struct s_game
 {
@@ -46,6 +52,9 @@ typedef struct s_game
 	int			*ceiling_tex;
 	int			player_x;
 	int			player_y;
+	t_ray		*ray;
+	double		radian_view;
+	char		player_view;
 	mlx_t		*mlx;
 	mlx_image_t	*mapi;
 	mlx_image_t	*tex_floor;
@@ -54,6 +63,30 @@ typedef struct s_game
 	mlx_image_t	*texture_east;
 	mlx_image_t	*texture_west;
 }				t_data;
+
+typedef struct s_ray
+{
+	double		ang;
+	double		cos;
+	double		sin;
+	double		distance;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		wall_x;
+	int			side;
+	int			step_x;
+	int			step_y;
+	int			map_x;
+	int			map_y;
+	int			tex_x;
+	int			tex_y;
+	int			start;
+	int			start_two;
+	int			end;
+	int			end_two;
+}				t_ray;
 
 void			error(char *str);
 void			error_and_free(void *c);
@@ -83,5 +116,7 @@ int				get_max_lenght(char **str);
 void			last_text(t_data *list, char *tex, int *num);
 int				get_rgb(int r, int g, int b, int a);
 void			paint_all(t_data *data);
+void			ray_casting(t_data *data, t_ray *ray);
+double			set_radian_view(t_data *data);
 void			free_mlx_t(t_data *t_data);
 #endif

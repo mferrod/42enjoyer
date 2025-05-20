@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:35:02 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/19 16:01:51 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/20 21:21:52 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	init_parse(t_data *data, char *param)
 	init_list(data, param);
 	check_map(data, 0, 0, data->map);
 	save_player_pos(data, 0, 0);
+	data->player_view = data->map[data->player_y][data->player_x];
+	data->radian_view = set_radian_view(data);
 }
 
 void	init_list(t_data *list, char *param)
@@ -43,10 +45,14 @@ void	init_list(t_data *list, char *param)
 
 void	init_game(t_data *data)
 {
+	t_ray	ray[M_WIDTH];
+
+	data->ray = ray;
 	data->mlx = mlx_init(M_WIDTH, M_HEIGHT, "Cub3D", false);
 	data->mapi = mlx_new_image(data->mlx, M_WIDTH, M_HEIGHT);
-	paint_all(data, 0, 0);
+	paint_all(data);
 	mlx_image_to_window(data->mlx, data->mapi, 0, 0);
+	ray_casting(data, data->ray);
 	load_textures(data);
 	mlx_loop(data->mlx);
 }
