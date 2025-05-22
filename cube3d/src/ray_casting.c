@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 20:16:33 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/20 21:42:49 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/22 20:28:46 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ray_casting(t_data *data, t_ray *ray)
 	start = data->radian_view - local_fov / 2;
 	while (i < M_WIDTH)
 	{
-		ray[i].ang = start + (angle * 1);
+		ray[i].ang = start + (angle * i);
 		ray[i].sin = sin(ray[i].ang);
 		ray[i].cos = cos(ray[i].ang);
 		i++;
@@ -48,6 +48,8 @@ void	dda_algo(t_ray *ray, t_data *data, int i)
 {
 	double	distance;
 
+	(void)distance;
+	(void)i;
 	ray->map_x = (int)data->player_x;
 	ray->map_y = (int)data->player_y;
 	ray->delta_dist_x = fabs(1 / ray->cos);

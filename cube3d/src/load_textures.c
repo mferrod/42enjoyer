@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 14:11:37 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/19 18:16:16 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/22 20:26:20 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,17 @@ void	paint_all(t_data *data)
     paint_section(data->mapi, M_HEIGHT / 2, M_HEIGHT, rgb_floor);
 }
 
-void	set_texture(mlx_t *game, mlx_image_t **image, char *path)
+void	set_texture(mlx_texture_t **image, char *path)
 {
-	mlx_texture_t	*texture;
-
-	texture = mlx_load_png(path);
-	if (!texture)
-		error("INVALID TEXTURE");
-	(*image) = mlx_texture_to_image(game, texture);
+	(*image) = mlx_load_png(path);
 	if (!(*image))
-		error("INVALID IMAGE");
-	mlx_delete_texture(texture);
+		error("INVALID TEXTURE");
 }
 
 void	load_textures(t_data *data)
 {
-	set_texture(data->mlx, &data->texture_north, data->north_tex);
-	set_texture(data->mlx, &data->texture_south, data->south_tex);
-	set_texture(data->mlx, &data->texture_east, data->east_tex);
-	set_texture(data->mlx, &data->texture_west, data->west_tex);
+	set_texture(&data->texture_north, data->north_tex);
+	set_texture(&data->texture_south, data->south_tex);
+	set_texture(&data->texture_east, data->east_tex);
+	set_texture(&data->texture_west, data->west_tex);
 }

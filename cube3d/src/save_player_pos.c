@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:41:33 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/20 21:03:12 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/22 20:38:47 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	check_player_pos(t_data *data, char **map)
 {
-	if (data->player_y == 0 || data->player_x == 0)
+	if ((int)data->player_y == 0 || (int)data->player_x == 0)
 		error_and_finish(data, "Error: Invalid player position\n");
 	if ((map[(int)data->player_y][(int)data->player_x - 1] == '\0')
 		|| (map[(int)data->player_y][(int)data->player_x + 1] == '\0')
@@ -48,8 +48,8 @@ void	save_player_pos(t_data *data, int i, int j)
 				|| data->map[i][j] == 'W' || data->map[i][j] == 'E')
 			{
 				p++;
-				data->player_x = j;
-				data->player_y = i;
+				data->player_x = (double)j + 0.5;
+				data->player_y = (double)i + 0.5;
 			}
 			j++;
 		}

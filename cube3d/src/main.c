@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:35:02 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/20 21:21:52 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/22 20:38:31 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_parse(t_data *data, char *param)
 	init_list(data, param);
 	check_map(data, 0, 0, data->map);
 	save_player_pos(data, 0, 0);
-	data->player_view = data->map[data->player_y][data->player_x];
+	data->player_view = data->map[(int)data->player_y][(int)data->player_x];
 	data->radian_view = set_radian_view(data);
 }
 
@@ -29,8 +29,8 @@ void	init_list(t_data *list, char *param)
 	list->map_w = 0;
 	list->map_count = 0;
 	list->file_count = 0;
-	list->player_x = 0;
-	list->player_y = 0;
+	list->player_x = 0.0;
+	list->player_y = 0.0;
 	list->file_pid = 0;
 	list->north_tex = NULL;
 	list->south_tex = NULL;
