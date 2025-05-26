@@ -6,13 +6,13 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 18:39:09 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/15 17:43:35 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/26 13:03:12 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
 
-static void	pepe(char ***map, int j, int i, int max)
+static void	modify_array(char ***map, int j, int i, int max)
 {
 	char	*tmp;
 
@@ -22,7 +22,7 @@ static void	pepe(char ***map, int j, int i, int max)
 	while (j < max)
 	{
 		if (j >= ft_strlen((*map)[i]))
-			tmp[j] = ' ';
+			tmp[j] = '1';
 		else
 			tmp[j] = (*map)[i][j];
 		j++;
@@ -43,7 +43,7 @@ void	modify_less(char ***map, int i, int j)
 		if (max > ft_strlen((*map)[i]))
 		{
 			j = 0;
-			pepe(map, j, i, max);
+			modify_array(map, j, i, max);
 		}
 		i++;
 	}

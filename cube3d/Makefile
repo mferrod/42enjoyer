@@ -4,7 +4,7 @@ SRC_DIR     = src
 OBJ_DIR     = obj
 GNL_DIR     = get_next_line
 
-SRCS = main.c errors.c checker.c find_char.c frees.c save_player_pos.c set_tex_color.c load_textures.c last_text.c ray_casting.c
+SRCS = keyhook.c main.c errors.c checker.c find_char.c frees.c save_player_pos.c set_tex_color.c load_textures.c last_text.c ray_casting.c start_painting.c
 GNL_SRCS = get_next_line.c get_next_line_utils.c
 SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
 GNL_SRCS := $(addprefix $(GNL_DIR)/, $(GNL_SRCS))
@@ -12,7 +12,7 @@ ALL_SRCS = $(SRCS) $(GNL_SRCS)
 OBJS = $(ALL_SRCS:%.c=$(OBJ_DIR)/%.o)
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g 
+CFLAGS = -Wall -Werror -Wextra -g
 NAME = cub3D
 INCLUDES = -I . -I ${LIBFT_DIR} -I ${GNL_DIR} -I ${MLX_DIR}/include
 

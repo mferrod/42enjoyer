@@ -1,7 +1,7 @@
-NO ../tex/blue_wall.png
-SO ../tex/green_wall.png
-WE ../tex/red_wall.png
-EA ../tex/yellow_wall.png
+NO tex/blue_wall.png
+SO tex/green_wall.png
+WE tex/red_wall.png
+EA tex/yellow_wall.png
 
 
 C 225,55,2

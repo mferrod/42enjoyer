@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:15:03 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/22 20:28:16 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/26 12:52:12 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # define M_PI 3.14159265358979323846
 # define M_PI_2 1.57079632679489661923
 # define FIOV 50.0
-# define ANGLE_MOVE 0.1
-# define ANGLE_D 1.5
+# define ANGLE_MOVE 0.05
+# define ANGLE_D 0.8
 # define PLAYER_SPEED 0.1
 
 typedef struct s_ray
@@ -62,6 +62,7 @@ typedef struct s_ray
 typedef struct s_game
 {
 	int				flag_dupe;
+	int				flag_colors;
 	int				map_h;
 	int				map_w;
 	char			**map;
@@ -74,20 +75,21 @@ typedef struct s_game
 	char			*west_tex;
 	int				*floor_tex;
 	int				*ceiling_tex;
-	int				player_x;
-	int				player_y;
+	double			player_x;
+	double			player_y;
 	t_ray			*ray;
 	double			radian_view;
 	char			player_view;
 	mlx_t			*mlx;
 	mlx_image_t		*mapi;
-	mlx_texture_t	*tex_floor;
+	mlx_texture_t	*my_texture;
 	mlx_texture_t	*texture_north;
 	mlx_texture_t	*texture_south;
 	mlx_texture_t	*texture_east;
 	mlx_texture_t	*texture_west;
 }					t_data;
 
+void				keyhook(void *param);
 void				error(char *str);
 void				error_and_free(void *c);
 void				check_param(char *param);
@@ -110,7 +112,8 @@ void				valid_list(t_data *data);
 void				set_tex_color(t_data *list, char *tex, int *num);
 char				**remake_map(char *str, int count);
 void				load_textures(t_data *data);
-void				set_texture(mlx_texture_t **image, char *path);
+void				set_texture(t_data *data, mlx_texture_t **image,
+						char *path);
 void				modify_less(char ***map, int i, int j);
 int					get_max_lenght(char **str);
 void				last_text(t_data *list, char *tex, int *num);
@@ -119,4 +122,8 @@ void				paint_all(t_data *data);
 void				ray_casting(t_data *data, t_ray *ray);
 double				set_radian_view(t_data *data);
 void				free_mlx_t(t_data *t_data);
+void				dda(t_ray *ray, t_data *data, int i);
+void				select_texture(t_ray *ray, t_data *data);
+void				start_painting(t_data *data, t_ray *ray, int i,
+						double distance);
 #endif

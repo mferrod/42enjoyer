@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:34:35 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/15 17:37:53 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/25 11:28:14 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static char	**get_numbers(char *param, t_data *data)
 	if (!sp)
 		error_and_finish(data, NULL);
 	if (ft_arraylen(sp) != 3)
-		error_and_finish(data, "Error: Incompleted floor or ceiling colors.");
+		data->flag_colors = 2;
 	if (parsed_param)
 		free(parsed_param);
 	return (sp);
@@ -70,9 +70,8 @@ int	*parse_numbers(t_data *data, char *param)
 		ret[i] = ft_atoi(sp[i]);
 		if (ret[i] < 0 && ret[i] > 255)
 		{
-			sp = free_matrix(sp);
 			free(ret);
-			error_and_finish(data, "Error: Incorrect value for colors.");
+			data->flag_colors = 1;
 		}
 		i++;
 	}

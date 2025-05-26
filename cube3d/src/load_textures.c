@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 14:11:37 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/22 20:26:20 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/26 13:11:50 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,46 +31,39 @@ int	get_rgb(int r, int g, int b, int a)
 
 static void	paint_section(mlx_image_t *img, int start_y, int end_y, int color)
 {
-    int	x;
-    int	y;
+	int	x;
+	int	y;
 
-    y = start_y;
-    while (y < end_y)
-    {
-        x = 0;
-        while (x < M_WIDTH)
-        {
-            mlx_put_pixel(img, x, y, color);
-            x++;
-        }
-        y++;
-    }
+	y = start_y;
+	while (y < end_y)
+	{
+		x = 0;
+		while (x < M_WIDTH)
+		{
+			mlx_put_pixel(img, x, y, color);
+			x++;
+		}
+		y++;
+	}
 }
 
 void	paint_all(t_data *data)
 {
-    int	rgb_ceiling;
-    int	rgb_floor;
+	int	rgb_ceiling;
+	int	rgb_floor;
 
-    rgb_ceiling = get_rgb(data->ceiling_tex[0], data->ceiling_tex[1],
-            data->ceiling_tex[2], 255);
-    rgb_floor = get_rgb(data->floor_tex[0], data->floor_tex[1],
-            data->floor_tex[2], 255);
-    paint_section(data->mapi, 0, M_HEIGHT / 2, rgb_ceiling);
-    paint_section(data->mapi, M_HEIGHT / 2, M_HEIGHT, rgb_floor);
-}
-
-void	set_texture(mlx_texture_t **image, char *path)
-{
-	(*image) = mlx_load_png(path);
-	if (!(*image))
-		error("INVALID TEXTURE");
+	rgb_ceiling = get_rgb(data->ceiling_tex[0], data->ceiling_tex[1],
+			data->ceiling_tex[2], 255);
+	rgb_floor = get_rgb(data->floor_tex[0], data->floor_tex[1],
+			data->floor_tex[2], 255);
+	paint_section(data->mapi, 0, M_HEIGHT / 2, rgb_ceiling);
+	paint_section(data->mapi, M_HEIGHT / 2, M_HEIGHT, rgb_floor);
 }
 
 void	load_textures(t_data *data)
 {
-	set_texture(&data->texture_north, data->north_tex);
-	set_texture(&data->texture_south, data->south_tex);
-	set_texture(&data->texture_east, data->east_tex);
-	set_texture(&data->texture_west, data->west_tex);
+	set_texture(data, &data->texture_north, data->north_tex);
+	set_texture(data, &data->texture_south, data->south_tex);
+	set_texture(data, &data->texture_east, data->east_tex);
+	set_texture(data, &data->texture_west, data->west_tex);
 }

@@ -6,7 +6,7 @@
 /*   By: marianof <mariano@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:41:33 by marianof          #+#    #+#             */
-/*   Updated: 2025/05/22 20:38:47 by marianof         ###   ########.fr       */
+/*   Updated: 2025/05/25 10:20:38 by marianof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,8 @@ void	valid_list(t_data *data)
 		error_and_finish(data, "Error: West texture not found.");
 	if (!data->map)
 		error_and_finish(data, "Error: Map not found.");
+	if (data->flag_colors == 1)
+		error_and_finish(data, "Error: Incorrect value for colors.");
+	if (data->flag_colors == 2)
+		error_and_finish(data, "Error: Incompleted floor or ceiling colors.");
 }
