@@ -41,5 +41,5 @@
 ## CPP-04
 * 80% - COMPLETED
 
-## CUBE3D
-* 0% - NOT COMPLETED
+## CUBE3D - [@Noa42](https://github.com/Noa42)
+* 100% - NOT COMPLETED
