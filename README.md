@@ -42,4 +42,4 @@
 * 80% - COMPLETED
 
 ## CUBE3D - [@Noa42](https://github.com/Noa42)
-* 100% - NOT COMPLETED
+* 100% - COMPLETED
