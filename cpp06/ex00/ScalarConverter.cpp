@@ -30,15 +30,22 @@ void ScalarConverter::convert(const std::string &literal) {
     }
 }
 
-ScalarConverter::ScalarConverter() {}
-
-ScalarConverter::ScalarConverter(const ScalarConverter &other) {
-    (void)other;
+ScalarConverter::ScalarConverter() {
+    std::cout << "ScalarConverter Constructor called" << std::endl;
 }
 
-ScalarConverter::~ScalarConverter() {}
+ScalarConverter::ScalarConverter(const ScalarConverter &other) {
+    std::cout << "ScalarConverter Copy Constructor called" << std::endl;
+    if (this != &other) {
+        *this = other;
+    }
+}
+
+ScalarConverter::~ScalarConverter() {
+    std::cout << "ScalarConverter Destructor called" << std::endl;
+}
 
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
     (void)other;
-    return *this;
+    return (*this);
 }
