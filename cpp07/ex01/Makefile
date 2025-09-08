@@ -1,10 +1,10 @@
 
-NAME	:= StartWithAFew
+NAME	:= Iter
 CFLAGS	:=  -Wall -Werror -Wextra -std=c++98 \
 	#-g #-fsanitize=address,undefined \
 	#-Wunreachable-code -Ofast 
 
-SRCS	:= main.cpp whatever.cpp
+SRCS	:= main.cpp iter.cpp
 
 OBJS	:= ${SRCS:.cpp=.o}
 CC		:= c++

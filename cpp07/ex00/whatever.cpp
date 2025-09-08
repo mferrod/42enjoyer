@@ -13,18 +13,16 @@ Whatever &Whatever::operator=(const Whatever &other) {
     return (*this);
 }
 
-
-
-template <typename T> t const &max(t const &a, t const &b) {
+template <typename T> const T &max(const T &a, const T &b) {
   return (a > b ? a : b);
 }
 
-template <typename T> t const &min(t const &a, t const &b) {
+template <typename T> const T &min(const T &a, const T &b) {
   return (a < b ? a : b);
 }
 
-template <typename T> void swap(t &a, t &b) {
-  t tmp = a;
+template <typename T> void swap(T &a, T &b) {
+  T tmp = a;
   a = b;
   b = tmp;
 }
