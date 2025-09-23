@@ -11,11 +11,4 @@ void iter(T* array, size_t length, void (*func)(T&)) {
 	}
 }
 
-class Iter {
-public:
-	Iter();
-	Iter(const Iter &other);
-	~Iter();
-	Iter &operator=(const Iter &other);
-};
 #endif

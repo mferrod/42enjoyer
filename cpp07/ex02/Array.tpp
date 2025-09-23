@@ -4,7 +4,9 @@
 #include "Array.hpp"
 
 template <typename T>
-Array<T>::Array() : _data(NULL), _size(0) {}
+Array<T>::Array() : _data(NULL), _size(0) {
+    std::cout << "Constructor Array" << std::endl;
+}
 
 template <typename T>
 Array<T>::Array(unsigned int n) : _data(NULL), _size(n) {
@@ -17,6 +19,7 @@ Array<T>::Array(unsigned int n) : _data(NULL), _size(n) {
 
 template <typename T>
 Array<T>::Array(const Array &other) : _data(NULL), _size(other._size) {
+    std::cout << "Array constructor copy" << std::endl;
     if (_size) {
         _data = new T[_size];
         for (size_t i = 0; i < _size; ++i)
@@ -26,11 +29,13 @@ Array<T>::Array(const Array &other) : _data(NULL), _size(other._size) {
 
 template <typename T>
 Array<T>::~Array() {
+    std::cout << "Destructor Array" << std::endl;
     delete [] _data;
 }
 
 template <typename T>
 Array<T> &Array<T>::operator=(const Array &other) {
+    std::cout << "Call Array Copy assignment operator" << std::endl;
     if (this != &other) {
         T* newData = NULL;
         if (other._size) {
