@@ -4,7 +4,7 @@ CFLAGS	:=  -Wall -Werror -Wextra -std=c++98 \
 	#-g #-fsanitize=address,undefined \
 	#-Wunreachable-code -Ofast 
 
-SRCS	:= main.cpp iter.cpp
+SRCS	:= main.cpp
 
 OBJS	:= ${SRCS:.cpp=.o}
 CC		:= c++
