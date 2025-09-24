@@ -1,14 +1,23 @@
 template <typename T, typename Container>
-MutantStack<T, Container>::MutantStack() : std::stack<T, Container>() {}
+MutantStack<T, Container>::MutantStack() : std::stack<T, Container>() {
+	std::cout << "Default Constructor MutantStack created" << std::endl;
+}
 
 template <typename T, typename Container>
-MutantStack<T, Container>::MutantStack(const MutantStack &other) : std::stack<T, Container>(other) {}
+MutantStack<T, Container>::MutantStack(const MutantStack &other) : std::stack<T, Container>(other) {
+	std::cout << "Copy Constructor MutantStack created" << std::endl;
+	if (this != &other)
+		*this = other;
+}
 
 template <typename T, typename Container>
-MutantStack<T, Container>::~MutantStack() {}
+MutantStack<T, Container>::~MutantStack() {
+	std::cout << "Destructor MutantStack called" << std::endl;
+}
 
 template <typename T, typename Container>
 MutantStack<T, Container> &MutantStack<T, Container>::operator=(const MutantStack &other) {
+	std::cout << "Assignment Operator MutantStack called" << std::endl;
 	if (this != &other)
 		std::stack<T, Container>::operator=(other);
 	return *this;
