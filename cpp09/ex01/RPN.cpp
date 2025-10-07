@@ -47,7 +47,7 @@ bool RPN::evaluate(const std::string &expr, double &outResult) const {
 			double b = st.top(); st.pop();
 			double a = st.top(); st.pop();
 			if (token[0] == '/' && b == 0)
-				return false; // division by zero
+				return false;
 			double res = applyOp(a, b, token[0]);
 			st.push(res);
 		} else {
