@@ -43,3 +43,18 @@
 
 ## CUBE3D - [@Noa42](https://github.com/Noa42)
 * 100% - COMPLETED
+
+## CPP-05
+* 100% - COMPLETED
+
+## CPP-06
+* 100% - COMPLETED
+
+## CPP-07
+* 100% - COMPLETED
+
+## CPP-08
+* 100% - COMPLETED
+
+## CPP-09
+* 0% - NOT COMPLETED
