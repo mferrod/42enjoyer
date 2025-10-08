@@ -8,9 +8,7 @@ int main(int argc, char **argv) {
 
     try {
         BitcoinExchange exchange;
-        // Cargamos una copia del data.csv como base de datos
         exchange.loadDatabase(argv[1]);
-        // Y lo procesamos
         exchange.processInputFile(argv[1]);
     }
     catch (const std::exception &e) {

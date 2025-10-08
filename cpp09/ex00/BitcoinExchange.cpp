@@ -15,7 +15,6 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
     return *this;
 }
 
-// Utility functions
 bool BitcoinExchange::isValidDate(const std::string &date) const {
     if (date.length() != 10) return false;
     if (date[4] != '-' || date[7] != '-') return false;
@@ -28,7 +27,6 @@ bool BitcoinExchange::isValidDate(const std::string &date) const {
     if (year < 2009 || month < 1 || month > 12 || day < 1 || day > 31)
         return false;
 
-    // Simple month-day validation
     if (month == 4 || month == 6 || month == 9 || month == 11)
         return day <= 30;
     if (month == 2) {
@@ -69,20 +67,19 @@ void BitcoinExchange::parseDatabaseLine(const std::string &line) {
     std::string value = line.substr(pos + 1);
 
     if (!isValidDate(date))
-        return; // Ignoramos fechas inválidas en la base de datos
+        return;
 
     float rate = stringToFloat(value);
     _database[date] = rate;
 }
 
-// Main functionality
 void BitcoinExchange::loadDatabase(const std::string &filename) {
     std::ifstream file(filename.c_str());
     if (!file.is_open())
         throw FileError("could not open database file");
 
     std::string line;
-    std::getline(file, line); // Skip header
+    std::getline(file, line);
 
     while (std::getline(file, line)) {
         if (!line.empty()) {
@@ -115,7 +112,7 @@ void BitcoinExchange::processInputFile(const std::string &filename) const {
         throw FileError("could not open file");
 
     std::string line;
-    std::getline(file, line); // Skip header
+    std::getline(file, line);
 
     while (std::getline(file, line)) {
         if (line.empty()) continue;
@@ -123,15 +120,13 @@ void BitcoinExchange::processInputFile(const std::string &filename) const {
         try {
             size_t pos = line.find(',');
             if (pos == std::string::npos)
-                continue; // Ignoramos líneas sin el formato correcto
+                continue;
 
             std::string date = line.substr(0, pos);
-            // Trim whitespace
             date.erase(0, date.find_first_not_of(" \t"));
             date.erase(date.find_last_not_of(" \t") + 1);
 
             std::string valueStr = line.substr(pos + 1);
-            // Trim whitespace
             valueStr.erase(0, valueStr.find_first_not_of(" \t"));
             valueStr.erase(valueStr.find_last_not_of(" \t") + 1);
 
