@@ -1,6 +1,5 @@
 #include "BitcoinExchange.hpp"
 
-// Orthodox Canonical Form
 BitcoinExchange::BitcoinExchange() {}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) 

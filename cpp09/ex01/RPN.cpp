@@ -44,8 +44,10 @@ bool RPN::evaluate(const std::string &expr, double &outResult) const {
 	while (iss >> token) {
 		if (token.size() == 1 && isOperator(token[0])) {
 			if (st.size() < 2) return false;
-			double b = st.top(); st.pop();
-			double a = st.top(); st.pop();
+			double b = st.top();
+			st.pop();
+			double a = st.top(); 
+			st.pop();
 			if (token[0] == '/' && b == 0)
 				return false;
 			double res = applyOp(a, b, token[0]);
