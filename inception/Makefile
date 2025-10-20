@@ -1,13 +1,12 @@
 NAME=inception
-COMPOSE=docker-compose -f srcs/docker-compose.yml
-UID=$(shell id -u)
-GID=$(shell id -g)
+COMPOSE=docker compose -f srcs/docker-compose.yml
+DATA_PATH=/home/$(USER)/data
 
 all: up
 
 up:
-	mkdir -p /home/${USER}/data/wordpress
-	mkdir -p /home/${USER}/data/mariadb
+	@mkdir -p $(DATA_PATH)/wordpress
+	@mkdir -p $(DATA_PATH)/mariadb
 	$(COMPOSE) up --build -d
 
 down:
@@ -31,6 +30,7 @@ clean:
 	$(COMPOSE) down -v --remove-orphans
 
 fclean: clean
-	@if [ -d "/home/${USER}/data" ]; then sudo rm -rf /home/${USER}/data; fi
+	@if [ -d "$(DATA_PATH)" ]; then sudo rm -rf $(DATA_PATH); fi
+	@docker system prune -af --volumes
 
 .PHONY: all up down re stop start ps logs clean fclean
