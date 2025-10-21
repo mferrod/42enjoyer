@@ -4,7 +4,7 @@ CFLAGS	:=  -Wall -Werror -Wextra -std=c++98 \
 	#-g #-fsanitize=address,undefined \
 	#-Wunreachable-code -Ofast 
 
-SRCS	:= main.cpp ConfigParser.cpp Location.cpp ServerConfig.cpp
+SRCS	:= main.cpp ConfigParser.cpp Location.cpp ServerConfig.cpp ConfigValidator.cpp
 
 OBJS	:= ${SRCS:.cpp=.o}
 CC		:= c++
