@@ -35,6 +35,7 @@ public:
     void validateLocation(const Location &location);
     void validateDirective(const std::string &key, const std::string &value, bool isLocationContext);
     void validateListen(const std::string &value);
+    void validateHost(const std::string &value);
     void validateServerName(const std::string &value);
     void validateRoot(const std::string &value);
     void validateIndex(const std::string &value);
@@ -45,6 +46,7 @@ public:
     void validateCgiPath(const std::string &value);
     void validateUploadDir(const std::string &value);
     void validateRedirect(const std::string &value);
+    void validateReturn(const std::string &value);
 };
 
 #endif
